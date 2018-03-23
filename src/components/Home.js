@@ -1,5 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const homePage = () => <h1>Home</h1>
+const homePage = props => {
+  const { isAuthenticated } = props.auth;
 
-export default homePage; 
+  return (
+    <div>
+      {isAuthenticated() && <a onClick={props.auth.logout}>Log OUT</a>}
+      {!isAuthenticated() && <a onClick={props.auth.login}>Log IN</a>}
+    </div>
+  );
+};
+
+export default homePage;
