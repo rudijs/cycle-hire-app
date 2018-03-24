@@ -69,3 +69,15 @@ Dashboard
 10. Provide correlation between weather and bicycle usage for marketing promotion decision making
 11. Graph displaying the usage of bicycle over time with rainfall
 12. Graph displaying the usage of bicycle over time with temperature
+
+
+## Local developer setup
+
+- `git clone git@github.com:viseo-asia/cycle-hire-app.git`
+- `cd cycle-hire-app`
+- `yarn start`
+
+## Production deploy to Netlify
+
+- `AUTH0_URL=https://happy-shannon-f6a154.netlify.com yarn build`
+- Sign into Viseo Netlify account, drag and drop deploy
