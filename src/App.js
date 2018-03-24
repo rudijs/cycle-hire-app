@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "./components/Header";
 import HomePage from "./components/Home";
-import ProfilePage from "./containers/Profile";
+import ProfilePage from "./components/Profile";
+import SignOutPage from "./components/Signout";
 
-import Callback from "./containers/Callback";
-import Auth from "./containers/Auth";
-import history from "./containers/history";
+import Auth from "./containers/Auth/Auth";
+import history from "./containers/Auth/history";
+import Callback from "./containers/Auth/Callback";
 
 const auth = new Auth();
 
@@ -20,9 +21,10 @@ const handleAuthentication = ({ location }) => {
 
 const NoMatch = ({ location }) => (
   <div>
-    <h3>
-      No match for <code>{location.pathname}</code>
-    </h3>
+    <br />
+    <p>
+      404 Page Not Found: <code>{location.pathname}</code>
+    </p>
   </div>
 );
 
@@ -31,17 +33,30 @@ class App extends Component {
     return (
       <Router history={history}>
         <div className="App-container">
-          <Header />
-          {/* <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/profile" component={ProfilePage} />
+          <Header auth={auth} />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={props => <HomePage auth={auth} {...props} />}
+            />
+            <Route
+              path="/profile"
+              render={props => <ProfilePage auth={auth} {...props} />}
+            />
+            <Route
+              path="/signout"
+              render={props => <SignOutPage auth={auth} {...props} />}
+            />
+            <Route
+              path="/callback"
+              render={props => {
+                handleAuthentication(props);
+                return <Callback {...props} />;
+              }}
+            />
             <Route component={NoMatch} />
-          </Switch> */}
-          <Route path="/" render={(props) => <HomePage auth={auth} {...props} />} />
-          <Route path="/callback" render={(props) => {
-            handleAuthentication(props);
-            return <Callback {...props} /> 
-          }}/>
+          </Switch>
         </div>
       </Router>
     );

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import logo from "../assets/images/bicycle-icon.svg";
 
-const header = () => {
+const header = props => {
+  const { isAuthenticated } = props.auth;
   return (
     <React.Fragment>
       <header className="App-header">
@@ -20,6 +21,10 @@ const header = () => {
           </li>
           <li>
             <Link to="/about">About</Link>
+          </li>
+          <li>
+            {isAuthenticated() && <Link to="/signout">Sign Out</Link>}
+            {!isAuthenticated() && <a onClick={props.auth.login}>Sign In</a>}
           </li>
         </ul>
       </nav>
