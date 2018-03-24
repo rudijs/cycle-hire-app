@@ -11,7 +11,7 @@ class SignOut extends Component {
     this.props.auth.logout();
     return (
       <div>
-        <h3>Signed Out</h3>
+        <h3>Signing out...</h3>
         <p>One moment please...</p>
       </div>
     );
