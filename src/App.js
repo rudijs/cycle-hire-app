@@ -42,7 +42,12 @@ class App extends Component {
             />
             <Route
               path="/profile"
-              render={props => <ProfilePage auth={auth} {...props} />}
+              render={props => {
+                if (!auth.isAuthenticated()) {
+                  return <h3>Please Sign In</h3>;
+                }
+                return <ProfilePage auth={auth} {...props} />;
+              }}
             />
             <Route
               path="/signout"
