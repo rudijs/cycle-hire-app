@@ -15,6 +15,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
+import Divider from 'material-ui/Divider';
 
 const auth = new Auth();
 
@@ -65,6 +66,7 @@ class App extends Component {
               <MenuItem onClick={() => this.handleDrawerGoTo('/')}>Home</MenuItem>
               <MenuItem onClick={() => this.handleDrawerGoTo('/profile')}>Profile</MenuItem>
               <MenuItem onClick={() => this.handleDrawerGoTo('/about')}>About Us</MenuItem>
+              <Divider />
               {!auth.isAuthenticated() && <MenuItem onClick={auth.login}>Sign In</MenuItem>}
               {auth.isAuthenticated() && <MenuItem onClick={() => this.handleDrawerGoTo('/signout')}>Sign Out</MenuItem>}
             </Drawer>
