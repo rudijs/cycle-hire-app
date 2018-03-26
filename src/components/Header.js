@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../assets/images/bicycle-icon.svg";
+// import logo from "../assets/images/bicycle-icon.svg";
 
 const header = props => {
   const { isAuthenticated } = props.auth;
   return (
     <React.Fragment>
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Cycle Hire</h1>
-      </header>
+      </header> */}
       <nav>
         <ul>
           <li>
