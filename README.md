@@ -83,4 +83,4 @@ Dashboard
 - Sign into Viseo Netlify account, drag and drop deploy
 
 ## System Context
-![System Context](docs/diagram_system-context.png)
+![System Context](docs/cycle-hire-system-context.png)
