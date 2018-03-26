@@ -2,9 +2,13 @@ import React from "react";
 import { Card, CardTitle, CardText } from "material-ui/Card";
 
 const homePage = () => {
+  const style = {
+    maxWidth: 500,
+    marginTop: '2rem' 
+  }
   return (
     <React.Fragment>
-      <Card>
+      <Card style={style}>
         <CardTitle title="Card title One" subtitle="Card One subtitle" />
         <CardText>
           Lorem ipsum dolor sit amet alejo, consectetur adipiscing elit. Donec mattis
@@ -13,7 +17,7 @@ const homePage = () => {
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
         </CardText>
       </Card>
-      <Card>
+      <Card style={style}>
         <CardTitle title="Card title Two" subtitle="Card Two subtitle" />
         <CardText>
           Lorem ipsum two dolor sit amet developer, consectetur adipiscing elit. Donec mattis
@@ -22,7 +26,7 @@ const homePage = () => {
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
         </CardText>
       </Card>
-      <Card>
+      <Card style={style}>
         <CardTitle title="Card title Three" subtitle="Card Three subtitle" />
         <CardText>
           Lorem ipsum three dolor sit amet, consectetur adipiscing elit. Donec mattis
