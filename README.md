@@ -77,10 +77,18 @@ Dashboard
 - `cd cycle-hire-app`
 - `yarn start`
 
+## DEV/UAT Deployment
+
+Commits on the `develop` branch to github.com/viseo-asia/cycle-hire-app are auto built and deployed to:
+
+- [happy-shannon-f6a154.netlify.com](https://happy-shannon-f6a154.netlify.com)
+
 ## Production deploy to Netlify
 
-- `AUTH0_URL=https://happy-shannon-f6a154.netlify.com yarn build`
-- Sign into Viseo Netlify account, drag and drop deploy
+- TODO (will be similar to DEV/UAT but with a custom domain name)
+
+<!-- - `AUTH0_URL=https://happy-shannon-f6a154.netlify.com yarn build` -->
+<!-- - Sign into Viseo Netlify account, drag and drop deploy -->
 
 ## System Context
 ![System Context](docs/cycle-hire-system-context.png)
