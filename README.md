@@ -81,3 +81,6 @@ Dashboard
 
 - `AUTH0_URL=https://happy-shannon-f6a154.netlify.com yarn build`
 - Sign into Viseo Netlify account, drag and drop deploy
+
+## System Context
+![System Context](docs/diagram_system-context.png)
