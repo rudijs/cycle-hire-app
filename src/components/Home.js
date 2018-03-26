@@ -7,7 +7,7 @@ const homePage = () => {
       <Card>
         <CardTitle title="Card title One" subtitle="Card One subtitle" />
         <CardText>
-          Lorem ipsum dolor sit amet viseo, consectetur adipiscing elit. Donec mattis
+          Lorem ipsum dolor sit amet alejo, consectetur adipiscing elit. Donec mattis
           pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate
           interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
