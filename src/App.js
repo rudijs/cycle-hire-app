@@ -15,7 +15,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
-import Divider from 'material-ui/Divider';
+import Divider from "material-ui/Divider";
 
 const auth = new Auth();
 
@@ -42,12 +42,18 @@ class App extends Component {
 
   handleToggle = () => this.setState({ open: !this.state.open });
 
-  handleDrawerGoTo = (route) => {
-    history.replace(route)
-    this.setState({open: false})
-  }
+  handleDrawerGoTo = route => {
+    history.replace(route);
+    this.setState({ open: false });
+  };
 
   render() {
+
+    const iconStyle = {
+      display: "inline-flex",
+      verticalAlign: "middle"
+    };
+
     return (
       <Router history={history}>
         <MuiThemeProvider>
@@ -58,17 +64,32 @@ class App extends Component {
               onLeftIconButtonClick={this.handleToggle}
             />
             {/* <Header auth={auth} /> */}
-            <Drawer 
-              open={this.state.open} 
+            <Drawer
+              open={this.state.open}
               docked={false}
-              onRequestChange={() => this.setState({open: false})}
-              auth={auth}>
-              <MenuItem onClick={() => this.handleDrawerGoTo('/')}>Home</MenuItem>
-              <MenuItem onClick={() => this.handleDrawerGoTo('/profile')}>Profile</MenuItem>
-              <MenuItem onClick={() => this.handleDrawerGoTo('/about')}>About Us</MenuItem>
+              onRequestChange={() => this.setState({ open: false })}
+              auth={auth}
+            >
+              <MenuItem onClick={() => this.handleDrawerGoTo("/")}>
+              <i className="material-icons md-18" style={iconStyle}>home</i>&nbsp;Home
+              </MenuItem>
+              <MenuItem onClick={() => this.handleDrawerGoTo("/profile")}>
+                <i className="material-icons md-18" style={iconStyle}>account_circle</i>&nbsp;Profile
+              </MenuItem>
+              <MenuItem onClick={() => this.handleDrawerGoTo("/about")}>
+              <i className="material-icons md-18" style={iconStyle}>contact_phone</i>&nbsp;About Us
+              </MenuItem>
               <Divider />
-              {!auth.isAuthenticated() && <MenuItem onClick={auth.login}>Sign In</MenuItem>}
-              {auth.isAuthenticated() && <MenuItem onClick={() => this.handleDrawerGoTo('/signout')}>Sign Out</MenuItem>}
+              {!auth.isAuthenticated() && (
+                <MenuItem onClick={auth.login}>
+              <i className="material-icons md-18" style={iconStyle}>arrow_forward</i>&nbsp;Sign In
+                </MenuItem>
+              )}
+              {auth.isAuthenticated() && (
+                <MenuItem onClick={() => this.handleDrawerGoTo("/signout")}>
+              <i className="material-icons md-18" style={iconStyle}>arrow_back</i>&nbsp;Sign Out
+                </MenuItem>
+              )}
             </Drawer>
             <Switch>
               <Route
