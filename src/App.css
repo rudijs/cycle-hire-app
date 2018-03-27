@@ -1,7 +1,13 @@
+html, body, #root {
+  height: 100%;
+}
 .App-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* allow for sticky AppBar */
+  /* margin-top: 75px; */
+  height: 100%;
 }
 
 .App-header {
@@ -21,6 +27,11 @@
 
 .App-title {
   font-size: 1.5rem;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
 }
 
 nav ul {

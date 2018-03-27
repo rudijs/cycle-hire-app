@@ -48,7 +48,6 @@ class App extends Component {
   };
 
   render() {
-
     const iconStyle = {
       display: "inline-flex",
       verticalAlign: "middle"
@@ -62,6 +61,7 @@ class App extends Component {
               title="Cycle Hire"
               onTitleClick={this.handleToggle}
               onLeftIconButtonClick={this.handleToggle}
+              // style={{ position: "fixed", top: 0, marginBottom: 100}}
             />
             {/* <Header auth={auth} /> */}
             <Drawer
@@ -71,23 +71,33 @@ class App extends Component {
               auth={auth}
             >
               <MenuItem onClick={() => this.handleDrawerGoTo("/")}>
-              <i className="material-icons md-18" style={iconStyle}>home</i>&nbsp;Home
+                <i className="material-icons md-18" style={iconStyle}>
+                  home
+                </i>&nbsp;Home
               </MenuItem>
               <MenuItem onClick={() => this.handleDrawerGoTo("/profile")}>
-                <i className="material-icons md-18" style={iconStyle}>account_circle</i>&nbsp;Profile
+                <i className="material-icons md-18" style={iconStyle}>
+                  account_circle
+                </i>&nbsp;Profile
               </MenuItem>
               <MenuItem onClick={() => this.handleDrawerGoTo("/about")}>
-              <i className="material-icons md-18" style={iconStyle}>contact_phone</i>&nbsp;About Us
+                <i className="material-icons md-18" style={iconStyle}>
+                  contact_phone
+                </i>&nbsp;About Us
               </MenuItem>
               <Divider />
               {!auth.isAuthenticated() && (
                 <MenuItem onClick={auth.login}>
-              <i className="material-icons md-18" style={iconStyle}>arrow_forward</i>&nbsp;Sign In
+                  <i className="material-icons md-18" style={iconStyle}>
+                    arrow_forward
+                  </i>&nbsp;Sign In
                 </MenuItem>
               )}
               {auth.isAuthenticated() && (
                 <MenuItem onClick={() => this.handleDrawerGoTo("/signout")}>
-              <i className="material-icons md-18" style={iconStyle}>arrow_back</i>&nbsp;Sign Out
+                  <i className="material-icons md-18" style={iconStyle}>
+                    arrow_back
+                  </i>&nbsp;Sign Out
                 </MenuItem>
               )}
             </Drawer>
@@ -101,7 +111,11 @@ class App extends Component {
                 path="/profile"
                 render={props => {
                   if (!auth.isAuthenticated()) {
-                    return <h3>Please Sign In</h3>;
+                    return (
+                      <div id="container">
+                        <h3>Please Sign In</h3>
+                      </div>
+                    );
                   }
                   return <ProfilePage auth={auth} {...props} />;
                 }}
