@@ -13,6 +13,8 @@ const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
 const nearbyIcon = <IconLocationOn />;
 
+const data = require("../tmp/bike_point.json");
+
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -22,15 +24,37 @@ class HomePage extends Component {
   select = index => this.setState({ selectedIndex: index });
 
   initMap() {
-    var uluru = { lat: -25.363, lng: 131.044 };
-    var map = new window.google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: uluru
+    const london = { lat: 51.5073509, lng: -0.127758 };
+    const map = new window.google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: london
     });
-    var marker = new window.google.maps.Marker({
-      position: uluru,
-      map: map
+
+    // Add some markers to the map.
+    // Note: The code uses the JavaScript Array.prototype.map() method to
+    // create an array of markers based on a given "locations" array.
+    // The map() method here has nothing to do with the Google Maps API.
+    const markers = data.map(function(location, i) {
+      const marker = new window.google.maps.Marker({
+        position: { lat: location.lat, lng: location.lon },
+        // http://kml4earth.appspot.com/icons.html
+        icon: "http://maps.google.com/mapfiles/kml/shapes/cycling.png"
+      });
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: location.commonName
+      });
+      marker.addListener("click", () => {
+        infoWindow.open(map, marker);
+      });
+      return marker;
     });
+
+    // Add a marker clusterer to manage the markers.
+    return new window.MarkerClusterer(map, markers, {
+      imagePath:
+        "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+    });
+
   }
 
   componentDidMount() {
