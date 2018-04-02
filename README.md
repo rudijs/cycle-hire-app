@@ -1,5 +1,9 @@
 # cycle-hire-app
 
+Develop Branch ==> [![Build Status](https://travis-ci.org/viseo-asia/cycle-hire-app.svg?branch=develop)](https://travis-ci.org/viseo-asia/cycle-hire-app)
+
+Master Branch ==> [![Build Status](https://travis-ci.org/viseo-asia/cycle-hire-app.svg?branch=master)](https://travis-ci.org/viseo-asia/cycle-hire-app)
+
 Prototype like Santander Cycle hire docking stations information and weather correlation
 
 ## Objective
