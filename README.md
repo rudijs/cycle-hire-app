@@ -1,6 +1,6 @@
 # cycle-hire-app
 
-Develop Branch ==> [![Build Status](https://travis-ci.org/viseo-asia/cycle-hire-app.svg?branch=develop)](https://travis-ci.org/viseo-asia/cycle-hire-app)
+Develop Branch ==> [![Build Status](https://travis-ci.org/viseo-asia/cycle-hire-app.svg?branch=develop)](https://travis-ci.org/viseo-asia/cycle-hire-app) [![Coverage Status](https://coveralls.io/repos/github/viseo-asia/cycle-hire-app/badge.svg?branch=develop)](https://coveralls.io/github/viseo-asia/cycle-hire-app?branch=develop)
 
 Master Branch ==> [![Build Status](https://travis-ci.org/viseo-asia/cycle-hire-app.svg?branch=master)](https://travis-ci.org/viseo-asia/cycle-hire-app)
 
