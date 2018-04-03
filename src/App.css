@@ -1,61 +1,10 @@
-html, body, #root {
-  height: 100%;
-}
-.App-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   /* allow for sticky AppBar */
   /* margin-top: 75px; */
   height: 100%;
-}
 
-.App-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: lightskyblue;
-  width: 100%;
-  padding: 20px;
-  height: 150px;
-  color: orangered;
-}
-
-.App-logo {
-  height: 80%;
-}
-
-.App-title {
-  font-size: 1.5rem;
-}
-
-#map {
-  height: 100%;
-  width: 100%;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  /* display: inline-block; */
-  margin: 10px;
-}
-
-li a {
-  text-decoration: none;
-  background-color: ForestGreen;  
-  border-radius: 5px;
-  color: white;
-  padding: .5em;
-  text-decoration: none;
-}
-
-li a:focus,
-li a:hover {
-  background-color: DarkGreen;
+  border: 1px solid red;
 }

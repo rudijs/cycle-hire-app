@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // import { Card, CardTitle, CardText } from "material-ui/Card";
+import classes from "./Home.css";
 
 import {
   BottomNavigation,
@@ -13,7 +14,7 @@ const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
 const nearbyIcon = <IconLocationOn />;
 
-const data = require("../tmp/bike_point.json");
+const data = require("../../tmp/bike_point.json");
 
 class HomePage extends Component {
   constructor(props) {
@@ -54,22 +55,16 @@ class HomePage extends Component {
       imagePath:
         "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
     });
-
   }
 
   componentDidMount() {
     this.initMap();
   }
 
-  // style = {
-  //   maxWidth: 500,
-  //   marginTop: "2rem"
-  // };
-
   render() {
     return (
       <React.Fragment>
-        <div id="map" />
+        <div id="map" className={classes.map} />
         <Paper zDepth={1}>
           <BottomNavigation selectedIndex={this.state.selectedIndex}>
             <BottomNavigationItem

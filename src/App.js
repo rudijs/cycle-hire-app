@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
 
-import "./App.css";
+import classes from  "./App.css";
 // import Header from "./components/Header";
-import HomePage from "./components/Home";
+import HomePage from "./components/Home/Home";
 import ProfilePage from "./components/Profile";
 import SignOutPage from "./components/Signout";
 
@@ -16,7 +16,7 @@ import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 import Divider from "material-ui/Divider";
-
+console.log(classes)
 const auth = new Auth();
 
 const handleAuthentication = ({ location }) => {
@@ -56,7 +56,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <MuiThemeProvider>
-          <div className="App-container">
+          <div className={classes.container}>
             <AppBar
               title="Cycle Hire"
               onTitleClick={this.handleToggle}
