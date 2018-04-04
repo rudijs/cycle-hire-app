@@ -4,7 +4,5 @@
   align-items: center;
   /* allow for sticky AppBar */
   /* margin-top: 75px; */
-  height: 100%;
-
-  border: 1px solid red;
+  /* height: 100%; */
 }

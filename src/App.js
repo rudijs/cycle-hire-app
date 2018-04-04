@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
 
-import classes from  "./App.css";
+import classes from "./App.css";
 // import Header from "./components/Header";
 import HomePage from "./components/Home/Home";
 import ProfilePage from "./components/Profile";
 import SignOutPage from "./components/Signout";
+import SearchPage from "./components/Search/Search";
 
 import Auth from "./containers/Auth/Auth";
 import history from "./containers/Auth/history";
@@ -16,7 +17,8 @@ import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 import Divider from "material-ui/Divider";
-console.log(classes)
+import FlatButton from "material-ui/FlatButton";
+
 const auth = new Auth();
 
 const handleAuthentication = ({ location }) => {
@@ -56,12 +58,14 @@ class App extends Component {
     return (
       <Router history={history}>
         <MuiThemeProvider>
-          <div className={classes.container}>
+          {/* add height 100% for container if route is / for google map */}
+          <div className={classes.container} style={history.location.pathname === "/" ? {height: '100%'} : {}}>
             <AppBar
               title="Cycle Hire"
               onTitleClick={this.handleToggle}
               onLeftIconButtonClick={this.handleToggle}
               // style={{ position: "fixed", top: 0, marginBottom: 100}}
+              iconElementRight={<FlatButton onClick={() => this.handleDrawerGoTo("/search")} label="Search" />}
             />
             {/* <Header auth={auth} /> */}
             <Drawer
@@ -74,6 +78,11 @@ class App extends Component {
                 <i className="material-icons md-18" style={iconStyle}>
                   home
                 </i>&nbsp;Home
+              </MenuItem>
+              <MenuItem onClick={() => this.handleDrawerGoTo("/search")}>
+                <i className="material-icons md-18" style={iconStyle}>
+                  search 
+                </i>&nbsp;Search
               </MenuItem>
               <MenuItem onClick={() => this.handleDrawerGoTo("/profile")}>
                 <i className="material-icons md-18" style={iconStyle}>
@@ -106,6 +115,10 @@ class App extends Component {
                 path="/"
                 exact
                 render={props => <HomePage auth={auth} {...props} />}
+              />
+              <Route
+                path="/search"
+                render={props => <SearchPage {...props} />}
               />
               <Route
                 path="/profile"
