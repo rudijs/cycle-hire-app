@@ -39,7 +39,7 @@ class HomePage extends Component {
       const marker = new window.google.maps.Marker({
         position: { lat: location.lat, lng: location.lon },
         // http://kml4earth.appspot.com/icons.html
-        icon: "http://maps.google.com/mapfiles/kml/shapes/cycling.png"
+        icon: "https://maps.google.com/mapfiles/kml/shapes/cycling.png"
       });
       const infoWindow = new window.google.maps.InfoWindow({
         content: location.commonName
