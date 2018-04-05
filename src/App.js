@@ -6,13 +6,17 @@ import classes from "./App.css";
 import HomePage from "./components/Home/Home";
 import ProfilePage from "./components/Profile";
 import SignOutPage from "./components/Signout";
-import SearchPage from "./components/Search/Search";
+import FilterPage from "./components/Filter/Filter";
 
 import Auth from "./containers/Auth/Auth";
 import history from "./containers/Auth/history";
 import Callback from "./containers/Auth/Callback";
 
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+// import getMuiTheme from "material-ui/styles/getMuiTheme";
+// import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
+// import lightBaseTheme from "material-ui/styles/baseThemes/lightBaseTheme";
+
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
@@ -44,6 +48,8 @@ class App extends Component {
 
   handleToggle = () => this.setState({ open: !this.state.open });
 
+  closeDrawer = () => this.setState({ open: false });
+
   handleDrawerGoTo = route => {
     history.replace(route);
     this.setState({ open: false });
@@ -58,14 +64,24 @@ class App extends Component {
     return (
       <Router history={history}>
         <MuiThemeProvider>
+          {/* <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}> */}
+          {/* <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}> */}
           {/* add height 100% for container if route is / for google map */}
-          <div className={classes.container} style={history.location.pathname === "/" ? {height: '100%'} : {}}>
+          <div
+            className={classes.container}
+            style={history.location.pathname === "/" ? { height: "100%" } : {}}
+          >
             <AppBar
               title="Cycle Hire"
               onTitleClick={this.handleToggle}
               onLeftIconButtonClick={this.handleToggle}
               // style={{ position: "fixed", top: 0, marginBottom: 100}}
-              iconElementRight={<FlatButton onClick={() => this.handleDrawerGoTo("/search")} label="Search" />}
+              iconElementRight={
+                <FlatButton
+                  onClick={() => this.handleDrawerGoTo("/filter")}
+                  label="Filter"
+                />
+              }
             />
             {/* <Header auth={auth} /> */}
             <Drawer
@@ -74,14 +90,18 @@ class App extends Component {
               onRequestChange={() => this.setState({ open: false })}
               auth={auth}
             >
-              <MenuItem onClick={() => this.handleDrawerGoTo("/")}>
+              <MenuItem
+                onClick={() =>
+                  this.handleDrawerGoTo("/?lat=51.5073509&lng=-0.127758&zoom=12")
+                }
+              >
                 <i className="material-icons md-18" style={iconStyle}>
                   home
                 </i>&nbsp;Home
               </MenuItem>
-              <MenuItem onClick={() => this.handleDrawerGoTo("/search")}>
+              <MenuItem onClick={() => this.handleDrawerGoTo("/filter")}>
                 <i className="material-icons md-18" style={iconStyle}>
-                  search 
+                  search
                 </i>&nbsp;Search
               </MenuItem>
               <MenuItem onClick={() => this.handleDrawerGoTo("/profile")}>
@@ -117,8 +137,8 @@ class App extends Component {
                 render={props => <HomePage auth={auth} {...props} />}
               />
               <Route
-                path="/search"
-                render={props => <SearchPage {...props} />}
+                path="/filter"
+                render={props => <FilterPage {...props} closeDrawer={this.closeDrawer} />}
               />
               <Route
                 path="/profile"

@@ -5,11 +5,11 @@ import Adapter from "enzyme-adapter-react-16";
 
 configure({ adapter: new Adapter() });
 
-import SearchPage from "./Search";
+import FilterPage from "./Filter";
 
-describe("<SearchPage />", () => {
-  it("should render a search page", () => {
-      const wrapper = shallow(<SearchPage />)
+describe("<FilterPage />", () => {
+  it("should render a filter page", () => {
+      const wrapper = shallow(<FilterPage />)
       // expect(wrapper.contains(<BikePlacesList />)).toEqual(true)
   });
 });

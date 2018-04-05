@@ -19,16 +19,22 @@ const data = require("../../tmp/bike_point.json");
 class HomePage extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedIndex: 0 };
+    this.state = {
+      selectedIndex: 0,
+      lat: 51.5073509,
+      lng: -0.127758,
+      zoom: 12
+    };
   }
 
   select = index => this.setState({ selectedIndex: index });
 
   initMap() {
-    const london = { lat: 51.5073509, lng: -0.127758 };
+    console.log('initMap()')
+    const { lat, lng, zoom } = this.state;
     const map = new window.google.maps.Map(document.getElementById("map"), {
-      zoom: 12,
-      center: london
+      zoom: +zoom,
+      center: { lat: +lat, lng: +lng }
     });
 
     // Add some markers to the map.
@@ -39,7 +45,8 @@ class HomePage extends Component {
       const marker = new window.google.maps.Marker({
         position: { lat: location.lat, lng: location.lon },
         // http://kml4earth.appspot.com/icons.html
-        icon: "https://maps.google.com/mapfiles/kml/shapes/cycling.png"
+        // icon: "https://maps.google.com/mapfiles/kml/shapes/cycling.png"
+        icon: "/images/markerclusterer/cycling.png"
       });
       const infoWindow = new window.google.maps.InfoWindow({
         content: location.commonName
@@ -53,12 +60,25 @@ class HomePage extends Component {
     // Add a marker clusterer to manage the markers.
     return new window.MarkerClusterer(map, markers, {
       imagePath:
-        "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+        // "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+        "/images/markerclusterer/m"
     });
   }
 
   componentDidMount() {
-    this.initMap();
+    const qsParams = new URLSearchParams(this.props.location.search);
+
+    const lat = qsParams.get("lat");
+    const lng = qsParams.get("lng");
+    const zoom = qsParams.get("zoom");
+
+    // check lat and lng exist and are valid numbers
+    if ( (!lat || !lng || !zoom) || (isNaN(lat) || isNaN(lng) || isNaN(zoom) )) {
+      // not valid so return
+      return this.initMap();
+    }
+
+    this.setState({ lat, lng, zoom }, () => this.initMap());
   }
 
   render() {
