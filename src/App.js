@@ -4,6 +4,7 @@ import { Router, Switch, Route } from "react-router-dom";
 import classes from "./App.css";
 // import Header from "./components/Header";
 import HomePage from "./components/Home/Home";
+import MapPage from "./components/Map/Map";
 import ProfilePage from "./components/Profile";
 import SignOutPage from "./components/Signout";
 import FilterPage from "./components/Filter/Filter";
@@ -69,7 +70,9 @@ class App extends Component {
           {/* add height 100% for container if route is / for google map */}
           <div
             className={classes.container}
-            style={history.location.pathname === "/" ? { height: "100%" } : {}}
+            style={
+              history.location.pathname.match(/\/map/) ? { height: "100%" } : {}
+            }
           >
             <AppBar
               title="Cycle Hire"
@@ -92,17 +95,30 @@ class App extends Component {
             >
               <MenuItem
                 onClick={() =>
-                  this.handleDrawerGoTo("/?lat=51.5073509&lng=-0.127758&zoom=12")
+                  this.handleDrawerGoTo(
+                    "/"
+                  )
                 }
               >
                 <i className="material-icons md-18" style={iconStyle}>
                   home
                 </i>&nbsp;Home
               </MenuItem>
+
+              <MenuItem
+                onClick={() =>
+                  this.handleDrawerGoTo("/map/51.5073509/-0.127758/12")
+                }
+              >
+                <i className="material-icons md-18" style={iconStyle}>
+                  map 
+                </i>&nbsp;London Map
+              </MenuItem>
+
               <MenuItem onClick={() => this.handleDrawerGoTo("/filter")}>
                 <i className="material-icons md-18" style={iconStyle}>
-                  search
-                </i>&nbsp;Search
+                  find_in_page
+                </i>&nbsp;Filter Locations
               </MenuItem>
               <MenuItem onClick={() => this.handleDrawerGoTo("/profile")}>
                 <i className="material-icons md-18" style={iconStyle}>
@@ -136,9 +152,21 @@ class App extends Component {
                 exact
                 render={props => <HomePage auth={auth} {...props} />}
               />
+              {/* http://localhost:3000/map/51.5073509/0.127758/12 */}
+              <Route
+                path="/map"
+                exact
+                render={props => <MapPage auth={auth} {...props} />}
+              />
+              <Route
+                path="/map/:lat/:lng/:zoom"
+                render={props => <MapPage auth={auth} {...props} />}
+              />
               <Route
                 path="/filter"
-                render={props => <FilterPage {...props} closeDrawer={this.closeDrawer} />}
+                render={props => (
+                  <FilterPage {...props} closeDrawer={this.closeDrawer} />
+                )}
               />
               <Route
                 path="/profile"

@@ -26,9 +26,9 @@ class BikePlacesList extends Component {
   };
 
   clickHandler = coords => {
-    this.props.history.push(`/?lat=${coords.lat}&lng=${coords.lng}&zoom=18`)
+    this.props.history.push(`/map/${coords.lat}/${coords.lng}/18`);
     // call closeDrawer on App.js component, to force a render for google maps 100% height (issue/workaround)
-    this.props.closeDrawer()
+    this.props.closeDrawer();
   };
 
   render() {
@@ -45,7 +45,9 @@ class BikePlacesList extends Component {
               <ListItem
                 key={item.id}
                 primaryText={item.commonName}
-                onClick={() => this.clickHandler({lat: item.lat, lng: item.lon})}
+                onClick={() =>
+                  this.clickHandler({ lat: item.lat, lng: item.lon })
+                }
               />
             );
           })}
