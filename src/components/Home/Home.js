@@ -1,18 +1,23 @@
 import React from "react";
-import { Card, CardTitle, CardText } from "material-ui/Card";
+import { Card, CardTitle, CardText, CardMedia } from "material-ui/Card";
+
+import londonMapImage from "../../assets/images/london-map.png";
 
 const HomePage = () => {
-  const style = { maxWidth: 600, marginBottom: "2rem" };
+  const style = { maxWidth: 600, marginTop: "2rem" };
   return (
     <React.Fragment>
       <Card style={style}>
-        <CardTitle title="Card title One" subtitle="Card One subtitle" />
+        <CardMedia>
+          <img src={londonMapImage} />
+        </CardMedia>
+        <CardTitle title="Cycle Hire London" subtitle="Santander Bikes" />
         <CardText>
-          Lorem ipsum dolor sit amet alejo, consectetur adipiscing elit. Donec
-          mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec
-          vulputate interdum sollicitudin. Nunc lacinia auctor quam sed
-          pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque
-          lobortis odio.
+          Find bicycles to hire around London. <br/> Lorem ipsum dolor sit amet alejo,
+          consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat
+          volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. Nunc
+          lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis
+          lacus id, pellentesque lobortis odio.
         </CardText>
       </Card>
       <Card style={style}>
@@ -21,16 +26,6 @@ const HomePage = () => {
           Lorem ipsum two dolor sit amet developer, consectetur adipiscing elit.
           Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
           Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed
-          pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque
-          lobortis odio.
-        </CardText>
-      </Card>
-      <Card style={style}>
-        <CardTitle title="Card title Three" subtitle="Card Three subtitle" />
-        <CardText>
-          Lorem ipsum three dolor sit amet, consectetur adipiscing elit. Donec
-          mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec
-          vulputate interdum sollicitudin. Nunc lacinia auctor quam sed
           pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque
           lobortis odio.
         </CardText>
