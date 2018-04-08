@@ -9,7 +9,7 @@ const HomePage = () => {
     <React.Fragment>
       <Card style={style}>
         <CardMedia>
-          <img src={londonMapImage} />
+          <img src={londonMapImage} alt="London Bike Hire" />
         </CardMedia>
         <CardTitle title="Cycle Hire London" subtitle="Santander Bikes" />
         <CardText>
