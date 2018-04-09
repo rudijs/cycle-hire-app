@@ -107,7 +107,7 @@ class App extends Component {
 
               <MenuItem
                 onClick={() =>
-                  this.handleDrawerGoTo("/map/51.5073509/-0.127758/12")
+                  this.handleDrawerGoTo("/map/51.519167/-0.147983/15")
                 }
               >
                 <i className="material-icons md-18" style={iconStyle}>

@@ -21,9 +21,9 @@ class MapPage extends Component {
     super(props);
     this.state = {
       selectedIndex: 0,
-      lat: 51.5073509,
-      lng: -0.127758,
-      zoom: 12
+      lat: 51.519167,
+      lng: -0.147983,
+      zoom: 15
     };
   }
 
