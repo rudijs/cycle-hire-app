@@ -8,6 +8,7 @@ import MapPage from "./components/Map/Map";
 import ProfilePage from "./components/Profile";
 import SignOutPage from "./components/Signout";
 import FilterPage from "./components/Filter/Filter";
+import PlannerPage from "./components/Planner/Planner";
 
 import Auth from "./containers/Auth/Auth";
 import history from "./containers/Auth/history";
@@ -52,7 +53,7 @@ class App extends Component {
   closeDrawer = () => this.setState({ open: false });
 
   handleDrawerGoTo = route => {
-    history.replace(route);
+    history.push(route);
     this.setState({ open: false });
   };
 
@@ -93,13 +94,7 @@ class App extends Component {
               onRequestChange={() => this.setState({ open: false })}
               auth={auth}
             >
-              <MenuItem
-                onClick={() =>
-                  this.handleDrawerGoTo(
-                    "/"
-                  )
-                }
-              >
+              <MenuItem onClick={() => this.handleDrawerGoTo("/")}>
                 <i className="material-icons md-18" style={iconStyle}>
                   home
                 </i>&nbsp;Home
@@ -111,7 +106,7 @@ class App extends Component {
                 }
               >
                 <i className="material-icons md-18" style={iconStyle}>
-                  map 
+                  map
                 </i>&nbsp;London Map
               </MenuItem>
 
@@ -180,6 +175,10 @@ class App extends Component {
                   }
                   return <ProfilePage auth={auth} {...props} />;
                 }}
+              />
+              <Route
+                path="/planner"
+                render={props => <PlannerPage auth={auth} {...props} />}
               />
               <Route
                 path="/signout"

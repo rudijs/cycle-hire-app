@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import history from "../../containers/Auth/history";
 
 import classes from "./Map.css";
 
@@ -25,11 +26,14 @@ class MapPage extends Component {
       lng: -0.147983,
       zoom: 15
     };
+    this.infoWindows = [];
   }
 
   select = index => this.setState({ selectedIndex: index });
 
   initMap() {
+    this.infoWindows = this.infoWindows.slice();
+
     const { lat, lng, zoom } = this.state;
     const map = new window.google.maps.Map(document.getElementById("map"), {
       zoom: +zoom,
@@ -40,16 +44,27 @@ class MapPage extends Component {
     // Note: The code uses the JavaScript Array.prototype.map() method to
     // create an array of markers based on a given "locations" array.
     // The map() method here has nothing to do with the Google Maps API.
-    const markers = data.map(function(location, i) {
+    const markers = data.map((location, i) => {
       const marker = new window.google.maps.Marker({
         position: { lat: location.lat, lng: location.lon },
         // http://kml4earth.appspot.com/icons.html
         // icon: "https://maps.google.com/mapfiles/kml/shapes/cycling.png"
         icon: "/images/markerclusterer/cycling.png"
       });
+
+      const infoWindowContent = `<p><strong>${location.commonName}</strong></p>
+      <p>Begin from this station?</p>
+      <button type="button" onclick='closeInfoWindow(${i});'>Cancel</button>
+      <button type="button" onclick='goTo("${
+        location.id
+      }")'>Select</button>&nbsp;
+      `;
+
+      // const infoWindow = new window.google.maps.InfoWindow({
       const infoWindow = new window.google.maps.InfoWindow({
-        content: location.commonName
+        content: infoWindowContent
       });
+      this.infoWindows.push(infoWindow);
       marker.addListener("click", () => {
         infoWindow.open(map, marker);
       });
@@ -65,6 +80,15 @@ class MapPage extends Component {
   }
 
   componentDidMount() {
+    // bind a global function to react for google maps popup infowindow to trigger react route change
+    window.goTo = id => {
+      this.loadPlace(id);
+    };
+
+    window.closeInfoWindow = id => {
+      this.infoWindows[id].close();
+    };
+
     const coords = this.getCoords(this.props);
 
     if (!coords.valid) {
@@ -74,6 +98,14 @@ class MapPage extends Component {
     this.setState({ lat: coords.lat, lng: coords.lng, zoom: coords.zoom }, () =>
       this.initMap()
     );
+  }
+  componentWillMount() {
+    // cleanup infoWindow binding helper
+    window.goTo = undefined;
+  }
+
+  loadPlace(id) {
+    history.push(`/planner?id=${id}`);
   }
 
   getCoords(props) {
