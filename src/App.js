@@ -84,7 +84,7 @@ class App extends Component {
               iconElementRight={
                 <FlatButton
                   onClick={() => this.handleDrawerGoTo("/filter")}
-                  label="Filter"
+                  label="Bicycles"
                 />
               }
             />
