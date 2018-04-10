@@ -32,7 +32,7 @@ class MapPage extends Component {
   select = index => this.setState({ selectedIndex: index });
 
   initMap() {
-    this.infoWindows = this.infoWindows.slice();
+    this.infoWindows = [];
 
     const { lat, lng, zoom } = this.state;
     const map = new window.google.maps.Map(document.getElementById("map"), {
@@ -52,8 +52,11 @@ class MapPage extends Component {
         icon: "/images/markerclusterer/cycling.png"
       });
 
+      const bikes = Math.floor(Math.random() * 8) + 20;
+      const spaces = Math.floor(Math.random() * 8) + 10;
+
       const infoWindowContent = `<p><strong>${location.commonName}</strong></p>
-      <p>Begin from this station?</p>
+      <p>Plan a Journey (${bikes} bikes) ... (${spaces} spaces)</p>
       <button type="button" onclick='closeInfoWindow(${i});'>Cancel</button>
       <button type="button" onclick='goTo("${
         location.id
@@ -105,7 +108,7 @@ class MapPage extends Component {
   }
 
   loadPlace(id) {
-    history.push(`/planner?id=${id}`);
+    history.push(`/planner/${id}`);
   }
 
   getCoords(props) {
@@ -176,9 +179,11 @@ class MapPage extends Component {
                 this.select(2);
                 // temporary workaround to for the 'Nearby' bottom bar button to already re-render the map
                 // slightly randomize the lat/lng coordindates each click
-                const randomLat = Math.floor(Math.random() * 8) + 1 
-                const randomLng = Math.floor(Math.random() * 8) + 1 
-                history.push(`/map/51.51916${randomLat}/-0.14798${randomLng}/15`)
+                const randomLat = Math.floor(Math.random() * 8) + 1;
+                const randomLng = Math.floor(Math.random() * 8) + 1;
+                history.push(
+                  `/map/51.51916${randomLat}/-0.14798${randomLng}/15`
+                );
               }}
             />
           </BottomNavigation>

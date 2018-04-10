@@ -183,7 +183,7 @@ class App extends Component {
                 }}
               />
               <Route
-                path="/planner"
+                path="/planner/:location"
                 render={props => <PlannerPage auth={auth} {...props} />}
               />
               <Route

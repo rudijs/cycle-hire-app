@@ -1,27 +1,48 @@
 import React from "react";
 
-const planner = () => {
+import classes from "../../assets/css/skeleton.css";
+
+import data from "../../tmp/bike_point.json";
+
+const planner = props => {
+  let fromData = [];
+  let fromText = '';
+
+  if (props.match.params.location) {
+    fromData = data.filter(item => {
+      return item.id === props.match.params.location 
+    });
+  }
+
+  if(fromData.length) {
+    fromText = fromData[0].commonName
+  }
+
   return (
     <div>
-      <h3>Journey Planner</h3>
+      <h3>Plan a Journey</h3>
       <p>Specify a start and end location for your journey.</p>
       <label htmlFor="from">From Bicycle Docking Station</label>
       <input
-        className="u-full-width"
+        className={classes["u-full-width"]}
         type="text"
         placeholder="From..."
         id="from"
+        value={fromText}
+        readOnly
       />
       <label htmlFor="to">To Bicycle Docking Station</label>
       <input
-        className="u-full-width"
+        className={classes["u-full-width"]}
         type="text"
         placeholder="Tap to specify the end..."
         id="to"
       />
       <br />
       <br />
-      <button type="button">Plan my journey</button>
+      <button type="button" className={classes["button-primary"]}>
+        Plan my journey
+      </button>
     </div>
   );
 };
