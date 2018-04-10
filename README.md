@@ -96,8 +96,20 @@ Commits on the `develop` branch to github.com/viseo-asia/cycle-hire-app are auto
 
 ## Web Application Architecture
 
+This architecture model is based on concepts from the *C4 model* - [c4model.com](http://c4model.com)
+
+It considers the static structures of a software system in terms of containers, components and code. 
+
+And that people use the software systems that we build.
+
 ## System Context
 ![System Context](docs/cycle-hire-system-context.png)
 
 ## Authorization
 ![Auth0 Service](https://cdn2.auth0.com/docs/media/articles/api-auth/implicit-grant.png)
+
+1. The app initiates the flow and redirects the browser to Auth0 (specifically to the /authorize endpoint), so the user can authenticate.
+2. Auth0 authenticates the user. The first time the user goes through this flow, and if the client is a third party client, a consent page will be shown where the permissions, that will be given to the Client, are listed (for example, post messages, list contacts, and so forth).
+3. Auth0 redirects the user to the app with an access_token (and optionally an id_token) in the hash fragment of the URI. The app can now extract the tokens from the hash fragment.
+4. The app can use the access_token to call the API on behalf of the user.
+

@@ -72,7 +72,8 @@ class App extends Component {
           <div
             className={classes.container}
             style={
-              history.location.pathname.match(/\/map/) ? { height: "100%" } : {}
+              // history.location.pathname.match(/\/map/) ? { height: "100%" } : {}
+              history.location.pathname.match(/(^\/map|\/$)/) ? { height: "100%" } : {}
             }
           >
             <AppBar
@@ -100,7 +101,7 @@ class App extends Component {
                 </i>&nbsp;Home
               </MenuItem>
 
-              <MenuItem
+              {/* <MenuItem
                 onClick={() =>
                   this.handleDrawerGoTo("/map/51.519167/-0.147983/15")
                 }
@@ -108,12 +109,12 @@ class App extends Component {
                 <i className="material-icons md-18" style={iconStyle}>
                   map
                 </i>&nbsp;London Map
-              </MenuItem>
+              </MenuItem> */}
 
               <MenuItem onClick={() => this.handleDrawerGoTo("/filter")}>
                 <i className="material-icons md-18" style={iconStyle}>
                   find_in_page
-                </i>&nbsp;Filter Locations
+                </i>&nbsp;Bike Docking Stations
               </MenuItem>
               <MenuItem onClick={() => this.handleDrawerGoTo("/profile")}>
                 <i className="material-icons md-18" style={iconStyle}>

@@ -21,7 +21,7 @@ class MapPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedIndex: 0,
+      selectedIndex: 2,
       lat: 51.519167,
       lng: -0.147983,
       zoom: 15
@@ -174,6 +174,7 @@ class MapPage extends Component {
               icon={nearbyIcon}
               onClick={() => {
                 this.select(2);
+                history.push("/map/51.519167/-0.147984/15")
               }}
             />
           </BottomNavigation>
