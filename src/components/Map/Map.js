@@ -165,12 +165,14 @@ class MapPage extends Component {
             <BottomNavigationItem
               label="Recents"
               icon={recentsIcon}
-              onClick={() => this.select(0)}
+              // onClick={() => this.select(0)}
+              onClick={() => history.push('/profile')}
             />
             <BottomNavigationItem
               label="Favorites"
               icon={favoritesIcon}
-              onClick={() => this.select(1)}
+              // onClick={() => this.select(1)}
+              onClick={() => history.push('/profile')}
             />
             <BottomNavigationItem
               label="Nearby"
