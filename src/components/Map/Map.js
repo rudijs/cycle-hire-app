@@ -174,7 +174,11 @@ class MapPage extends Component {
               icon={nearbyIcon}
               onClick={() => {
                 this.select(2);
-                history.push("/map/51.519167/-0.147984/15")
+                // temporary workaround to for the 'Nearby' bottom bar button to already re-render the map
+                // slightly randomize the lat/lng coordindates each click
+                const randomLat = Math.floor(Math.random() * 8) + 1 
+                const randomLng = Math.floor(Math.random() * 8) + 1 
+                history.push(`/map/51.51916${randomLat}/-0.14798${randomLng}/15`)
               }}
             />
           </BottomNavigation>
