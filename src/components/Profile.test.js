@@ -10,6 +10,6 @@ import ProfilePage from "./Profile";
 describe("<ProfilePage />", () => {
   it("should render a profile page", () => {
       const wrapper = shallow(<ProfilePage />)
-      expect(wrapper.contains(<h1>Profile</h1>)).toEqual(true)
+      expect(wrapper.contains(<h1>My Profile</h1>)).toEqual(true)
   });
 });
