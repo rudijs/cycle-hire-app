@@ -73,7 +73,9 @@ class App extends Component {
             className={classes.container}
             style={
               // history.location.pathname.match(/\/map/) ? { height: "100%" } : {}
-              history.location.pathname.match(/(^\/map|\/$)/) ? { height: "100%" } : {}
+              history.location.pathname.match(/(^\/map|\/$)/)
+                ? { height: "100%" }
+                : {}
             }
           >
             <AppBar
@@ -119,13 +121,13 @@ class App extends Component {
               <MenuItem onClick={() => this.handleDrawerGoTo("/profile")}>
                 <i className="material-icons md-18" style={iconStyle}>
                   account_circle
-                </i>&nbsp;Profile
+                </i>&nbsp;My Profile
               </MenuItem>
-              <MenuItem onClick={() => this.handleDrawerGoTo("/about")}>
+              {/* <MenuItem onClick={() => this.handleDrawerGoTo("/about")}>
                 <i className="material-icons md-18" style={iconStyle}>
                   contact_phone
                 </i>&nbsp;About Us
-              </MenuItem>
+              </MenuItem> */}
               <Divider />
               {!auth.isAuthenticated() && (
                 <MenuItem onClick={auth.login}>
@@ -171,6 +173,9 @@ class App extends Component {
                     return (
                       <div id="container">
                         <h3>Please Sign In</h3>
+                        <button type="button" onClick={auth.login}>
+                          Sign In
+                        </button>
                       </div>
                     );
                   }
@@ -183,7 +188,13 @@ class App extends Component {
               />
               <Route
                 path="/signout"
-                render={props => <SignOutPage auth={auth} {...props} />}
+                render={props => (
+                  <SignOutPage
+                    auth={auth}
+                    {...props}
+                    closeDrawer={this.closeDrawer}
+                  />
+                )}
               />
               <Route
                 path="/callback"

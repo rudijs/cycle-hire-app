@@ -5,6 +5,7 @@ class SignOut extends Component {
   componentDidMount() {
     setTimeout(() => {
       history.replace("/");
+      this.props.closeDrawer();
     }, 1500);
   }
   render() {
