@@ -3,6 +3,7 @@ import React from "react";
 import classes from "../../assets/css/skeleton.css";
 
 import data from "../../tmp/bike_point.json";
+const nearByBikeStations = require('../../assets/images/tmp-near-by-locations.png')
 
 const planner = props => {
   let fromData = [];
@@ -39,10 +40,12 @@ const planner = props => {
         id="to"
       />
       <br />
-      <br />
       <button type="button" className={classes["button-primary"]}>
         Plan my journey
       </button>
+
+      <br />
+      <img src={nearByBikeStations} alt="Near By Bike Stations" />
     </div>
   );
 };
