@@ -94,5 +94,10 @@ Commits on the `develop` branch to github.com/viseo-asia/cycle-hire-app are auto
 <!-- - `AUTH0_URL=https://happy-shannon-f6a154.netlify.com yarn build` -->
 <!-- - Sign into Viseo Netlify account, drag and drop deploy -->
 
+## Web Application Architecture
+
 ## System Context
 ![System Context](docs/cycle-hire-system-context.png)
+
+## Authorization
+![Auth0 Service](https://cdn2.auth0.com/docs/media/articles/api-auth/implicit-grant.png)
