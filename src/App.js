@@ -4,10 +4,10 @@ import { Router, Switch, Route } from "react-router-dom";
 import classes from "./App.css";
 // import Header from "./components/Header";
 import HomePage from "./components/Home/Home";
-import MapPage from "./components/Map/Map";
+import MapPage from "./containers/Map/Map";
 import ProfilePage from "./components/Profile";
 import SignOutPage from "./components/Signout";
-import FilterPage from "./components/Filter/Filter";
+import FilterPage from "./containers/Filter/Filter";
 import PlannerPage from "./components/Planner/Planner";
 
 import Auth from "./containers/Auth/Auth";
