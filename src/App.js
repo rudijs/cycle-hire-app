@@ -8,7 +8,7 @@ import MapPage from "./containers/Map/Map";
 import ProfilePage from "./components/Profile";
 import SignOutPage from "./components/Signout";
 import FilterPage from "./containers/Filter/Filter";
-import PlannerPage from "./components/Planner/Planner";
+import PlannerPage from "./containers/Planner/Planner";
 
 import Auth from "./containers/Auth/Auth";
 import history from "./containers/Auth/history";
@@ -188,7 +188,7 @@ class App extends Component {
               />
               <Route
                 path="/planner/:location"
-                render={props => <PlannerPage auth={auth} {...props} />}
+                render={props => <PlannerPage auth={auth} {...props} closeDrawer={this.closeDrawer} />}
               />
               <Route
                 path="/signout"
