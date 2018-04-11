@@ -15,9 +15,11 @@ information and weather correlation ([https://tfl.gov.uk/modes/cycling/santander
 
 Data Source
 
-1. Transport for London API List https://api‐portal.tfl.gov.uk/docs
-2. Real time bike and docking station status https://api.tfl.gov.uk/bikepoint
-3. Weather data https://openweathermap.org/current#one
+1. Transport for London API List https://api-portal.tfl.gov.uk/docs
+2. Transport for London API swagger https://api.tfl.gov.uk/swagger/ui/index.html?url=/swagger/docs/v1#!/BikePoint/BikePoint_GetAll
+3. Transport for London Blog https://blog.tfl.gov.uk/2017/04/06/data-themes-1-cycling-in-the-city/
+4. Real time bike and docking station status https://api.tfl.gov.uk/bikepoint
+5. Weather data https://openweathermap.org/current#one
 
 ## Consideration
 In the design of the web application, the following characteristics shall be incorporated:
