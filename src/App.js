@@ -47,6 +47,10 @@ class App extends Component {
     super(props);
     this.state = { open: false };
   }
+  // TODO:rudijs Once the app loads fetch the latest bike station info from the backend.
+  // currently the bike station info is compiled at build time, this helps the map load as fast as possible.
+  // so the bike station data follows a pattern of first using the static bike list,
+  // then reaching out and updating to the real time on load.
 
   handleToggle = () => this.setState({ open: !this.state.open });
 
