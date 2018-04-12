@@ -83,7 +83,7 @@ class App extends Component {
             }
           >
             <AppBar
-              title="Cycle Hire"
+              title="CLP Cycles"
               onTitleClick={this.handleToggle}
               onLeftIconButtonClick={this.handleToggle}
               // style={{ position: "fixed", top: 0, marginBottom: 100}}
