@@ -69,7 +69,6 @@ class Planner extends Component {
     if (!bikeStation) {
       return;
     }
-    console.log(101, bikeStation);
     this.setState({
       toData: bikeStation
     });
