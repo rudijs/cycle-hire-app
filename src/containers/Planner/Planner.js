@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { List, ListItem } from "material-ui/List";
 import Subheader from "material-ui/Subheader";
+import RaisedButton from "material-ui/RaisedButton";
 
 import classes from "../../assets/css/skeleton.css";
 import data from "../../tmp/bike_point.json";
@@ -13,8 +14,8 @@ class Planner extends Component {
     super(props);
     this.state = {
       loading: false,
-      fromData: [],
-      fromText: "",
+      fromData: {},
+      toData: {},
       nearByBikePoints: []
     };
   }
@@ -25,20 +26,19 @@ class Planner extends Component {
     if (this.props.match.params.location) {
       fromLocation = data.filter(item => {
         return item.id === this.props.match.params.location;
-      });
+      })[0];
     }
 
-    if (!fromLocation.length) {
+    if (!fromLocation) {
       return;
     }
 
     this.setState({
       loading: true,
-      fromData: fromLocation,
-      fromText: fromLocation[0].commonName
+      fromData: fromLocation
     });
 
-    getNearByBikePoints(fromLocation[0])
+    getNearByBikePoints(fromLocation)
       .then(res => {
         this.setState({
           nearByBikePoints: res
@@ -48,15 +48,48 @@ class Planner extends Component {
         console.log("err", err);
       })
       .then(() => {
-        this.setState({ loading: false })
-        this.props.closeDrawer()
+        this.setState({ loading: false });
+        this.props.closeDrawer();
       });
   }
 
+  getBikeStationFromList(id) {
+    return data.filter(item => {
+      return item.id === id;
+    })[0];
+  }
+
+  toBikeStationHandler = id => {
+    const bikeStation = this.getBikeStationFromList(id);
+    if (!bikeStation) {
+      return;
+    }
+    this.setState({
+      toData: bikeStation
+    });
+  };
+
   render() {
     const nearByBikePoints = this.state.nearByBikePoints.map(item => {
-      return <ListItem key={item.id} primaryText={item.commonName} secondaryText={<p>Bikes ({item.nbBikes}) Spaces ({item.nbEmptyDocks})</p>} />;
+      return (
+        <ListItem
+          key={item.id}
+          onClick={() => this.toBikeStationHandler(item.id)}
+          primaryText={item.commonName}
+          secondaryText={
+            <p>
+              Bikes ({item.nbBikes}) Spaces ({item.nbEmptyDocks})
+            </p>
+          }
+        />
+      );
     });
+
+    const planJourneyBtn = (
+      <button type="button" className={classes["button-primary"]}>
+        Plan my journey
+      </button>
+    );
 
     return (
       <div>
@@ -66,7 +99,7 @@ class Planner extends Component {
           type="text"
           placeholder="From..."
           id="from"
-          value={this.state.fromText}
+          value={this.state.fromData.commonName}
           readOnly
         />
         <label htmlFor="to">To Bicycle Docking Station</label>
@@ -75,13 +108,27 @@ class Planner extends Component {
           type="text"
           placeholder="Tap to specify the end..."
           id="to"
+          value={this.state.toData.commonName}
+          readOnly
         />
         <br />
-        <button type="button" className={classes["button-primary"]}>
-          Plan my journey
-        </button>
 
-        {this.state.loading === true ? <p><strong>Loading near by bike points</strong></p> : ""}
+        <RaisedButton
+          label="Plan my Journey"
+          primary={true}
+          disabled={!this.state.toData.commonName}
+        />
+
+        {this.state.loading === true ? (
+          <div>
+            <br />
+            <p>
+              <strong>Loading near by bike points</strong>
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
 
         <List>
           <Subheader>Where shall we dock?</Subheader>
