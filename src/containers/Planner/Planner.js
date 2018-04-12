@@ -121,7 +121,7 @@ class Planner extends Component {
           readOnly
         />
 
-        <img src={nearByMap} alt="Map" />
+        <img src={nearByMap} alt="Map" width="100%" />
 
         {this.state.toData.commonName ? (
           <div className={localClasses.confirmDock}>
