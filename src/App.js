@@ -15,9 +15,7 @@ import history from "./containers/Auth/history";
 import Callback from "./containers/Auth/Callback";
 
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-// import getMuiTheme from "material-ui/styles/getMuiTheme";
-// import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
-// import lightBaseTheme from "material-ui/styles/baseThemes/lightBaseTheme";
+import muiTheme from './assets/css/theme';
 
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
@@ -69,14 +67,12 @@ class App extends Component {
 
     return (
       <Router history={history}>
-        <MuiThemeProvider>
-          {/* <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}> */}
-          {/* <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}> */}
+        {/* <MuiThemeProvider> */}
+          <MuiThemeProvider muiTheme={muiTheme}>
           {/* add height 100% for container if route is / for google map */}
           <div
             className={classes.container}
             style={
-              // history.location.pathname.match(/\/map/) ? { height: "100%" } : {}
               history.location.pathname.match(/(^\/map|\/$)/)
                 ? { height: "100%" }
                 : {}
