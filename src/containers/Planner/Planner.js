@@ -85,12 +85,6 @@ class Planner extends Component {
       );
     });
 
-    const planJourneyBtn = (
-      <button type="button" className={classes["button-primary"]}>
-        Plan my journey
-      </button>
-    );
-
     return (
       <div>
         <label htmlFor="from">From Bicycle Docking Station</label>
