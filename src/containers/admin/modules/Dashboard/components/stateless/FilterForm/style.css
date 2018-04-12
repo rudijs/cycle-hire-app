@@ -1,0 +1,61 @@
+/*
+    Extra small devices (portrait phones, less than 576px)
+    No media query since this is the default in Bootstrap
+*/
+.filter-form-container {
+    padding: 30px;
+    background-color: rgb(40, 63, 137);
+    color: #fff;
+}
+
+.filter-form-container .date-picker input {
+    color: white !important;
+}
+
+.filter-form-container .date-picker-container span,
+.filter-form-container .form-area-container span,
+.filter-form-container .form-docking-station-container span{
+    color: rgb(72, 181, 222);
+    font-size: 12px;
+}
+
+.filter-form-container .date-picker > div {
+    padding-bottom: 20px;
+    width: 100% !important;
+}
+
+.filter-form-container .reset-button-container {
+    display: block !important;
+}
+
+.filter-form-container .date-picker-container {
+    padding: 0 15px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .filter-form-container {
+        padding: 10px;
+    }
+    .filter-form-container .date-picker-container {
+        float: left;
+        width: 350px;
+    }
+    .filter-form-container .form-area-container,
+    .filter-form-container .form-docking-station-container {
+        float: left;
+        width: 280px;
+    }
+    .filter-form-container .reset-button-container {
+        display: none !important;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
