@@ -23,8 +23,8 @@ class MapPage extends Component {
     this.state = {
       selectedIndex: 2,
       lat: 51.519167,
-      lng: -0.147983,
-      zoom: 15
+      lng: -0.146983,
+      zoom: 16
     };
     this.infoWindows = [];
   }
@@ -184,7 +184,7 @@ class MapPage extends Component {
                 const randomLat = Math.floor(Math.random() * 8) + 1;
                 const randomLng = Math.floor(Math.random() * 8) + 1;
                 history.push(
-                  `/map/51.51916${randomLat}/-0.14798${randomLng}/15`
+                  `/map/51.51916${randomLat}/-0.14798${randomLng}/16`
                 );
               }}
             />
