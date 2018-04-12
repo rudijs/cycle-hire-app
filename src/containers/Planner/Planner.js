@@ -60,8 +60,6 @@ class Planner extends Component {
 
     return (
       <div>
-        <h3>Plan a Journey</h3>
-        <p>Specify a start and end location for your journey.</p>
         <label htmlFor="from">From Bicycle Docking Station</label>
         <input
           className={classes["u-full-width"]}
