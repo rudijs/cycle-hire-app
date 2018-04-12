@@ -6,6 +6,9 @@ const muiTheme = getMuiTheme({
     appBar: {
         height: 50,
         color: indigo500
+    },
+    raisedButton: {
+        primaryColor: indigo500
     }
 });
 

@@ -1,0 +1,22 @@
+.confirmDock {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.confirmCallToAction {
+  padding: 10px;
+  background-color: #169692;
+  color: white;
+}
+
+h4 {
+  text-align: left;
+  margin-left: 10px;
+  color: #169692;
+  font-weight: 400;
+}
+
+.toBikeStation {
+    text-align: left;
+}
