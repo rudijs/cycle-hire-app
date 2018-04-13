@@ -1,5 +1,5 @@
 // default local development auth callback url
-let callbackUrl = "http://localhost:3000/callback"
+let callbackUrl = "http://localhost:3000/callback";
 
 // non local environment auth callback url
 // this was setup by ejecting the config from react-create-app and updating config/env.js

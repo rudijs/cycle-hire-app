@@ -4,13 +4,29 @@ import { indigo900, blue500, white, grey600 } from "material-ui/styles/colors";
 import Ionicon from 'react-ionicons';
 import theme from './theme';
 import './style.css';
-import { Link } from "react-router-dom";
-import Auth0 from "../../../../config"
+import {Link, Redirect} from "react-router-dom";
+import Auth from "../../containers/Auth";
 
-export default class LoginContainer extends Component {
-    login = () => Auth0.authorize();
+class LoginContainer extends Component {
+
+    auth = new Auth();
+    login = () => this.auth.login();
+
+    constructor() {
+        super();
+        this.state = {
+            isAuthenticated: null
+        }
+    }
+
+    _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
+
+    componentWillMount() {
+        this._isAuthenticatedHandler();
+    }
 
     render() {
+        if(this.state.isAuthenticated) return <Redirect to="/dashboard" />;
         return (
             <div className="login-container">
                 <div className="form-container">
@@ -98,3 +114,5 @@ export default class LoginContainer extends Component {
         )
     }
 }
+
+export default LoginContainer;

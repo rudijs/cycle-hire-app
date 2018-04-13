@@ -1,9 +1,9 @@
 import React from "react";
-import history from "../containers/Auth/history";
+import history from "../../Auth/history";
 
 // class SignOut extends Component {
 const SignOut = props => {
-  props.auth.logout();
+  Auth.logout();
 
   setTimeout(() => {
     history.replace("/");

@@ -1,4 +1,4 @@
-import {AUTH_CONFIG} from "../containers/user/containers/Auth/auth0-variables";
+import {AUTH_CONFIG} from "../containers/Auth/auth0-variables";
 import auth0 from "auth0-js";
 
 auth0 = new auth0.WebAuth({
@@ -26,7 +26,7 @@ const handleAuthentication = () => {
         // }
 
         if (authResult && authResult.accessToken && authResult.idToken) {
-            this.setSession(authResult);
+            Auth.setSession(authResult);
         }
     });
 };

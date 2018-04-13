@@ -1,5 +1,5 @@
 import React from "react";
-import history from '../containers/Auth/history'
+import history from '../../Auth/history'
 
 import robotImg from "../assets/images/robot.svg";
 

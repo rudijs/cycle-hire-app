@@ -16,7 +16,7 @@ const navigation = () => {
             permission: "admin"
         },
         {
-            name: "Log In",
+            name: "Log Out",
             url: "/",
             permission: "*"
         }

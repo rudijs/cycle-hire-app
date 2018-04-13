@@ -10,9 +10,9 @@ import SignOutPage from "./components/Signout";
 import FilterPage from "./containers/Filter/Filter";
 import PlannerPage from "./containers/Planner/Planner";
 
-import Auth from "./containers/Auth/Auth";
-import history from "./containers/Auth/history";
-import Callback from "./containers/Auth/Callback";
+import Auth from "../Auth/index";
+import history from "../Auth/history";
+import Callback from "../Auth/Callback";
 
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
@@ -133,14 +133,14 @@ class App extends Component {
                 </i>&nbsp;About Us
               </MenuItem> */}
               <Divider />
-              {!auth.isAuthenticated() && (
-                <MenuItem onClick={auth.login}>
+              {!Auth.isAuthenticated() && (
+                <MenuItem onClick={Auth.login}>
                   <i className="material-icons md-18" style={iconStyle}>
                     arrow_forward
                   </i>&nbsp;Sign In
                 </MenuItem>
               )}
-              {auth.isAuthenticated() && (
+              {Auth.isAuthenticated() && (
                 <MenuItem onClick={() => this.handleDrawerGoTo("/signout")}>
                   <i className="material-icons md-18" style={iconStyle}>
                     arrow_back
@@ -173,11 +173,11 @@ class App extends Component {
               <Route
                 path="/profile"
                 render={props => {
-                  if (!auth.isAuthenticated()) {
+                  if (!Auth.isAuthenticated()) {
                     return (
                       <div id="container">
                         <h3>Please Sign In</h3>
-                        <button type="button" onClick={auth.login}>
+                        <button type="button" onClick={Auth.login}>
                           Sign In
                         </button>
                       </div>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {withGoogleMap, withScriptjs, GoogleMap, Marker } from "react-google-maps";
+import { withGoogleMap, withScriptjs, GoogleMap, Marker } from "react-google-maps";
 import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerClusterer";
 import { BicyclingLayer } from "react-google-maps/lib/components/BicyclingLayer";
 import pinImage from "./assets/pinPoint.png";
 import axios from "axios";
 import PropTypes from "prop-types";
-import {Snackbar} from "material-ui";
+import { Snackbar } from "material-ui";
 
 class MapLayout extends Component {
 
@@ -28,9 +28,8 @@ class MapLayout extends Component {
             responseType: 'json'
         })
         .then(response => {
-            // console.log(response.data);
             this.setState({
-                dataSource: response.data ,
+                dataSource: response.data,
                 isLoading: false,
                 commonName: null
             });

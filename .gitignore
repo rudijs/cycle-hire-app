@@ -1,5 +1,6 @@
 #j etbrains
 .idea
+
 # Logs
 logs
 *.log

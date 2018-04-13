@@ -2,12 +2,37 @@ import React, { Component } from "react";
 import { Drawer, MenuItem } from "material-ui";
 import PropTypes from "prop-types";
 import theme from "./theme/index";
-import { Link } from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import actionsNavigator from "../../../../../actions";
+import Auth from "../../../../../containers/Auth";
 
 class HeaderDrawer extends Component {
+
+    auth = new Auth();
+
+    constructor() {
+        super();
+        this.state = {
+            isAuthenticated: null
+        }
+    }
+
+    componentWillMount() {
+        this._isAuthenticatedHandler();
+    }
+
+    _logOurHandler = () => {
+        if(this.auth.isAuthenticated()) {
+            this.auth.logout();
+            this.props._navigationSelectedHandler("/")
+        }
+    };
+
+    _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
+
     render() {
+        if(!this.state.isAuthenticated) return <Redirect to="/" />;
 
         const { isOpen, toggleDrawer, navReducers } = this.props;
 
@@ -30,7 +55,7 @@ class HeaderDrawer extends Component {
                             to={r.url}
                         >
                             <MenuItem
-                                onClick={this.props._navigationSelectedHandler.bind(this, r.url)}
+                                onClick={r.url === "/" ? this._logOurHandler.bind(this) : this.props._navigationSelectedHandler.bind(this, r.url)}
                             >
                                 {r.name}
                             </MenuItem>
