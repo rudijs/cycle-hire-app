@@ -1,41 +1,28 @@
 import React, { Component } from "react";
 import Auth from "../Auth";
-import { Redirect } from "react-router-dom";
+import "./theme/style.css";
 
 class CallbackContainer extends Component {
 
     auth = new Auth();
 
-    constructor() {
-        super();
-        this.state = {
-            isAuthenticated: null
-        }
+    componentDidMount() {
+        const { location, history } = this.props;
+        this._handleAuthentication({ location, history });
     }
 
-    componentWillMount() {
-        const { location } = this.props;
-        this._handleAuthentication({ location });
-    }
-
-    _handleAuthentication({ location }) {
+    _handleAuthentication = ({ location, history })=> {
         if(this.auth.isAuthenticated()) {
-            this.setState({isAuthenticated: this.auth.isAuthenticated()})
+            history.push('/dashboard')
         } else {
             this.auth.checkPermission({ location })
-                .then(() => this.setState({isAuthenticated: true}))
-                .catch(err => alert(err))
+                .then(() => history.push('/dashboard'))
+                .catch(() => history.push('/'))
         }
-    }
+    };
 
     render() {
-        const { isAuthenticated } = this.props;
-
-        if (isAuthenticated) {
-            return <Redirect to="/dashboard" />
-        } else {
-            return <Redirect to="/" />;
-        }
+        return <div className="auth-callback-container">Authenticating</div>
     }
 }
 
