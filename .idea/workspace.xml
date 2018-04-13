@@ -3,7 +3,45 @@
   <component name="ChangeListManager">
     <list default="true" id="14c7a944-400d-47f0-b473-3a6dd7d8fc9f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Auth/Callback.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/Callback.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/polyfills.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/polyfills.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpack.config.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack.config.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpack.config.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack.config.prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/start.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/assets/css/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/assets/css/normalize.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/assets/css/skeleton.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/assets/css/skeleton.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/assets/images/bicycle-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/assets/images/bicycle-icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/assets/images/loading.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/assets/images/loading.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/assets/images/london-map.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/assets/images/london-map.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/assets/images/robot.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/assets/images/robot.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/assets/images/tmp-near-by-locations.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/assets/images/tmp-near-by-locations.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/components/Home/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/components/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Home/Home.orig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/components/Home/Home.orig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/components/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Profile.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/components/Profile.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Signout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/components/Signout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/ErrorBoundary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/ErrorBoundary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Filter/BikePlacesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Filter/BikePlacesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Filter/BikePlacesList.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Filter/BikePlacesList.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Filter/Filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Filter/Filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Filter/Filter.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Filter/Filter.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Map/Map.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Map/Map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Map/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Map/Map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Map/Map.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Map/Map.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Planner/Planner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Planner/Planner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Planner/Planner.sandbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Planner/Planner.sandbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Planner/nearByBikePoints.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Planner/nearByBikePoints.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Planner/nearByBikePoints.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/containers/Planner/nearByBikePoints.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/registerServiceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/registerServiceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/user/tmp/bike_point.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user-to-merge-folder/tmp/bike_point.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +55,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Callback.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Auth/Callback.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="24" column="54" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="54" />
+            <state relative-caret-position="173">
+              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -29,11 +67,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/Auth/theme/style.css">
+      <file leaf-file-name="MapLayoutComponent.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+            <state relative-caret-position="237">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,18 +107,18 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/containers/Map/Map.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js" />
         <option value="$PROJECT_DIR$/src/containers/Auth/auth0-variables.js" />
         <option value="$PROJECT_DIR$/src/containers/Auth/Auth.js" />
         <option value="$PROJECT_DIR$/src/AppRouter.js" />
         <option value="$PROJECT_DIR$/src/reducers/reducer-auth0.js" />
-        <option value="$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js" />
         <option value="$PROJECT_DIR$/src/config/index.js" />
         <option value="$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/component/HeaderDrawer/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/Login/index.js" />
         <option value="$PROJECT_DIR$/src/containers/Auth/index.js" />
         <option value="$PROJECT_DIR$/src/containers/Auth/Callback.js" />
         <option value="$PROJECT_DIR$/src/containers/Auth/theme/style.css" />
+        <option value="$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js" />
+        <option value="$PROJECT_DIR$/src/containers/Login/index.js" />
+        <option value="$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js" />
       </list>
     </option>
   </component>
@@ -138,6 +179,21 @@
               <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
               <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="stateful" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="stateful" type="462c0819:PsiDirectoryNode" />
+              <item name="GoogleMapHandler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -145,54 +201,6 @@
               <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="AuthCallbackContainer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Auth" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
@@ -247,12 +255,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523498819987</updated>
       <workItem from="1523498821165" duration="5260000" />
-      <workItem from="1523526873291" duration="15081000" />
+      <workItem from="1523526873291" duration="15480000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20341000" />
+    <option name="totallyTimeSpent" value="20740000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -269,6 +277,7 @@
       <window_info anchor="bottom" id="RNConsole" order="3" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24927954" />
       <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.329602" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
@@ -278,7 +287,6 @@
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="6" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,16 +334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1853">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/admin/modules/AuthCallbackContainer/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
@@ -343,7 +341,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/user/index.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/user-to-merge-folder/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
@@ -371,7 +369,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/user/App.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/user-to-merge-folder/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="29" column="26" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="26" />
@@ -384,26 +382,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/reducer-auth0.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#71#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppRouter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/index.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -432,16 +410,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Login/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Auth/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
@@ -449,10 +417,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Auth/Callback.js">
+    <entry file="file://$PROJECT_DIR$/src/AppRouter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="24" column="54" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="54" />
+        <state relative-caret-position="280">
+          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -461,8 +429,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Auth/theme/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        <state relative-caret-position="112">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Auth/Callback.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="24" column="54" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Login/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="86" column="40" lean-forward="true" selection-start-line="86" selection-start-column="40" selection-end-line="86" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

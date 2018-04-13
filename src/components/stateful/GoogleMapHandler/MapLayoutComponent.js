@@ -18,7 +18,7 @@ class MapLayout extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getBikepoints();
     }
 

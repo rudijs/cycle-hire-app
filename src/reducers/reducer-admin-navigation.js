@@ -5,14 +5,14 @@ const navigation = () => {
     const items = [
         {
             name: "Dashboard",
-            url: "/admin/dashboard",
-            container: DashboardContainer,
+            url: "/dashboard",
+            container: UserDashboardContainer,
             permission: "admin"
         },
         {
-            name: "User Dashboard",
-            url: "/admin/user/dashboard",
-            container: UserDashboardContainer,
+            name: "Admin Dashboard",
+            url: "/admin/dashboard",
+            container: DashboardContainer,
             permission: "admin"
         },
         {

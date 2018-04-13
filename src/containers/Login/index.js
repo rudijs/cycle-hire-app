@@ -51,14 +51,14 @@ class LoginContainer extends Component {
                         <a href="" className="float-right">Can't login?</a>
                     </div>
                     <div className="form-submit-container clearfix">
-                        <Link to="/admin/dashboard">
+                        <Link to="/dashboard">
                             <RaisedButton
                                 label="I'm new"
                                 labelColor={indigo900}
                                 className="form-submit-signup float-left"
                             />
                         </Link>
-                        <Link to="/admin/dashboard">
+                        <Link to="/dashboard">
                             <RaisedButton
                                 label="sign in"
                                 labelColor={white}
