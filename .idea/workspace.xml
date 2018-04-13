@@ -2,33 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14c7a944-400d-47f0-b473-3a6dd7d8fc9f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/containers/Auth/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/action-auth0.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-auth0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/component/HeaderDrawer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/component/HeaderDrawer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stateful/GoogleMapHandler/MapLayoutComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/env.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/jest/cssTransform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/jest/fileTransform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/paths.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/polyfills.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/webpack.config.dev.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/webpack.config.prod.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/webpackDevServer.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/admin/modules/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/admin/modules/Login/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Login/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/admin/modules/Login/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Login/theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/user/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user/components/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/user/components/Signout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/user/components/Signout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Auth/Auth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Auth/Callback.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/Callback.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Auth/auth0-variables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/auth0-variables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/user/containers/Auth/history.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/history.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Auth/Callback.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/Callback.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Auth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Login/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,8 +22,8 @@
       <file leaf-file-name="Callback.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/Auth/Callback.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+            <state relative-caret-position="127">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -55,10 +32,13 @@
         </entry>
       </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Auth/index.js">
+        <entry file="file://$PROJECT_DIR$/src/containers/Login/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1358">
-              <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+            <state relative-caret-position="189">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,6 +51,7 @@
       <find>initM</find>
       <find>props</find>
       <find>login</find>
+      <find>setState</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -88,11 +69,11 @@
         <option value="$PROJECT_DIR$/src/containers/Auth/Auth.js" />
         <option value="$PROJECT_DIR$/src/AppRouter.js" />
         <option value="$PROJECT_DIR$/src/reducers/reducer-auth0.js" />
-        <option value="$PROJECT_DIR$/src/containers/Login/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js" />
-        <option value="$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/component/HeaderDrawer/index.js" />
         <option value="$PROJECT_DIR$/src/config/index.js" />
         <option value="$PROJECT_DIR$/src/containers/Auth/index.js" />
+        <option value="$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/component/HeaderDrawer/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/Login/index.js" />
         <option value="$PROJECT_DIR$/src/containers/Auth/Callback.js" />
       </list>
     </option>
@@ -167,6 +148,39 @@
               <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="AuthCallbackContainer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cycle-hire-app-merge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cycle-hire-app-merge" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
               <item name="Auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -228,12 +242,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523498819987</updated>
       <workItem from="1523498821165" duration="5260000" />
-      <workItem from="1523526873291" duration="10292000" />
+      <workItem from="1523526873291" duration="13285000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15552000" />
+    <option name="totallyTimeSpent" value="18545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -363,38 +377,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Login/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="28" column="75" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/reducer-auth0.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/component/HeaderDrawer/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/reducer-admin-navigation.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -423,17 +407,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/higher-order/HeaderNavigation/component/HeaderDrawer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Auth/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1358">
-          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+        <state relative-caret-position="357">
+          <caret line="58" column="48" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="58" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Login/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Auth/Callback.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        <state relative-caret-position="127">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

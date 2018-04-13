@@ -19,11 +19,11 @@ class LoginContainer extends Component {
         }
     }
 
-    _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
-
-    componentWillMount() {
+    componentDidMount() {
         this._isAuthenticatedHandler();
     }
+
+    _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
 
     render() {
         if(this.state.isAuthenticated) return <Redirect to="/dashboard" />;

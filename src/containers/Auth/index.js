@@ -25,20 +25,17 @@ export default class Auth {
         }
     };
 
-    handleAuthentication() {
+    handleAuthentication = () => new Promise((resolve, reject) =>
         Auth0.parseHash((err, authResult) => {
-          if (err) {
-              console.log("handleAuthentication() => error occured");
-              console.log(err);
-              return null;
-          }
-          if (authResult && authResult.accessToken && authResult.idToken) {
-            return authResult
-          }
-        });
-    }
+            if(err) reject(err);
+            if (authResult && authResult.accessToken && authResult.idToken) {
+                this.setSession(authResult);
+                resolve(authResult);
+            }
+        })
+    );
 
-    static setSession(authResult) {
+    setSession(authResult) {
         // Set the time that the access token will expire at
         let expiresAt = JSON.stringify(
           authResult.expiresIn * 1000 + new Date().getTime()

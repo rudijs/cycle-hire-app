@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-
 import Auth from "../Auth";
-import {connect} from "react-redux";
 import { Redirect } from "react-router-dom";
 
 class CallbackContainer extends Component {
+
     auth = new Auth();
 
     constructor() {
@@ -15,22 +14,29 @@ class CallbackContainer extends Component {
     }
 
     componentWillMount() {
+        const { location } = this.props;
+        this._handleAuthentication({ location });
+    }
+
+    _handleAuthentication({ location }) {
         if(this.auth.isAuthenticated()) {
             this.setState({isAuthenticated: this.auth.isAuthenticated()})
         } else {
-            this.auth.checkPermission(this.props);
+            this.auth.checkPermission({ location })
+                .then(() => this.setState({isAuthenticated: true}))
+                .catch(err => alert(err))
         }
     }
 
     render() {
-        if (!!this.state.isAuthenticated) {
+        const { isAuthenticated } = this.props;
+
+        if (isAuthenticated) {
             return <Redirect to="/dashboard" />
-        } else if (!this.state.isAuthenticated) {
-            return <Redirect to="/" />;
         } else {
-            return (<div>Unexpected error occured.</div>)
+            return <Redirect to="/" />;
         }
     }
 }
 
-export default connect()(CallbackContainer);
+export default CallbackContainer;
