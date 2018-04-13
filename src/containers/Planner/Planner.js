@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import history from "../Auth/history";
+
 import { List, ListItem } from "material-ui/List";
 import Subheader from "material-ui/Subheader";
 import RaisedButton from "material-ui/RaisedButton";
@@ -80,6 +82,10 @@ class Planner extends Component {
     });
   };
 
+  goToHander = () => {
+    history.push(`/directions/${this.state.fromData.lat}/${this.state.fromData.lon}/${this.state.toData.lat}/${this.state.toData.lon}`)
+  };
+
   render() {
     const nearByBikePoints = this.state.nearByBikePoints.map(item => {
       return (
@@ -140,6 +146,7 @@ class Planner extends Component {
               <RaisedButton
                 label="Select"
                 disabled={!this.state.toData.commonName}
+                onClick={this.goToHander}
               />
             </div>
           </div>

@@ -9,13 +9,14 @@ import ProfilePage from "./components/Profile";
 import SignOutPage from "./components/Signout";
 import FilterPage from "./containers/Filter/Filter";
 import PlannerPage from "./containers/Planner/Planner";
+import DirectionsPage from "./containers/Directions/Directions";
 
 import Auth from "./containers/Auth/Auth";
 import history from "./containers/Auth/history";
 import Callback from "./containers/Auth/Callback";
 
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import muiTheme from './assets/css/theme';
+import muiTheme from "./assets/css/theme";
 
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
@@ -68,12 +69,12 @@ class App extends Component {
     return (
       <Router history={history}>
         {/* <MuiThemeProvider> */}
-          <MuiThemeProvider muiTheme={muiTheme}>
+        <MuiThemeProvider muiTheme={muiTheme}>
           {/* add height 100% for container if route is / for google map */}
           <div
             className={classes.container}
             style={
-              history.location.pathname.match(/(^\/map|\/$)/)
+              history.location.pathname.match(/(^\/map|^\/directions|\/$)/)
                 ? { height: "100%" }
                 : {}
             }
@@ -184,7 +185,23 @@ class App extends Component {
               />
               <Route
                 path="/planner/:location"
-                render={props => <PlannerPage auth={auth} {...props} closeDrawer={this.closeDrawer} />}
+                render={props => (
+                  <PlannerPage
+                    auth={auth}
+                    {...props}
+                    closeDrawer={this.closeDrawer}
+                  />
+                )}
+              />
+              <Route
+                path="/directions/:originLat/:orignLng/:destLat/:destLng"
+                render={props => (
+                  <DirectionsPage
+                    auth={auth}
+                    {...props}
+                    closeDrawer={this.closeDrawer}
+                  />
+                )}
               />
               <Route
                 path="/signout"

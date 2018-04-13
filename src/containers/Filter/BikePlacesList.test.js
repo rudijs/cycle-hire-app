@@ -10,7 +10,6 @@ import BikePlacesList from "./BikePlacesList";
 describe("<BikePlacesList />", () => {
   it("should render a list of bike places", () => {
     const wrapper = shallow(<BikePlacesList />);
-    console.log(101, wrapper);
     // expect(wrapper.contains(<h1>Search</h1>)).toEqual(true)
   });
 });
