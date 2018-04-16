@@ -7,8 +7,11 @@ import {FlatButton} from "material-ui";
 import GoogleMapHandler from "../../../../components/stateful/GoogleMapHandler";
 import dataSource from "./dataSource.json";
 import PinModal from "../../../../components/stateful/GoogleMapHandler/components/PinModal";
+import axios from "axios/index";
+import {actionMapDataSource, actionMapisFetching} from "../../../../actions/action-map";
+import {connect} from "react-redux";
 
-export default class DashboardContainer extends Component {
+class DashboardContainer extends Component {
     constructor() {
         super();
         this.state = {
@@ -21,6 +24,10 @@ export default class DashboardContainer extends Component {
         }
     }
 
+    componentDidMount() {
+        this.getBikepoints()
+    }
+
     _handleAreaChange = (event, index, area) => this.setState({ area });
     _handleStationChange = (event, index, station) => this.setState({ station });
     _openFilterHandler = (openFilter) => this.setState({ openFilter: !openFilter });
@@ -30,6 +37,26 @@ export default class DashboardContainer extends Component {
         const clickedMarkers = markerCluster.getMarkers();
         console.log(`Current clicked markers length: ${clickedMarkers.length}`);
         console.log(clickedMarkers)
+    };
+
+    getBikepoints = () => {
+        this.setState({ isLoading: true });
+        this.props.actionMapisFetching(true);
+        axios.get("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint", {
+            responseType: 'json'
+        })
+            .then(response => {
+                this.props.actionMapDataSource(response.data);
+                this.setState({
+                    isLoading: false,
+                    commonName: null
+                });
+                this.props.actionMapisFetching(false)
+            })
+            .catch(error => {
+                alert(error);
+                this.props.actionMapisFetching(false)
+            });
     };
 
     render() {
@@ -94,3 +121,10 @@ export default class DashboardContainer extends Component {
         )
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce)),
+    actionMapisFetching: (isTrue) => dispatch(actionMapisFetching(isTrue))
+});
+
+export default connect(null, mapDispatchToProps)(DashboardContainer)

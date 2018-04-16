@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import {white} from "material-ui/styles/colors";
 import {CircularProgress, RaisedButton} from "material-ui";
+import PropTypes from "prop-types";
 import './style.css';
 
-export default class NearbyComponent extends Component {
+class NearbyComponent extends Component {
     render() {
+
+        const { dataSource: { commonName }, onClick } = this.props;
+
         return (
             <div className="nearby-component-container container clearfix">
                 <div className="row">
@@ -19,7 +23,7 @@ export default class NearbyComponent extends Component {
                         <div className="row">
                             <div className="col-8">
                                 <h4 style={{ fontSize: 16, color: "#000", margin: 0 }}>
-                                    Craven Street, Strand
+                                    { commonName }
                                 </h4>
                                 <h6 style={{ fontSize: 14, color: "rgb(72, 181, 222)" }}>
                                     2 bikes * 24 spaces
@@ -30,6 +34,7 @@ export default class NearbyComponent extends Component {
                                     label="Here"
                                     labelColor={white}
                                     buttonStyle={{ backgroundColor: "#13378f"}}
+                                    onClick={(dataSource) => onClick(dataSource)}
                                 />
                             </div>
                         </div>
@@ -39,3 +44,17 @@ export default class NearbyComponent extends Component {
         )
     }
 }
+
+NearbyComponent.propoTypes = {
+    dataSource: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        commonName: PropTypes.string.isRequired,
+        lat: PropTypes.number.isRequired,
+        lon: PropTypes.number.isRequired,
+        placeType: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired
+    }),
+    onClick: PropTypes.func
+};
+
+export default NearbyComponent;
