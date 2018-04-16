@@ -6,14 +6,8 @@ const navigation = () => {
         {
             name: "Dashboard",
             url: "/dashboard",
-            container: UserDashboardContainer,
-            permission: "admin"
-        },
-        {
-            name: "Admin Dashboard",
-            url: "/admin/dashboard",
-            container: DashboardContainer,
-            permission: "admin"
+            container: ( localStorage.getItem('permission') === "administrator" ? DashboardContainer : UserDashboardContainer),
+            permission: localStorage.getItem('permission')
         },
         {
             name: "Log Out",

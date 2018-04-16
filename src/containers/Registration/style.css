@@ -1,0 +1,58 @@
+/*
+    Extra small devices (portrait phones, less than 576px)
+    No media query since this is the default in Bootstrap
+*/
+   .login-container {
+       width: 100%;
+       background-color: rgb(40, 63, 137);
+       padding-top: 40%;
+       position: relative;
+   }
+
+.login-container button {
+    font-family: Roboto-Medium, sans-serif;
+}
+
+.form-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 576px;
+}
+
+.forgot-password-container {
+    padding: 5pt;
+}
+
+.forgot-password-container a {
+    font-family: Roboto-Italic, sans-serif;
+    color: rgb(72, 181, 222);
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.login-container .form-submit-container {
+    padding: 20px 40px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .login-container {
+        padding-top: 30%;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .login-container {
+        padding-top: 15%;
+    }
+    .form-container {
+        max-width: 270px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}

@@ -46,7 +46,7 @@ class HeaderDrawer extends Component {
                     onClick={() => toggleDrawer(isOpen)}
                     style={theme.menuItem}
                 >
-                    Close Menu
+                    CLP
                 </MenuItem>
                 {
                     navReducers.items.map((r, index) => (

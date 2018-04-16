@@ -12,6 +12,7 @@
     "material-ui": "^0.20.0",
     "npm": "^5.8.0",
     "prop-types": "latest",
+    "punycode": "^2.1.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-facebook-login": "^4.0.1",

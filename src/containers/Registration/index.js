@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { TextField, RaisedButton } from 'material-ui';
-import { indigo900, blue500, white, grey600 } from "material-ui/styles/colors";
-import Ionicon from 'react-ionicons';
+import { indigo900, blue500, white } from "material-ui/styles/colors";
 import theme from './theme';
 import './style.css';
 import {Link, Redirect} from "react-router-dom";
 import Auth from "../../containers/Auth";
 import axios from "axios";
 
-class LoginContainer extends Component {
+class RegistrationContainer extends Component {
 
     auth = new Auth();
     login = () => this.auth.login();
@@ -64,6 +63,22 @@ class LoginContainer extends Component {
                             style={theme.form.fields}
                             hintStyle={theme.form.hintStyle}
                             inputStyle={{color: white}}
+                            hintText="Name"
+                            fullWidth={true}
+                            onChange={(emailField) => this.setState({ emailField })}
+                        />
+                        <TextField
+                            style={theme.form.fields}
+                            hintStyle={theme.form.hintStyle}
+                            inputStyle={{color: white}}
+                            hintText="Surname"
+                            fullWidth={true}
+                            onChange={(emailField) => this.setState({ emailField })}
+                        />
+                        <TextField
+                            style={theme.form.fields}
+                            hintStyle={theme.form.hintStyle}
+                            inputStyle={{color: white}}
                             hintText="Email"
                             fullWidth={true}
                             onChange={(emailField) => this.setState({ emailField })}
@@ -77,66 +92,29 @@ class LoginContainer extends Component {
                             fullWidth={true}
                             onChange={(passwordField) => this.setState({ passwordField })}
                         />
-                    </div>
-                    <div className="forgot-password-container clearfix">
-                        <a href="" className="float-right">Can't login?</a>
+                        <TextField
+                            style={theme.form.fields}
+                            hintStyle={theme.form.hintStyle}
+                            inputStyle={{color: white}}
+                            hintText="Phone Number"
+                            fullWidth={true}
+                            onChange={(emailField) => this.setState({ emailField })}
+                        />
                     </div>
                     <div className="form-submit-container clearfix">
-                        <Link to="/registration">
+                        <Link to="/">
                             <RaisedButton
-                                label="I'm new"
+                                label="Sign In"
                                 labelColor={indigo900}
                                 className="form-submit-signup float-left"
                             />
                         </Link>
                         <RaisedButton
                             onClick={this._customLogin.bind(this)}
-                            label="sign in"
+                            label="Sign Up"
                             labelColor={white}
                             buttonStyle={{ backgroundColor: blue500 }}
                             className="form-submit-signin float-right"
-                        />
-                    </div>
-                    <div
-                        style={{
-                            color: white, textAlign: 'center',
-                            paddingTop: 50, paddingBottom: 50,
-                            fontFamily: 'Roboto-Medium, sans-serif'
-                        }}
-                    >
-                        OR
-                    </div>
-                    <div style={{ textAlign: 'center' }}>
-                        <RaisedButton
-                            label="Connect with facebook"
-                            fullWidth={true}
-                            secondary={true}
-                            buttonStyle={{ backgroundColor: "rgb(59, 89, 152)" }}
-                            onClick={this.login}
-                            icon={
-                                <Ionicon
-                                    icon="logo-facebook"
-                                    fontSize="20px"
-                                    color="white"
-                                />
-                            }
-                        />
-
-                        <RaisedButton
-                            label="Sign in with google"
-                            fullWidth={true}
-                            secondary={false}
-                            labelColor={grey600}
-                            buttonStyle={{ backgroundColor: white }}
-                            style={{ marginTop: 30 }}
-                            onClick={this.login}
-                            icon={
-                                <Ionicon
-                                    icon="logo-googleplus"
-                                    fontSize="20px"
-                                    color="rgb(255, 61, 0)"
-                                />
-                            }
                         />
                     </div>
                 </div>
@@ -145,4 +123,4 @@ class LoginContainer extends Component {
     }
 }
 
-export default LoginContainer;
+export default RegistrationContainer;
