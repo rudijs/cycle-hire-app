@@ -6,7 +6,6 @@ import theme from './theme';
 import './style.css';
 import {Link, Redirect} from "react-router-dom";
 import Auth from "../../containers/Auth";
-import axios from "axios";
 
 class LoginContainer extends Component {
 
@@ -26,26 +25,23 @@ class LoginContainer extends Component {
         const { emailField, passwordField } = this.state;
         // if (!emailField || !passwordField) alert("Please input required fields.");
 
+        const request = require("request");
+
         const options = { method: 'POST',
-            url: 'https://viseo.auth0.com/dbconnections/signup',
+            url: 'https://clp-viseo.auth0.com/dbconnections/signup',
             headers: { 'content-type': 'application/json' },
             body:
-                { client_id: 'MF1fEMPOT4tYI91r3ZVTb3z6rPTnf0Q4',
+                { client_id: 'YnHGKaXO5hdjnX-pwRlDSUQUhcsNsAy1',
                     email: emailField,
                     password: passwordField,
                     user_metadata: { permission: "user" } },
             json: true };
 
-        axios.post(
-                options.url,
-                {
-                    "email": "jeffrey.forones@viseo.com",
-                    "password": "password"
-                },
-                { responseType: 'json' }
-            )
-            .then(response => console.log(response.data))
-            .catch(error => console.log(error))
+        request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+
+            console.log(body);
+        });
     };
 
     componentDidMount() {
