@@ -6,6 +6,7 @@ import theme from './theme';
 import './style.css';
 import {Link, Redirect} from "react-router-dom";
 import Auth from "../../containers/Auth";
+import request from "request";
 
 class LoginContainer extends Component {
 
@@ -25,17 +26,19 @@ class LoginContainer extends Component {
         const { emailField, passwordField } = this.state;
         // if (!emailField || !passwordField) alert("Please input required fields.");
 
-        const request = require("request");
-
         const options = { method: 'POST',
             url: 'https://clp-viseo.auth0.com/dbconnections/signup',
-            headers: { 'content-type': 'application/json' },
+            headers: {
+                'content-type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
             body:
                 { client_id: 'YnHGKaXO5hdjnX-pwRlDSUQUhcsNsAy1',
                     email: emailField,
                     password: passwordField,
                     user_metadata: { permission: "user" } },
-            json: true };
+            json: true
+        };
 
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
