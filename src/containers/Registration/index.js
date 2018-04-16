@@ -4,54 +4,20 @@ import { indigo900, blue500, white } from "material-ui/styles/colors";
 import theme from './theme';
 import './style.css';
 import {Link, Redirect} from "react-router-dom";
-import Auth from "../../containers/Auth";
-import axios from "axios";
 
 class RegistrationContainer extends Component {
-
-    auth = new Auth();
-    login = () => this.auth.login();
 
     constructor() {
         super();
         this.state = {
+            nameField: null,
+            surNameField: null,
             emailField: null,
             passwordField: null,
+            phoneNumberField: null,
             isAuthenticated: null
         }
     }
-
-    _customLogin = () => {
-        const { emailField, passwordField } = this.state;
-        // if (!emailField || !passwordField) alert("Please input required fields.");
-
-        const options = { method: 'POST',
-            url: 'https://viseo.auth0.com/dbconnections/signup',
-            headers: { 'content-type': 'application/json' },
-            body:
-                { client_id: 'MF1fEMPOT4tYI91r3ZVTb3z6rPTnf0Q4',
-                    email: emailField,
-                    password: passwordField,
-                    user_metadata: { permission: "user" } },
-            json: true };
-
-        axios.post(
-                options.url,
-                {
-                    "email": "jeffrey.forones@viseo.com",
-                    "password": "password"
-                },
-                { responseType: 'json' }
-            )
-            .then(response => console.log(response.data))
-            .catch(error => console.log(error))
-    };
-
-    componentDidMount() {
-        this._isAuthenticatedHandler();
-    }
-
-    _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
 
     render() {
         if(this.state.isAuthenticated) return <Redirect to="/dashboard" />;
@@ -65,7 +31,7 @@ class RegistrationContainer extends Component {
                             inputStyle={{color: white}}
                             hintText="Name"
                             fullWidth={true}
-                            onChange={(emailField) => this.setState({ emailField })}
+                            onChange={( nameField ) => this.setState({ nameField })}
                         />
                         <TextField
                             style={theme.form.fields}
@@ -73,7 +39,7 @@ class RegistrationContainer extends Component {
                             inputStyle={{color: white}}
                             hintText="Surname"
                             fullWidth={true}
-                            onChange={(emailField) => this.setState({ emailField })}
+                            onChange={( surNameField ) => this.setState({ surNameField })}
                         />
                         <TextField
                             style={theme.form.fields}
@@ -98,7 +64,7 @@ class RegistrationContainer extends Component {
                             inputStyle={{color: white}}
                             hintText="Phone Number"
                             fullWidth={true}
-                            onChange={(emailField) => this.setState({ emailField })}
+                            onChange={(phoneNumberField) => this.setState({ phoneNumberField })}
                         />
                     </div>
                     <div className="form-submit-container clearfix">
@@ -110,7 +76,6 @@ class RegistrationContainer extends Component {
                             />
                         </Link>
                         <RaisedButton
-                            onClick={this._customLogin.bind(this)}
                             label="Sign Up"
                             labelColor={white}
                             buttonStyle={{ backgroundColor: blue500 }}
