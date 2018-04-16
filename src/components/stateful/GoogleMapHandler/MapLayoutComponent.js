@@ -8,6 +8,37 @@ import { Snackbar } from "material-ui";
 
 class MapLayout extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoading: false,
+            dataSource: []
+        }
+    }
+
+    componentDidMount() {
+        this.getBikepoints();
+    }
+
+    getBikepoints = () => {
+        this.setState({ isLoading: true });
+        axios.get('https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint', {
+            responseType: 'json'
+        })
+            .then(response => {
+                this.setState({
+                    dataSource: response.data,
+                    isLoading: false,
+                    commonName: null
+                });
+
+            })
+            .catch(error => {
+                alert(error)
+            });
+    };
+
     _handleEventClick = (fn, event) => fn ? fn(event) : null;
 
     render() {
@@ -31,18 +62,16 @@ class MapLayout extends Component {
                         enableRetinaIcons
                         gridSize={100}
                     >
-                    {
-                        dataSource.items.map((marker, index) =>
-                            <Marker
-                                key={ index }
-                                position={{ lat: marker.lat, lng: marker.lon }}
-                                icon={ pinImage }
-                                onClick={(markerData) =>
-                                    this._handleEventClick(onMarkerClick, (Object.assign({}, markerData, marker)))
-                                }
-                            />
-                        )
-                    }
+                        {
+                            dataSource.map((marker, index) =>
+                                <Marker
+                                    key={index}
+                                    position={{ lat: marker.lat, lng: marker.lon }}
+                                    icon={pinImage}
+                                    onClick={(markerData) => this._handleEventClick(onMarkerClick, (Object.assign({}, markerData, { marker })))}
+                                />
+                            )
+                        }
                     </MarkerClusterer>
                     {
                         !!showBicyclelayer ?
