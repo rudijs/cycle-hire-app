@@ -33,10 +33,12 @@ class LoginContainer extends Component {
                 'Access-Control-Allow-Origin': '*'
             },
             body:
-                { client_id: 'YnHGKaXO5hdjnX-pwRlDSUQUhcsNsAy1',
+                {
+                    client_id: 'YnHGKaXO5hdjnX-pwRlDSUQUhcsNsAy1',
                     email: emailField,
                     password: passwordField,
-                    user_metadata: { permission: "user" } },
+                    user_metadata: { permission: "user" }
+                },
             json: true
         };
 

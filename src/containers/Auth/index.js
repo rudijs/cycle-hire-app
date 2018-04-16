@@ -15,7 +15,7 @@ export default class Auth {
             redirectUri: AUTH_CONFIG.callbackUrl,
             audience: `https://${AUTH_CONFIG.domain}/userinfo`,
             responseType: "token id_token",
-            scope: "openid profile email user_metadata read:users"
+            scope: "openid profile email user_metadata read:users read write metadata"
         });
     }
 
@@ -42,6 +42,7 @@ export default class Auth {
         );
         console.log("setSession");
         console.log(authResult);
+        localStorage.setItem("profile", JSON.stringify(authResult.idTokenPayload));
         localStorage.setItem("access_token", authResult.accessToken);
         localStorage.setItem("id_token", authResult.idToken);
         localStorage.setItem("expires_at", expiresAt);

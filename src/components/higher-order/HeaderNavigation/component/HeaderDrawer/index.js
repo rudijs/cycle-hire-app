@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Drawer, MenuItem } from "material-ui";
+import {Avatar, Drawer, MenuItem} from "material-ui";
 import PropTypes from "prop-types";
 import theme from "./theme/index";
 import {Link, Redirect} from "react-router-dom";
@@ -14,12 +14,21 @@ class HeaderDrawer extends Component {
     constructor() {
         super();
         this.state = {
-            isAuthenticated: null
+            isAuthenticated: null,
+            profile: {
+                email: null,
+                picture: null,
+                name: null
+            }
         }
     }
 
     componentWillMount() {
         this._isAuthenticatedHandler();
+        const { email, picture, name } = JSON.parse(localStorage.getItem("profile"));
+        this.setState({
+            email, picture, name
+        })
     }
 
     _logOurHandler = () => {
@@ -46,7 +55,12 @@ class HeaderDrawer extends Component {
                     onClick={() => toggleDrawer(isOpen)}
                     style={theme.menuItem}
                 >
-                    CLP
+                    <Avatar
+                        src={this.state.picture}
+                        size={30}
+                        style={{ marginRight: 10 }}
+                    />
+                    { this.state.email }
                 </MenuItem>
                 {
                     navReducers.items.map((r, index) => (
