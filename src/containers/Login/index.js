@@ -14,8 +14,8 @@ class LoginContainer extends Component {
     constructor() {
         super();
         this.state = {
-            emailField: "clp-admin@viseo.com",
-            passwordField: "clpADMIN123",
+            emailField: null,
+            passwordField: null,
             isAuthenticated: null
         }
     }
