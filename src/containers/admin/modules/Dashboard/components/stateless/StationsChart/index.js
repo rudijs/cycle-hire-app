@@ -5,8 +5,11 @@ import "./style.css";
 import {Paper, RaisedButton} from "material-ui";
 import StationsIconMenu from "./components/StationsIconMenu";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 class StationChart extends Component {
+
+    app_id = "aabecbde2fc66eba7b65d4c434fb5ca8";
 
     constructor(props) {
         super(props);
@@ -14,6 +17,17 @@ class StationChart extends Component {
             size: 5
         }
     }
+
+    componentDidMount() {
+        const newDataSource = this.props.dataSource.items.map(item => this.getWeatherByLocation({ lat: item.lat, lon: item.lon }));
+    }
+
+    getWeatherByLocation = ({ lat, lon }) => {
+        console.log(lat, lon)
+        fetch("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "appid=" + this.app_id)
+            .then(response => response.json())
+            .then(responseJson => console.log(responseJson))
+    };
 
     _handleTopChartChange = (value) => {
         this.setState({ size: value });
@@ -89,4 +103,8 @@ StationChart.propTypes = {
     paperStyle: PropTypes.object
 };
 
-export default StationChart;
+const mapStateToProps = state => ({
+   dataSource: state.reducerMapDatasource
+});
+
+export default connect(mapStateToProps)(StationChart);

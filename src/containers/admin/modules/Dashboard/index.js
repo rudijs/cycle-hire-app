@@ -51,8 +51,8 @@ class DashboardContainer extends Component {
             this.setState({ commonName: null });
         })
         .catch(error => {
-            alert(error);
-            actionMapisFetching(false)
+            actionMapisFetching(false);
+            if(error.message) alert(error.message);
         });
     };
 
@@ -109,7 +109,7 @@ class DashboardContainer extends Component {
                 <PinModal
                     isOpen={isOpen}
                     toggleHandler={this._openPinHandler}
-                    title={activePinData ? activePinData.commonName : null}
+                    data={activePinData ? activePinData : null}
                 />
             </div>
         )
