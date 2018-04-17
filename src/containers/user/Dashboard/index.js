@@ -24,17 +24,16 @@ class UserDashboardContainer extends Component {
 
     getBikepoints = () => {
         const { actionMapisFetching, actionMapDataSource } = this.props;
-
         actionMapisFetching(true);
         axios.get("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint", {
             responseType: 'json'
         })
-            .then(response => {
-                actionMapDataSource(response.data);
-                actionMapisFetching(false);
-                this.setState({ commonName: null });
-            })
-            .catch(error =>  alert(error) );
+        .then(response => {
+            actionMapDataSource(response.data);
+            actionMapisFetching(false);
+            this.setState({ commonName: null });
+        })
+        .catch(error =>  alert(error) );
     };
 
     footer = (dataSource) => {
@@ -91,7 +90,6 @@ const mapDispatchToProps = dispatch => ({
     actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce)),
     actionMapisFetching: (isTrue) => dispatch(actionMapisFetching(isTrue))
 });
-
 
 const mapStateToProps = state => ({
     dataSource: state.reducerMapDatasource
