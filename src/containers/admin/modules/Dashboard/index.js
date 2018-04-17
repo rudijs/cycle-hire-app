@@ -109,7 +109,7 @@ class DashboardContainer extends Component {
                 <PinModal
                     isOpen={isOpen}
                     toggleHandler={this._openPinHandler}
-                    title={activePinData.commonName}
+                    title={activePinData ? activePinData.commonName : null}
                 />
             </div>
         )
