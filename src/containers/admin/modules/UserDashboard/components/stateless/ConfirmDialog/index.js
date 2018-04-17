@@ -16,7 +16,7 @@ export default class ConfirmDialog extends Component {
                     <label
                         className={"dialog-title" + (isDock ? "-dock" : "")}
                         htmlFor="begin">
-                        {isDock ? "Dock in this station?" : "Begin form this station?"}
+                        {isDock ? "Dock in this station?" : "Begin from this station?"}
                     </label>
                 </div>
                 <div className={"content" + (isDock ? "-dock" : "")}>

@@ -44,7 +44,6 @@ class MapLayout extends Component {
 
     render() {
         const { onMarkerClusterClick, onMarkerClick, showBicyclelayer, dataSource  } = this.props;
-        console.log(201, dataSource)
 
         return (
             <div>
