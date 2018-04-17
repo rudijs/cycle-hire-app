@@ -57,23 +57,34 @@ export default class Auth {
         }
     };
 
+    findUserByEmail = (email) =>
+        fetch(this.api_endpoint + "/users-by-email?email=" + email, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": this.authorization
+            }
+        })
+        .then(response => response.json())
+        .then(responseJson => responseJson[0]);
+
+    mockLoginHandler = ({ email, password }) =>
+        this.findUserByEmail(email)
+            .then(response => {
+                if(response.user_metadata.password === password) return response;
+                return Promise.reject({ message: "Authentication failed." })
+            });
+
     handleAuthentication = () => new Promise((resolve, reject) =>
         Auth0.parseHash((err, authResult) => {
             if(err) return Promise.reject(err);
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.setSession(authResult);
-                fetch(this.api_endpoint + "/users-by-email?email=" + authResult.idTokenPayload.email, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": this.authorization
-                    }
+                this.findUserByEmail(authResult.idTokenPayload.email)
+                .then(jsonResponse => {
+                    this.setCustomSession({ profile: jsonResponse, lock: false});
                 })
-                    .then(response => response.json())
-                    .then(jsonResponse => {
-                        this.setCustomSession({ profile: jsonResponse[0], lock: false});
-                    })
-                    .then(() => resolve(authResult))
-                    .catch(err => reject(err))
+                .then(() => resolve(authResult))
+                .catch(err => reject(err))
             }
         })
     );

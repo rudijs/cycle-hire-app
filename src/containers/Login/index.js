@@ -26,10 +26,17 @@ class LoginContainer extends Component {
 
     login = () => this.auth.login();
 
-    _customSigninHandler = event => {
-        console.log(event);
+    _customSigninHandler = () => {
         const { emailField, passwordField } = this.state;
-        this.auth.loginWithCredentials({ username: emailField, password: passwordField });
+        this.auth.mockLoginHandler({ email: emailField, password: passwordField })
+            .then(jsonResponse => {
+                if (jsonResponse.statusCode && jsonResponse.statusCode !== 200) throw jsonResponse;
+                this.auth.setCustomSession({ profile: jsonResponse, lock: true })
+                    .then(() => this.props.history.push("/dashboard"));
+            })
+            .catch(error => {
+                if(error.message) alert(error.message);
+            })
     };
 
     _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });

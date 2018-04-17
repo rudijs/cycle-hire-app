@@ -52,6 +52,7 @@ class RegistrationContainer extends Component {
                 user_metadata: {
                     surName: surNameField,
                     phoneNumber: phoneNumberField,
+                    password: passwordField,
                     permission: "user"
                 }
             }),

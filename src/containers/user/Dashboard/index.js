@@ -31,7 +31,6 @@ class UserDashboardContainer extends Component {
             actionMapDataSource(response.data);
             this.setState({ commonName: null });
         })
-        .catch(error =>  alert(error) );
     };
 
     footer = (dataSource) => {
