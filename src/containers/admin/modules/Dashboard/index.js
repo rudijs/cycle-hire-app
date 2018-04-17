@@ -16,7 +16,6 @@ class DashboardContainer extends Component {
         super();
         this.state = {
             area: "London",
-            station: "AllStations",
             openFilter: true,
             isOpen: false,
             activePinData: { commonName: null }
@@ -58,7 +57,7 @@ class DashboardContainer extends Component {
     };
 
     render() {
-        const { area, station, openFilter, isOpen, activePinData } = this.state;
+        const { area, openFilter, isOpen, activePinData } = this.state;
 
         return (
             <div className="dashboard-container">
@@ -80,10 +79,7 @@ class DashboardContainer extends Component {
                                     default: area, item: [],
                                     onChangeHandler: this._handleAreaChange.bind(this)
                                 }}
-                                station={{
-                                    default: station, item: [],
-                                    onChangeHandler: this._handleStationChange.bind(this)
-                                }}
+                                onStationChange={this._handleStationChange.bind(this)}
                             />
                             :
                             null
