@@ -5,7 +5,7 @@ import StationChart from "./components/stateless/StationsChart";
 import WeatherBicycleUsage from "./components/stateless/WeatherBicycleUsage";
 import {FlatButton} from "material-ui";
 import GoogleMapHandler from "../../../../components/stateful/GoogleMapHandler";
-import dataSource from "./dataSource.json";
+import graphData from "./dataSource.json";
 import PinModal from "../../../../components/stateful/GoogleMapHandler/components/PinModal";
 import axios from "axios/index";
 import {actionMapDataSource, actionMapisFetching} from "../../../../actions/action-map";
@@ -19,7 +19,10 @@ class DashboardContainer extends Component {
             station: "AllStations",
             openFilter: true,
             isOpen: false,
-            data: dataSource,
+            dataSource: {
+                isFetching: true,
+                items: []
+            },
             activePinData: { commonName: null }
         }
     }
@@ -31,7 +34,7 @@ class DashboardContainer extends Component {
     _handleAreaChange = (event, index, area) => this.setState({ area });
     _handleStationChange = (event, index, station) => this.setState({ station });
     _openFilterHandler = (openFilter) => this.setState({ openFilter: !openFilter });
-    onDataChangeHandler = (size) => this.setState({ data: dataSource.slice(0, size) });
+    onDataChangeHandler = (size) => this.setState({ data: graphData.slice(0, size) });
     _openPinHandler = (pinData) => this.setState({ isOpen: !this.state.isOpen, activePinData: pinData });
     onMarkerClusterClick = (markerCluster) => {
         const clickedMarkers = markerCluster.getMarkers();
@@ -49,7 +52,8 @@ class DashboardContainer extends Component {
                 this.props.actionMapDataSource(response.data);
                 this.setState({
                     isLoading: false,
-                    commonName: null
+                    commonName: null,
+                    dataSource: { isFetching: false, items: response.data }
                 });
                 this.props.actionMapisFetching(false)
             })
@@ -94,12 +98,12 @@ class DashboardContainer extends Component {
                 <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-6 chart-container">
                         <StationChart
-                            data={data}
+                            data={graphData}
                             onSizeChange={this.onDataChangeHandler.bind(this)}
                             paperStyle={{ height: window.innerHeight / 2 }}
                         />
                         <WeatherBicycleUsage
-                            data={data}
+                            data={graphData}
                             paperStyle={{ height: window.innerHeight / 2}}
                         />
                     </div>
@@ -109,6 +113,7 @@ class DashboardContainer extends Component {
                             onMarkerClick={this._openPinHandler.bind(this)}
                             onMarkerClusterClick={this.onMarkerClusterClick.bind(this)}
                             showBicyclelayer={false}
+                            dataSource={this.state.dataSource}
                         />
                     </div>
                 </div>
