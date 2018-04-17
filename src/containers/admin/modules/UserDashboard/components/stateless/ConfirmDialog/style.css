@@ -1,0 +1,77 @@
+.title {
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.dialog-title, .dialog-title-dock {
+    font-family: Roboto;
+    font-size: 24px;
+    margin-left: 15px;
+    color: #13378f;
+}
+
+.dialog-title-dock {
+    color: #169692;
+}
+
+.content, .content-dock {
+    height: 130px;
+    padding-top: 20px;
+    background-color: #283f89;
+}
+
+.content-dock {
+    background-color: #169692;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: green;
+    margin-right: 20px;
+    margin-left: 15px;
+}
+
+.station-details {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.station-name {
+    font-family: Roboto;
+    font-size: 16px;
+    color: white;
+}
+
+.station-parking {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.14;
+    color: #48b5de;
+}
+
+.choices {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.choice-button {
+    height: 36px;
+    margin-left: 15px;
+}
