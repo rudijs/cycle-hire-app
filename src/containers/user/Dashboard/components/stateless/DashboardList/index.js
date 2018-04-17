@@ -1,5 +1,5 @@
 import React from 'react';
-import NearbyComponent from "../Nearby";
+import NearbyComponent from "../Nearby/index";
 import './style.css';
 import {CircularProgress} from "material-ui";
 

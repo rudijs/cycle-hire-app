@@ -73,15 +73,8 @@ MapLayout.propTypes = {
     })
 };
 
-MapLayout.defaultProps = {
-  dataSource: {
-      isFetching: false,
-      items: []
-  }
-};
-
 const mapStateToProps = state => ({
     dataSource: state.reducerMapDatasource
 });
 
-export default connect()(withScriptjs(withGoogleMap(MapLayout)));
+export default connect(mapStateToProps)(withScriptjs(withGoogleMap(MapLayout)));

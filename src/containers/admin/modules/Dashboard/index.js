@@ -19,10 +19,6 @@ class DashboardContainer extends Component {
             station: "AllStations",
             openFilter: true,
             isOpen: false,
-            dataSource: {
-                isFetching: true,
-                items: []
-            },
             activePinData: { commonName: null }
         }
     }
@@ -43,28 +39,26 @@ class DashboardContainer extends Component {
     };
 
     getBikepoints = () => {
-        this.setState({ isLoading: true });
-        this.props.actionMapisFetching(true);
+
+        const { actionMapisFetching, actionMapDataSource } = this.props;
+
+        actionMapisFetching(true);
         axios.get("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint", {
             responseType: 'json'
         })
-            .then(response => {
-                this.props.actionMapDataSource(response.data);
-                this.setState({
-                    isLoading: false,
-                    commonName: null,
-                    dataSource: { isFetching: false, items: response.data }
-                });
-                this.props.actionMapisFetching(false)
-            })
-            .catch(error => {
-                alert(error);
-                this.props.actionMapisFetching(false)
-            });
+        .then(response => {
+            actionMapDataSource(response.data);
+            actionMapisFetching(false);
+            this.setState({ commonName: null });
+        })
+        .catch(error => {
+            alert(error);
+            actionMapisFetching(false)
+        });
     };
 
     render() {
-        const { area, station, openFilter, data, isOpen, activePinData } = this.state;
+        const { area, station, openFilter, isOpen, activePinData } = this.state;
 
         return (
             <div className="dashboard-container">
@@ -113,7 +107,6 @@ class DashboardContainer extends Component {
                             onMarkerClick={this._openPinHandler.bind(this)}
                             onMarkerClusterClick={this.onMarkerClusterClick.bind(this)}
                             showBicyclelayer={false}
-                            dataSource={this.state.dataSource}
                         />
                     </div>
                 </div>

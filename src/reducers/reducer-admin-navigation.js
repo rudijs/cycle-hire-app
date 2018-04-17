@@ -1,5 +1,5 @@
 import DashboardContainer from "../containers/admin/modules/Dashboard";
-import UserDashboardContainer from "../containers/admin/modules/UserDashboard";
+import UserDashboardContainer from "../containers/user/Dashboard";
 
 const profile = JSON.parse(localStorage.getItem('profile'));
 
