@@ -54,7 +54,8 @@ class PinModal extends Component {
 
 PinModal.propTypes = {
     isOpen: PropTypes.bool.isRequired,
-    toggleHandler: PropTypes.func.isRequired
+    toggleHandler: PropTypes.func.isRequired,
+    title: PropTypes.string
 };
 
 export default PinModal;

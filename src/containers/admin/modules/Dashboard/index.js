@@ -31,7 +31,9 @@ class DashboardContainer extends Component {
     _handleStationChange = (event, index, station) => this.setState({ station });
     _openFilterHandler = (openFilter) => this.setState({ openFilter: !openFilter });
     onDataChangeHandler = (size) => this.setState({ data: graphData.slice(0, size) });
-    _openPinHandler = (pinData) => this.setState({ isOpen: !this.state.isOpen, activePinData: pinData });
+    _openPinHandler = ({ marker, ...event}) => {
+        this.setState({ isOpen: !this.state.isOpen, activePinData: marker })
+    };
     onMarkerClusterClick = (markerCluster) => {
         const clickedMarkers = markerCluster.getMarkers();
         console.log(`Current clicked markers length: ${clickedMarkers.length}`);
@@ -39,9 +41,7 @@ class DashboardContainer extends Component {
     };
 
     getBikepoints = () => {
-
         const { actionMapisFetching, actionMapDataSource } = this.props;
-
         actionMapisFetching(true);
         axios.get("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint", {
             responseType: 'json'
