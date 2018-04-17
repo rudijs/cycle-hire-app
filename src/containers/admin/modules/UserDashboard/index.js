@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { actionMapDataSource, actionMapisFetching } from "../../../../actions/action-map";
 import axios from "axios/index";
 import ConfirmDialog from "./components/stateless/ConfirmDialog"
-import { NavigationFullscreen } from 'material-ui';
+// import { NavigationFullscreen } from 'material-ui';
 
 class UserDashboardContainer extends Component {
 
@@ -35,7 +35,7 @@ class UserDashboardContainer extends Component {
         dockingStation: null
     }
 
-    footer = () => {
+    footer = (dataSource) => {
         if (this.state.markerToSelect == null) {
             return (<DashboardListContainer dataSource={dataSource} />)
         } else {

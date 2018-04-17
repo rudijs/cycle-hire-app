@@ -8,7 +8,7 @@ export default class ConfirmDialog extends Component {
         const bikes = Math.floor(Math.random() * 8) + 20;
         const spaces = Math.floor(Math.random() * 8) + 10;
         const parkingStatus = `${bikes} bikes • ${spaces} spaces`
-        const isDock = this.props.type == "DOCK"
+        const isDock = this.props.type === "DOCK"
         
         return (
             <div className="dialog">
@@ -24,6 +24,7 @@ export default class ConfirmDialog extends Component {
                         <div className="logo-container">
                             <img
                                 className="logo"
+                                alt=""
                                 src=""
                             />
                         </div>

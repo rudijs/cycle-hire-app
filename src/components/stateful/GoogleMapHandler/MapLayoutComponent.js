@@ -5,6 +5,7 @@ import { BicyclingLayer } from "react-google-maps/lib/components/BicyclingLayer"
 import pinImage from "./assets/pinPoint.png";
 import PropTypes from "prop-types";
 import { Snackbar } from "material-ui";
+import axios from 'axios'
 
 class MapLayout extends Component {
 
@@ -43,6 +44,7 @@ class MapLayout extends Component {
 
     render() {
         const { onMarkerClusterClick, onMarkerClick, showBicyclelayer, dataSource  } = this.props;
+        console.log(201, dataSource)
 
         return (
             <div>
@@ -63,7 +65,7 @@ class MapLayout extends Component {
                         gridSize={100}
                     >
                         {
-                            dataSource.map((marker, index) =>
+                            dataSource.items.map((marker, index) =>
                                 <Marker
                                     key={index}
                                     position={{ lat: marker.lat, lng: marker.lon }}
