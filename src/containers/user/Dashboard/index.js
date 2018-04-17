@@ -23,14 +23,12 @@ class UserDashboardContainer extends Component {
     }
 
     getBikepoints = () => {
-        const { actionMapisFetching, actionMapDataSource } = this.props;
-        actionMapisFetching(true);
+        const { actionMapDataSource } = this.props;
         axios.get("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint", {
             responseType: 'json'
         })
         .then(response => {
             actionMapDataSource(response.data);
-            actionMapisFetching(false);
             this.setState({ commonName: null });
         })
         .catch(error =>  alert(error) );

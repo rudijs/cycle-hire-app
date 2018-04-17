@@ -4,6 +4,7 @@ import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerC
 import { BicyclingLayer } from "react-google-maps/lib/components/BicyclingLayer";
 import pinImage from "./assets/pinPoint.png";
 import PropTypes from "prop-types";
+import { Snackbar } from "material-ui";
 import {connect} from "react-redux";
 
 class MapLayout extends Component {
@@ -14,12 +15,12 @@ class MapLayout extends Component {
 
         return (
             <div>
-                {/*<Snackbar*/}
-                    {/*open={isFetching}*/}
-                    {/*message={"Fetching bikepoint information."}*/}
-                    {/*onRequestClose={() => false}*/}
-                    {/*bodyStyle={{ backgroundColor: "#48b5de" }}*/}
-                {/*/>*/}
+                <Snackbar
+                    open={isFetching}
+                    message={"Fetching bikepoint information."}
+                    onRequestClose={() => false}
+                    bodyStyle={{ backgroundColor: "#48b5de" }}
+                />
                 <GoogleMap
                     defaultZoom={15}
                     defaultCenter={{ lat: 51.529163, lng: -0.10997 }}
