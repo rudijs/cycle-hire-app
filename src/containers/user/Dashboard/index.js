@@ -29,12 +29,12 @@ class UserDashboardContainer extends Component {
         axios.get("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint", {
             responseType: 'json'
         })
-        .then(response => {
-            actionMapDataSource(response.data);
-            actionMapisFetching(false);
-            this.setState({ commonName: null });
-        })
-        .catch(error =>  alert(error) );
+            .then(response => {
+                actionMapDataSource(response.data);
+                actionMapisFetching(false);
+                this.setState({ commonName: null });
+            })
+            .catch(error =>  alert(error) );
     };
 
     footer = (dataSource) => {

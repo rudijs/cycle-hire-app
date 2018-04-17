@@ -27,7 +27,7 @@ class MapLayout extends Component {
             <div>
                 <Snackbar
                     open={isFetching}
-                    message="Fetching bikepoint information."
+                    message={"Fetching bikepoint information."}
                     onRequestClose={() => false}
                     bodyStyle={{ backgroundColor: "#48b5de" }}
                 />

@@ -30,7 +30,7 @@ const style={
     loaderWrapper: {
         textAlign: "center",
         width: "100%",
-  }
+    }
 };
 
 DashboardListContainer.defaultProps = {
