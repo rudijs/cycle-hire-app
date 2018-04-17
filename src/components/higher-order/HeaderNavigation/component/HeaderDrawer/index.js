@@ -85,7 +85,7 @@ HeaderDrawer.propTypes = {
     profile: PropTypes.shape({
         email: PropTypes.string.isRequired,
         picture: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired
+        name: PropTypes.string
     })
 };
 

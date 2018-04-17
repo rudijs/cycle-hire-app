@@ -3,13 +3,14 @@ import Auth0, { AUTH_CONFIG }  from "../../config";
 
 export default class Auth {
 
-    scope = "openid profile email user_metadata read:users read write metadata";
+    scope = "openid profile email user_metadata";
     connection = {
         usernamePasswordAuthentication: "Username-Password-Authentication"
     };
 
     authorization = `Bearer ${AUTH_CONFIG.token}`;
     api_endpoint = AUTH_CONFIG.endpoint;
+    profile = JSON.parse(localStorage.getItem('profile'));
 
     constructor() {
         this.login = this.login.bind(this);
@@ -58,10 +59,21 @@ export default class Auth {
 
     handleAuthentication = () => new Promise((resolve, reject) =>
         Auth0.parseHash((err, authResult) => {
-            if(err) reject(err);
+            if(err) return Promise.reject(err);
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.setSession(authResult);
-                resolve(authResult);
+                fetch(this.api_endpoint + "/users-by-email?email=" + authResult.idTokenPayload.email, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": this.authorization
+                    }
+                })
+                    .then(response => response.json())
+                    .then(jsonResponse => {
+                        this.setCustomSession({ profile: jsonResponse[0], lock: false});
+                    })
+                    .then(() => resolve(authResult))
+                    .catch(err => reject(err))
             }
         })
     );
@@ -77,7 +89,7 @@ export default class Auth {
         localStorage.setItem("expires_at", expiresAt);
     }
 
-    setCustomSession = ({ profile, lock}) => {
+    setCustomSession = ({ profile, lock }) => {
         localStorage.setItem("profile", JSON.stringify(profile));
         localStorage.setItem("lock", JSON.stringify(lock));
         return Promise.resolve({ profile, lock })

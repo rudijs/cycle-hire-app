@@ -40,7 +40,7 @@ class RegistrationContainer extends Component {
         const { api_endpoint, authorization, connection: { usernamePasswordAuthentication } } = this.auth;
         const { emailField, passwordField, nameField, surNameField, phoneNumberField } = this.state;
 
-        fetch(api_endpoint, {
+        fetch(api_endpoint + "/users", {
             method: "POST",
             body: JSON.stringify({
                 connection: usernamePasswordAuthentication,

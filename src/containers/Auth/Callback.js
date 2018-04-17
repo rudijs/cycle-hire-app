@@ -16,7 +16,7 @@ class CallbackContainer extends Component {
             history.push('/dashboard')
         } else {
             this.auth.checkPermission({ location })
-                .then(() => history.push('/dashboard'))
+                .then(() => window.location.reload())
                 .catch(() => history.push('/'))
         }
     };
