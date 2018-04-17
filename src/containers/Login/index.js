@@ -27,6 +27,7 @@ class LoginContainer extends Component {
     login = () => this.auth.login();
 
     _customSigninHandler = event => {
+        console.log(event);
         const { emailField, passwordField } = this.state;
         this.auth.loginWithCredentials({ email: emailField, password: passwordField });
     };
