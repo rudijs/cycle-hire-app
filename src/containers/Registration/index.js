@@ -63,8 +63,8 @@ class RegistrationContainer extends Component {
             .then(response => response.json())
             .then(jsonResponse => {
                 if (jsonResponse.statusCode && jsonResponse.statusCode !== 200) throw jsonResponse;
-                this.auth.setCustomSession({ profile: jsonResponse, lock: false });
-                this.props.history.push("/dashboard");
+                this.auth.setCustomSession({ profile: jsonResponse, lock: true })
+                    .then(() => this.props.history.push("/dashboard"));
             })
             .catch(error => alert(error.message))
     };

@@ -14,8 +14,8 @@ class LoginContainer extends Component {
     constructor() {
         super();
         this.state = {
-            emailField: null,
-            passwordField: null,
+            emailField: "clp-admin@viseo.com",
+            passwordField: "clpADMIN123",
             isAuthenticated: null
         }
     }
@@ -29,7 +29,7 @@ class LoginContainer extends Component {
     _customSigninHandler = event => {
         console.log(event);
         const { emailField, passwordField } = this.state;
-        this.auth.loginWithCredentials({ email: emailField, password: passwordField });
+        this.auth.loginWithCredentials({ username: emailField, password: passwordField });
     };
 
     _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
@@ -46,7 +46,7 @@ class LoginContainer extends Component {
                             inputStyle={{color: white}}
                             hintText="Email"
                             fullWidth={true}
-                            onChange={(emailField) => this.setState({ emailField })}
+                            onChange={( event ) => this.setState({ emailField: event.target.value })}
                         />
                         <TextField
                             style={theme.form.fields}
@@ -55,7 +55,7 @@ class LoginContainer extends Component {
                             hintText="Password"
                             type="password"
                             fullWidth={true}
-                            onChange={(passwordField) => this.setState({ passwordField })}
+                            onChange={( event ) => this.setState({ passwordField: event.target.value })}
                         />
                     </div>
                     <div className="forgot-password-container clearfix">

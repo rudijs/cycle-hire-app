@@ -20,11 +20,11 @@ export default class Auth {
 
     loginWithCredentials = ({ username, password}) => {
         console.log('sdfsfsdf');
-        Auth0.redirect.loginWithCredentials({
-            connection: this.connection.usernamePasswordAuthentication,
+        console.log(username, password);
+        Auth0.login({
+            realm: 'tests',
             username,
-            password,
-            scope: this.scope
+            password
         }, (err) => console.log(err));
     };
 
@@ -80,6 +80,7 @@ export default class Auth {
     setCustomSession = ({ profile, lock}) => {
         localStorage.setItem("profile", JSON.stringify(profile));
         localStorage.setItem("lock", JSON.stringify(lock));
+        return Promise.resolve({ profile, lock })
     };
 
     logout = () => localStorage.clear();
