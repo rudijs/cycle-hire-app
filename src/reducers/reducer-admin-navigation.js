@@ -1,13 +1,15 @@
 import DashboardContainer from "../containers/admin/modules/Dashboard";
 import UserDashboardContainer from "../containers/admin/modules/UserDashboard";
 
+const profile = JSON.parse(localStorage.getItem('profile'));
+
 const navigation = () => {
     const items = [
         {
             name: "Dashboard",
             url: "/dashboard",
-            container: ( localStorage.getItem('permission') === "administrator" ? DashboardContainer : UserDashboardContainer),
-            permission: localStorage.getItem('permission')
+            container: ( !!profile && !!profile.user_metadata && profile.user_metadata.permission === "administrator" ? DashboardContainer : UserDashboardContainer),
+            permission: !!profile && !!profile.user_metadata ? profile.user_metadata.permission : null
         },
         {
             name: "Log Out",

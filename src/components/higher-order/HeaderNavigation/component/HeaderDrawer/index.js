@@ -14,18 +14,13 @@ class HeaderDrawer extends Component {
     constructor() {
         super();
         this.state = {
-            isAuthenticated: null,
-            profile: {
-                email: null,
-                picture: null,
-                name: null
-            }
+            isAuthenticated: null
         }
     }
 
     componentWillMount() {
         this._isAuthenticatedHandler();
-        const { email, picture, name } = JSON.parse(localStorage.getItem("profile"));
+        const { profile: { email, picture, name } } = this.props;
         this.setState({
             email, picture, name
         })
@@ -84,6 +79,14 @@ class HeaderDrawer extends Component {
 HeaderDrawer.defaultProps = {
     isOpen: PropTypes.bool.isRequired,
     toggleDrawer: PropTypes.func.isRequired
+};
+
+HeaderDrawer.propTypes = {
+    profile: PropTypes.shape({
+        email: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+        name: PropTypes.string
+    })
 };
 
 const mapStateToProps = state => ({

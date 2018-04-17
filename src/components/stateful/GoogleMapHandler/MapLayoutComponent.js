@@ -5,7 +5,7 @@ import { BicyclingLayer } from "react-google-maps/lib/components/BicyclingLayer"
 import pinImage from "./assets/pinPoint.png";
 import PropTypes from "prop-types";
 import { Snackbar } from "material-ui";
-import axios from 'axios'
+import {connect} from "react-redux";
 
 class MapLayout extends Component {
 
@@ -18,37 +18,15 @@ class MapLayout extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getBikepoints();
-    }
-
-    getBikepoints = () => {
-        this.setState({ isLoading: true });
-        axios.get('https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint', {
-            responseType: 'json'
-        })
-            .then(response => {
-                this.setState({
-                    dataSource: response.data,
-                    isLoading: false,
-                    commonName: null
-                });
-
-            })
-            .catch(error => {
-                alert(error)
-            });
-    };
-
     _handleEventClick = (fn, event) => fn ? fn(event) : null;
 
     render() {
-        const { onMarkerClusterClick, onMarkerClick, showBicyclelayer, dataSource  } = this.props;
+        const { onMarkerClusterClick, onMarkerClick, showBicyclelayer, dataSource: { items, isFetching }  } = this.props;
 
         return (
             <div>
                 <Snackbar
-                    open={dataSource.isFetching}
+                    open={isFetching}
                     message="Fetching bikepoint information."
                     onRequestClose={() => false}
                     bodyStyle={{ backgroundColor: "#48b5de" }}
@@ -64,7 +42,7 @@ class MapLayout extends Component {
                         gridSize={100}
                     >
                         {
-                            dataSource.items.map((marker, index) =>
+                            items.map((marker, index) =>
                                 <Marker
                                     key={index}
                                     position={{ lat: marker.lat, lng: marker.lon }}
@@ -102,4 +80,8 @@ MapLayout.defaultProps = {
   }
 };
 
-export default withScriptjs(withGoogleMap(MapLayout));
+const mapStateToProps = state => ({
+    dataSource: state.reducerMapDatasource
+});
+
+export default connect()(withScriptjs(withGoogleMap(MapLayout)));

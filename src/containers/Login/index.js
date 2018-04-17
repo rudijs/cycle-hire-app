@@ -6,57 +6,36 @@ import theme from './theme';
 import './style.css';
 import {Link, Redirect} from "react-router-dom";
 import Auth from "../../containers/Auth";
-import request from "request";
 
 class LoginContainer extends Component {
 
     auth = new Auth();
-    login = () => this.auth.login();
 
     constructor() {
         super();
         this.state = {
-            emailField: null,
-            passwordField: null,
+            emailField: "clp-admin@viseo.com",
+            passwordField: "clpADMIN123",
             isAuthenticated: null
         }
     }
-
-    _customLogin = () => {
-        const { emailField, passwordField } = this.state;
-        // if (!emailField || !passwordField) alert("Please input required fields.");
-
-        const options = { method: 'POST',
-            url: 'https://clp-viseo.auth0.com/dbconnections/signup',
-            headers: {
-                'content-type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body:
-                {
-                    client_id: 'YnHGKaXO5hdjnX-pwRlDSUQUhcsNsAy1',
-                    email: emailField,
-                    password: passwordField,
-                    user_metadata: { permission: "user" }
-                },
-            json: true
-        };
-
-        request(options, function (error, response, body) {
-            if (error) throw new Error(error);
-
-            console.log(body);
-        });
-    };
 
     componentDidMount() {
         this._isAuthenticatedHandler();
     }
 
+    login = () => this.auth.login();
+
+    _customSigninHandler = event => {
+        console.log(event);
+        const { emailField, passwordField } = this.state;
+        this.auth.loginWithCredentials({ username: emailField, password: passwordField });
+    };
+
     _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
 
     render() {
-        if(this.state.isAuthenticated) return <Redirect to="/dashboard" />;
+        if(this.state.isAuthenticated === true) return <Redirect to="/dashboard" />;
         return (
             <div className="login-container">
                 <div className="form-container">
@@ -67,7 +46,7 @@ class LoginContainer extends Component {
                             inputStyle={{color: white}}
                             hintText="Email"
                             fullWidth={true}
-                            onChange={(emailField) => this.setState({ emailField })}
+                            onChange={( event ) => this.setState({ emailField: event.target.value })}
                         />
                         <TextField
                             style={theme.form.fields}
@@ -76,7 +55,7 @@ class LoginContainer extends Component {
                             hintText="Password"
                             type="password"
                             fullWidth={true}
-                            onChange={(passwordField) => this.setState({ passwordField })}
+                            onChange={( event ) => this.setState({ passwordField: event.target.value })}
                         />
                     </div>
                     <div className="forgot-password-container clearfix">
@@ -91,7 +70,7 @@ class LoginContainer extends Component {
                             />
                         </Link>
                         <RaisedButton
-                            onClick={this._customLogin.bind(this)}
+                            onClick={this._customSigninHandler.bind(this)}
                             label="sign in"
                             labelColor={white}
                             buttonStyle={{ backgroundColor: blue500 }}
