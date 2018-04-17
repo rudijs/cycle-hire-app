@@ -6,52 +6,50 @@ import theme from './theme';
 import './style.css';
 import {Link, Redirect} from "react-router-dom";
 import Auth from "../../containers/Auth";
-import request from "request";
 
 class LoginContainer extends Component {
 
     auth = new Auth();
-    login = () => this.auth.login();
 
     constructor() {
         super();
         this.state = {
-            emailField: null,
-            passwordField: null,
+            emailField: "clp-admin@viseo.com",
+            passwordField: "clpADMIN123",
             isAuthenticated: null
         }
     }
 
-    _customLogin = () => {
-        const { emailField, passwordField } = this.state;
-        // if (!emailField || !passwordField) alert("Please input required fields.");
-
-        const options = { method: 'POST',
-            url: 'https://clp-viseo.auth0.com/dbconnections/signup',
-            headers: {
-                'content-type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body:
-                {
-                    client_id: 'YnHGKaXO5hdjnX-pwRlDSUQUhcsNsAy1',
-                    email: emailField,
-                    password: passwordField,
-                    user_metadata: { permission: "user" }
-                },
-            json: true
-        };
-
-        request(options, function (error, response, body) {
-            if (error) throw new Error(error);
-
-            console.log(body);
-        });
-    };
-
     componentDidMount() {
         this._isAuthenticatedHandler();
     }
+
+    login = () => this.auth.login();
+
+    _customSigninHandler = event => {
+        event.preventDefault();
+        const { client_id, authorization, connection: { usernamePasswordAuthentication }  } = this.auth;
+        const { emailField, passwordFieldd } = this.state;
+
+        fetch("https://clp-viseo.auth0.com/dbconnections/signup", {
+            method: "POST",
+            body: JSON.stringify({
+                connection: usernamePasswordAuthentication,
+                client_id,
+                email: emailField,
+                password: passwordFieldd
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": authorization
+            }
+        })
+            .then(response => response.json())
+            .then(jsonResponse => {
+                console.log(jsonResponse)
+            })
+            .catch(error => alert(error.message))
+    };
 
     _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
 
@@ -91,7 +89,7 @@ class LoginContainer extends Component {
                             />
                         </Link>
                         <RaisedButton
-                            onClick={this._customLogin.bind(this)}
+                            onClick={this._customSigninHandler.bind(this)}
                             label="sign in"
                             labelColor={white}
                             buttonStyle={{ backgroundColor: blue500 }}
