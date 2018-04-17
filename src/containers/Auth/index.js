@@ -10,7 +10,6 @@ export default class Auth {
 
     authorization = `Bearer ${AUTH_CONFIG.token}`;
     api_endpoint = AUTH_CONFIG.endpoint;
-    client_id = AUTH_CONFIG.clientId;
 
     constructor() {
         this.login = this.login.bind(this);
@@ -18,6 +17,29 @@ export default class Auth {
         this.handleAuthentication = this.handleAuthentication.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
     }
+
+    loginWithCredentials = ({ username, password}) => {
+        console.log('sdfsfsdf');
+        Auth0.redirect.loginWithCredentials({
+            connection: this.connection.usernamePasswordAuthentication,
+            username,
+            password,
+            scope: this.scope
+        }, (err) => console.log(err));
+    };
+
+    // causes error
+    signup = ({ email, password, user_metadata }) => {
+        Auth0.signup({
+            connection: this.connection.usernamePasswordAuthentication,
+            email,
+            password,
+            user_metadata
+        }, (err) => {
+            if(err) console.log(err);
+            console.log('success')
+        });
+    };
 
     login() {
         Auth0.authorize({
@@ -68,7 +90,6 @@ export default class Auth {
         let lock = JSON.parse(localStorage.getItem("lock"));
 
         if(lock && lock === true) {
-            console.log('is true?')
             return true
         } else {
             let expiresAt = JSON.parse(localStorage.getItem("expires_at"));

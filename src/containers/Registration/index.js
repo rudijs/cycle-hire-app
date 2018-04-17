@@ -21,6 +21,20 @@ class RegistrationContainer extends Component {
         }
     }
 
+    _signupHandler = () => {
+        const { emailField, passwordField, nameField, surNameField, phoneNumberField } = this.state;
+        this.auth.signup({
+            name: nameField,
+            password: passwordField,
+            email: emailField,
+            user_metadata: {
+                surName: surNameField,
+                phoneNumber: phoneNumberField,
+                permission: "user"
+            }
+        })
+    };
+
     _customSignupHandler = event => {
         event.preventDefault();
         const { api_endpoint, authorization, connection: { usernamePasswordAuthentication } } = this.auth;
@@ -56,7 +70,7 @@ class RegistrationContainer extends Component {
     };
 
     render() {
-        if(this.state.isAuthenticated) return <Redirect to="/dashboard" />;
+        if(this.state.isAuthenticated === true) return <Redirect to="/dashboard" />;
         return (
             <div className="login-container">
                 <div className="form-container">

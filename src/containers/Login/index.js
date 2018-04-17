@@ -27,34 +27,14 @@ class LoginContainer extends Component {
     login = () => this.auth.login();
 
     _customSigninHandler = event => {
-        event.preventDefault();
-        const { client_id, authorization, connection: { usernamePasswordAuthentication }  } = this.auth;
-        const { emailField, passwordFieldd } = this.state;
-
-        fetch("https://clp-viseo.auth0.com/dbconnections/signup", {
-            method: "POST",
-            body: JSON.stringify({
-                connection: usernamePasswordAuthentication,
-                client_id,
-                email: emailField,
-                password: passwordFieldd
-            }),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": authorization
-            }
-        })
-            .then(response => response.json())
-            .then(jsonResponse => {
-                console.log(jsonResponse)
-            })
-            .catch(error => alert(error.message))
+        const { emailField, passwordField } = this.state;
+        this.auth.loginWithCredentials({ email: emailField, password: passwordField });
     };
 
     _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
 
     render() {
-        if(this.state.isAuthenticated) return <Redirect to="/dashboard" />;
+        if(this.state.isAuthenticated === true) return <Redirect to="/dashboard" />;
         return (
             <div className="login-container">
                 <div className="form-container">

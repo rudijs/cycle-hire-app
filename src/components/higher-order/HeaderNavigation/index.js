@@ -21,12 +21,14 @@ class HeaderNavigation extends Component {
         this._isAuthenticatedHandler();
     }
 
-    _isAuthenticatedHandler = () => this.setState({ isAuthenticated: this.auth.isAuthenticated() });
+    _isAuthenticatedHandler = () => {
+        this.setState({ isAuthenticated: this.auth.isAuthenticated() })
+    };
 
     _drawerToggleHandler = (isOpen) => this.setState({ isOpen });
 
     render() {
-        if(!this.state.isAuthenticated) return <Redirect to="/" />;
+        if(this.state.isAuthenticated === false) return <Redirect to="/" />;
         const { children, nav } = this.props;
         const { isOpen } = this.state;
 
