@@ -65,27 +65,28 @@ export default class Auth {
             }
         })
         .then(response => response.json())
-        .then(responseJson => responseJson[0]);
+        .then(responseJson => {
+            if(responseJson.length) return responseJson[0];
+            return Promise.reject({ message: "User not found." })
+        });
 
     mockLoginHandler = ({ email, password }) =>
         this.findUserByEmail(email)
             .then(response => {
                 if(response.user_metadata.password === password) return response;
-                return Promise.reject({ message: "Authentication failed." })
+                return Promise.reject({ message: "Authentication failed."})
             });
 
     handleAuthentication = () => new Promise((resolve, reject) =>
         Auth0.parseHash((err, authResult) => {
-            if(err) return Promise.reject(err);
-            if (authResult && authResult.accessToken && authResult.idToken) {
+            if(err) return reject(err);
+            const { accessToken, idToken, idTokenPayload } = authResult;
+            if (authResult && accessToken && idToken && idTokenPayload) {
                 this.setSession(authResult);
-                this.findUserByEmail(authResult.idTokenPayload.email)
-                .then(jsonResponse => {
-                    this.setCustomSession({ profile: jsonResponse, lock: false});
-                })
-                .then(() => resolve(authResult))
-                .catch(err => reject(err))
+                this.setCustomSession({ profile: idTokenPayload, lock: false });
+                resolve(authResult)
             }
+            reject({ message: "Authentication failed."})
         })
     );
 

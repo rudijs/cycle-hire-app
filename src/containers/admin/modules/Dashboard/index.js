@@ -7,7 +7,6 @@ import {FlatButton} from "material-ui";
 import GoogleMapHandler from "../../../../components/stateful/GoogleMapHandler";
 import graphData from "./dataSource.json";
 import PinModal from "../../../../components/stateful/GoogleMapHandler/components/PinModal";
-import axios from "axios/index";
 import {actionMapDataSource, actionMapisFetching} from "../../../../actions/action-map";
 import {connect} from "react-redux";
 
@@ -18,19 +17,31 @@ class DashboardContainer extends Component {
             area: "London",
             openFilter: true,
             isOpen: false,
-            activePinData: { commonName: null }
+            activePinData: { commonName: null },
+            dataSource: {
+                isFetching: true,
+                items: [],
+            }
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.getBikepoints()
     }
 
     _handleAreaChange = (event, index, area) => this.setState({ area });
     _handleStationChange = (event, index, station) => this.setState({ station });
     _openFilterHandler = (openFilter) => this.setState({ openFilter: !openFilter });
-    onDataChangeHandler = (size) => this.setState({ data: graphData.slice(0, size) });
-    _openPinHandler = ({ marker, ...event}) => {
+    onDataChangeHandler = (size) => {
+        const data = this.state.dataSource.items.slice();
+        this.setState({
+            dataSource: {
+                isFetching: false,
+                items: data.slice(0, size)
+            }
+        })
+    };
+    _openPinHandler = ({ marker, ...event }) => {
         this.setState({ isOpen: !this.state.isOpen, activePinData: marker })
     };
     onMarkerClusterClick = (markerCluster) => {
@@ -42,18 +53,35 @@ class DashboardContainer extends Component {
     getBikepoints = () => {
         const { actionMapisFetching, actionMapDataSource } = this.props;
         actionMapisFetching(true);
-        axios.get("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint", {
-            responseType: 'json'
-        })
-        .then(response => {
-            actionMapDataSource(response.data);
-            actionMapisFetching(false);
-            this.setState({ commonName: null });
-        })
-        .catch(error => {
-            actionMapisFetching(false);
-            if(error.message) alert(error.message);
+        this.setState({
+            dataSource: {
+                isFetching: true,
+                items: []
+            }
         });
+        fetch("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint")
+            .then(response => response.json())
+            .then(response => {
+                this.setState({
+                    dataSource: {
+                        isFetching: false,
+                        items: response
+                    },
+                    commonName: null
+                });
+                actionMapDataSource(response);
+                actionMapisFetching(false);
+            })
+            .catch(error => {
+                actionMapisFetching(false);
+                this.setState({
+                    dataSource: {
+                        isFetching: false,
+                        items: []
+                    }
+                });
+                if(error.message) alert(error.message);
+            });
     };
 
     render() {
@@ -71,9 +99,9 @@ class DashboardContainer extends Component {
                     hoverColor="#233672"
                     className="filter-form-button"
                 />
-                <div className={ !!openFilter ? "active-filter" : "inactive-filter"}>
+                <div className={ openFilter ? "active-filter" : "inactive-filter"}>
                     {
-                        !!openFilter ?
+                        openFilter ?
                             <FilterForm
                                 area={{
                                     default: area, item: [],
@@ -88,7 +116,7 @@ class DashboardContainer extends Component {
                 <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-6 chart-container">
                         <StationChart
-                            data={graphData}
+                            dataSource={this.state.dataSource}
                             onSizeChange={this.onDataChangeHandler.bind(this)}
                             paperStyle={{ height: window.innerHeight / 2 }}
                         />

@@ -1,7 +1,7 @@
 import DashboardContainer from "../containers/admin/modules/Dashboard";
 import UserDashboardContainer from "../containers/user/Dashboard";
 
-const profile = localStorage.getItem('profile') ? JSON.parse(localStorage.getItem('profile')) : null;
+const profile = JSON.parse(localStorage.getItem('profile'));
 
 const navigation = () => {
     const items = [

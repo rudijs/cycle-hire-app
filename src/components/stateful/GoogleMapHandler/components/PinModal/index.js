@@ -16,7 +16,7 @@ class PinModal extends Component {
     }
 
     render() {
-        const {isOpen, toggleHandler, data: { commonName, bikes, spaces }} = this.props;
+        const {isOpen, toggleHandler, data} = this.props;
 
         return (
             <Dialog
@@ -27,8 +27,8 @@ class PinModal extends Component {
                 <div>
                     <div className="row">
                         <div className="col-10">
-                            <h1 style={{ color: "#13378f", fontSize: 18 }}>{ commonName }</h1>
-                            <span style={{ color: "#48b5de", fontSize: 14 }}>{ bikes } bikes * { spaces } spaces</span>
+                            <h1 style={{ color: "#13378f", fontSize: 18 }}>{ data ? data.commonName : "No Title" }</h1>
+                            <span style={{ color: "#48b5de", fontSize: 14 }}>{ data ? data.bikes : 0 } bikes * { data ? data.spaces : 20 } spaces</span>
                         </div>
                         <div className="col-2">
                             <CircularProgress
@@ -60,6 +60,14 @@ PinModal.propTypes = {
         bikes: PropTypes.number,
         spaces: PropTypes.number
     })
+};
+
+PinModal.defaultProps = {
+    data: {
+        commonName: "No Title",
+        bikes: 0,
+        spaces: 15
+    }
 };
 
 export default PinModal;

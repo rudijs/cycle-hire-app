@@ -2,8 +2,7 @@ import {white} from "material-ui/styles/colors";
 
 const theme = {
     paper: {
-        padding: 20,
-        overflow: 'hidden'
+        padding: 20
     },
     raisedButton: {
         textColor: white,

@@ -25,23 +25,27 @@ class MapLayout extends Component {
                     defaultZoom={15}
                     defaultCenter={{ lat: 51.529163, lng: -0.10997 }}
                 >
-                    <MarkerClusterer
-                        onClick={(markerClusterEvent) => this._handleEventClick(onMarkerClusterClick, markerClusterEvent)}
-                        averageCenter
-                        enableRetinaIcons
-                        gridSize={100}
-                    >
-                        {
-                            items.map((marker, index) =>
-                                <Marker
-                                    key={index}
-                                    position={{ lat: marker.lat, lng: marker.lon }}
-                                    icon={pinImage}
-                                    onClick={(markerData) => this._handleEventClick(onMarkerClick, (Object.assign({}, markerData, { marker })))}
-                                />
-                            )
-                        }
-                    </MarkerClusterer>
+                    {
+                        items && items.length ?
+                            <MarkerClusterer
+                                onClick={(markerClusterEvent) => this._handleEventClick(onMarkerClusterClick, markerClusterEvent)}
+                                averageCenter
+                                enableRetinaIcons
+                                gridSize={100}
+                            >
+                                {
+                                    items.map((marker, index) =>
+                                        <Marker
+                                            key={index}
+                                            position={{ lat: marker.lat, lng: marker.lon }}
+                                            icon={pinImage}
+                                            onClick={(markerData) => this._handleEventClick(onMarkerClick, (Object.assign({}, markerData, { marker })))}
+                                        />
+                                    )
+                                }
+                            </MarkerClusterer>
+                            : null
+                    }
                     {
                         !!showBicyclelayer ?
                             <BicyclingLayer autoUpdate={false} />

@@ -91,6 +91,7 @@ const FilterForm = ({ area, onChangeHandler, dataSource: { items } }) => {
                         />
 
                         {
+                            stations.length ?
                             stations.map(
                                 (item, index) =>
                                     <MenuItem
@@ -100,6 +101,8 @@ const FilterForm = ({ area, onChangeHandler, dataSource: { items } }) => {
                                         primaryText={item.name}
                                     />
                             )
+                                :
+                                null
                         }
 
                     </SelectField>

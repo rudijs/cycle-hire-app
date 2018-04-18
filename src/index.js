@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './theme/fonts.css';
 import './theme/style.css';
 
+
 const AppContainer = () => (
     <Provider store={store}>
         <AppRouter />

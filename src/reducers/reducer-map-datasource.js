@@ -1,12 +1,7 @@
 const initialstate = {
     isFetching: false,
-    items: []
-};
-
-const randomBikesAndSpaces = ()=> {
-    let spaces = 20;
-    const bikes = Math.floor(Math.random() * 15) + 1;
-    return { spaces: spaces - bikes , bikes }
+    items: [],
+    usedStations: []
 };
 
 const reducerMapDatasource = (state = initialstate, action) => {
@@ -18,9 +13,20 @@ const reducerMapDatasource = (state = initialstate, action) => {
             state.isFetching = action.payload;
             return state;
         case "SET_MAP_DATASOURCE":
-            const { bikes, spaces } = randomBikesAndSpaces();
-            state.items = action.payload.map(item => Object.assign({}, item, { bikes, spaces }));
-            console.log(state.items);
+            state.items = action.payload.map(item => {
+                let bikeSpaces = 20;
+                const bikes = Math.floor(Math.random() * 15) + 1;
+                const randomJourney = Math.floor(Math.random() * 200);
+
+                item.spaces = bikeSpaces - bikes;
+                item.bikes = bikes;
+                item.journeys = randomJourney;
+                return item;
+            });
+
+            return state;
+        case "SET_TOP_DATASOURCE":
+            state = Object.assign({}, state, { usedStations: action.payload });
             return state;
         default:
             return state
