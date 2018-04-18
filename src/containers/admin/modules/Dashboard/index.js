@@ -110,7 +110,7 @@ class DashboardContainer extends Component {
                             null
                     }
                 </div>
-                <div className="row">
+                <div className="row" style={{ margin: 0 }}>
                     <div className="col-sm-12 col-md-12 col-lg-6 chart-container">
                         <StationChart
                             dataSource={dataSource}
@@ -118,7 +118,7 @@ class DashboardContainer extends Component {
                             paperStyle={{ height: window.innerHeight / 2 }}
                         />
                         <WeatherBicycleUsage
-                            data={graphData}
+                            data={dataSource.items}
                             paperStyle={{ height: window.innerHeight / 2}}
                         />
                     </div>
@@ -146,4 +146,8 @@ const mapDispatchToProps = dispatch => ({
     actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce))
 });
 
-export default connect(null, mapDispatchToProps)(DashboardContainer)
+const mapStateToProps = state => ({
+   dataSource: state.reducerMapDatasource
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)

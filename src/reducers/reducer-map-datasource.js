@@ -4,6 +4,11 @@ const initialstate = {
     usedStations: []
 };
 
+const getWeatherByLocation = ({ lat, lon }) => {
+    return fetch("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=aabecbde2fc66eba7b65d4c434fb5ca8")
+        .then(response => response.json())
+};
+
 const reducerMapDatasource = (state = initialstate, action) => {
     switch (action.type) {
         case "APPEND_MAP_DATASOURCE":
@@ -21,6 +26,7 @@ const reducerMapDatasource = (state = initialstate, action) => {
                 item.spaces = bikeSpaces - bikes;
                 item.bikes = bikes;
                 item.journeys = randomJourney;
+
                 return item;
             });
 
