@@ -77,6 +77,7 @@ class UserDashboardContainer extends Component {
                 <GoogleMapHandler
                     onMarkerClick={this._onMarkerClick}
                     onMarkerClusterClick={this._onMarkerClusterClick}
+                    dataSource={dataSource}
                 />
                 {this.footer(dataSource)}
             </div>
@@ -85,8 +86,7 @@ class UserDashboardContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce)),
-    actionMapisFetching: (isTrue) => dispatch(actionMapisFetching(isTrue))
+    actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce))
 });
 
 const mapStateToProps = state => ({

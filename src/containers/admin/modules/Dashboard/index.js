@@ -7,7 +7,7 @@ import {FlatButton} from "material-ui";
 import GoogleMapHandler from "../../../../components/stateful/GoogleMapHandler";
 import graphData from "./dataSource.json";
 import PinModal from "../../../../components/stateful/GoogleMapHandler/components/PinModal";
-import {actionMapDataSource, actionMapisFetching} from "../../../../actions/action-map";
+import {actionMapDataSource} from "../../../../actions/action-map";
 import {connect} from "react-redux";
 
 class DashboardContainer extends Component {
@@ -55,7 +55,7 @@ class DashboardContainer extends Component {
         actionMapisFetching(true);
         this.setState({
             dataSource: {
-                isFetching: true,
+                isFetching: false,
                 items: []
             }
         });
@@ -65,9 +65,9 @@ class DashboardContainer extends Component {
                 this.setState({
                     dataSource: {
                         isFetching: false,
-                        items: response
-                    },
-                    commonName: null
+                        items: response,
+                        commonName: null
+                    }
                 });
                 actionMapDataSource(response);
                 actionMapisFetching(false);
@@ -85,7 +85,7 @@ class DashboardContainer extends Component {
     };
 
     render() {
-        const { area, openFilter, isOpen, activePinData } = this.state;
+        const { area, openFilter, isOpen, activePinData, dataSource } = this.state;
 
         return (
             <div className="dashboard-container">
@@ -116,7 +116,7 @@ class DashboardContainer extends Component {
                 <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-6 chart-container">
                         <StationChart
-                            dataSource={this.state.dataSource}
+                            dataSource={dataSource}
                             onSizeChange={this.onDataChangeHandler.bind(this)}
                             paperStyle={{ height: window.innerHeight / 2 }}
                         />
@@ -131,6 +131,7 @@ class DashboardContainer extends Component {
                             onMarkerClick={this._openPinHandler.bind(this)}
                             onMarkerClusterClick={this.onMarkerClusterClick.bind(this)}
                             showBicyclelayer={false}
+                            dataSource={dataSource}
                         />
                     </div>
                 </div>
@@ -145,8 +146,7 @@ class DashboardContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce)),
-    actionMapisFetching: (isTrue) => dispatch(actionMapisFetching(isTrue))
+    actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce))
 });
 
 export default connect(null, mapDispatchToProps)(DashboardContainer)

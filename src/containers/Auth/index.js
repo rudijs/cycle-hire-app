@@ -1,5 +1,6 @@
 
 import Auth0, { AUTH_CONFIG }  from "../../config";
+import auth0 from "auth0-js";
 
 export default class Auth {
 
@@ -31,7 +32,12 @@ export default class Auth {
 
     // causes error
     signup = ({ email, password, user_metadata }) => {
-        Auth0.signup({
+        const Auth0Custom = new auth0.WebAuth({
+            domain: AUTH_CONFIG.domain,
+            clientID: AUTH_CONFIG.clientIdCustomAuth
+        });
+
+        Auth0Custom.signup({
             connection: this.connection.usernamePasswordAuthentication,
             email,
             password,

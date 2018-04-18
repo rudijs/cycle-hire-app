@@ -34,7 +34,7 @@ class NearbyComponent extends Component {
                                     label="Here"
                                     labelColor={white}
                                     buttonStyle={{ backgroundColor: "#13378f"}}
-                                    onClick={(dataSource) => onClick(dataSource)}
+                                    onClick={(dataSource) => onClick ? onClick(dataSource) : null }
                                 />
                             </div>
                         </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MapLayout from "./MapLayoutComponent";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 
 const mapUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCac4KiePeteNK02OJTgHWGtBEvMAWGL5M&v=3.exp&libraries=geometry,drawing,places"
 
@@ -25,7 +24,8 @@ const markerItems = [
 
 class GoogleMapHandler extends Component {
     render() {
-        const { onMarkerClick, onMarkerClusterClick, showBicyclelayer  } = this.props;
+        const { onMarkerClick, onMarkerClusterClick, showBicyclelayer, dataSource  } = this.props;
+
         return (
             <MapLayout
                 googleMapURL={mapUrl}
@@ -36,6 +36,7 @@ class GoogleMapHandler extends Component {
                 onMarkerClusterClick={onMarkerClusterClick}
                 markers={markerItems}
                 showBicyclelayer={showBicyclelayer}
+                dataSource={dataSource}
             />
         )
     }
@@ -45,7 +46,18 @@ GoogleMapHandler.propTypes = {
     containerHeight: PropTypes.number,
     onMarkerClick: PropTypes.func,
     onMarkerClusterClick: PropTypes.func,
-    showBicyclelayer: PropTypes.bool
+    showBicyclelayer: PropTypes.bool,
+    dataSource: PropTypes.shape({
+        item: PropTypes.array,
+        isFetching: PropTypes.bool
+    })
 };
 
-export default connect()(GoogleMapHandler);
+GoogleMapHandler.defaultTypes = {
+    dataSource: {
+        items: [],
+        isFetching: null
+    }
+};
+
+export default GoogleMapHandler;

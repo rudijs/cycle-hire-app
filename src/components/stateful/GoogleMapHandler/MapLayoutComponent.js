@@ -9,14 +9,13 @@ import {connect} from "react-redux";
 
 class MapLayout extends Component {
     _handleEventClick = (fn, event) => fn ? fn(event) : null;
-
     render() {
-        const { onMarkerClusterClick, onMarkerClick, showBicyclelayer, dataSource: { items, isFetching }  } = this.props;
+        const { onMarkerClusterClick, onMarkerClick, showBicyclelayer, dataSource: { items, isFetching } } = this.props;
 
         return (
             <div>
                 <Snackbar
-                    open={isFetching}
+                    open={isFetching !== null ? isFetching : false }
                     message={"Fetching bikepoint information."}
                     onRequestClose={() => false}
                     bodyStyle={{ backgroundColor: "#48b5de" }}
@@ -62,13 +61,16 @@ MapLayout.propTypes = {
     onMarkerClusterClick: PropTypes.func,
     showBicyclelayer: PropTypes.bool,
     dataSource: PropTypes.shape({
-        items: PropTypes.arrayOf(PropTypes.object),
+        item: PropTypes.array,
         isFetching: PropTypes.bool
     })
 };
 
-const mapStateToProps = state => ({
-    dataSource: state.reducerMapDatasource
-});
+MapLayout.defaultTypes = {
+    dataSource: {
+        items: [],
+        isFetching: null
+    }
+};
 
-export default connect(mapStateToProps)(withScriptjs(withGoogleMap(MapLayout)));
+export default withScriptjs(withGoogleMap(MapLayout));
