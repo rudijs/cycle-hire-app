@@ -5,12 +5,15 @@ import { BicyclingLayer } from "react-google-maps/lib/components/BicyclingLayer"
 import pinImage from "./assets/pinPoint.png";
 import PropTypes from "prop-types";
 import { Snackbar } from "material-ui";
+import {connect} from "react-redux";
 
 class MapLayout extends Component {
     _handleEventClick = (fn, event) => fn ? fn(event) : null;
     render() {
-        const { onMarkerClusterClick, onMarkerClick, showBicyclelayer, dataSource: { items, isFetching } } = this.props;
-
+        const {
+            onMarkerClusterClick, onMarkerClick, showBicyclelayer,
+            dataSource: { items, isFetching }
+        } = this.props;
         return (
             <div>
                 <Snackbar
@@ -58,18 +61,11 @@ class MapLayout extends Component {
 MapLayout.propTypes = {
     onMarkerClick: PropTypes.func,
     onMarkerClusterClick: PropTypes.func,
-    showBicyclelayer: PropTypes.bool,
-    dataSource: PropTypes.shape({
-        item: PropTypes.array,
-        isFetching: PropTypes.bool
-    })
+    showBicyclelayer: PropTypes.bool
 };
 
-MapLayout.defaultTypes = {
-    dataSource: {
-        items: [],
-        isFetching: null
-    }
-};
+const mapStateToProps = state => ({
+    dataSource: state.reducerMapDatasource
+});
 
-export default withScriptjs(withGoogleMap(MapLayout));
+export default connect(mapStateToProps)(withScriptjs(withGoogleMap(MapLayout)));

@@ -5,9 +5,8 @@ import StationChart from "./components/stateless/StationsChart";
 import WeatherBicycleUsage from "./components/stateless/WeatherBicycleUsage";
 import {FlatButton} from "material-ui";
 import GoogleMapHandler from "../../../../components/stateful/GoogleMapHandler";
-import graphData from "./dataSource.json";
 import PinModal from "../../../../components/stateful/GoogleMapHandler/components/PinModal";
-import {actionMapDataSource} from "../../../../actions/action-map";
+import {actionMapFilterBySize, actionSetMapDataSource} from "../../../../actions/action-map";
 import {connect} from "react-redux";
 
 class DashboardContainer extends Component {
@@ -29,60 +28,24 @@ class DashboardContainer extends Component {
         this.getBikepoints()
     }
 
+    getBikepoints = () => {
+        const { dataSource, actionSetMapDataSource } = this.props;
+        if(!dataSource.items.length) actionSetMapDataSource();
+    };
+
     _handleAreaChange = (event, index, area) => this.setState({ area });
     _handleStationChange = (event, index, station) => this.setState({ station });
     _openFilterHandler = (openFilter) => this.setState({ openFilter: !openFilter });
-    onDataChangeHandler = (size) => {
-        const data = this.state.dataSource.items.slice();
-        this.setState({
-            dataSource: {
-                isFetching: false,
-                items: data.slice(0, size)
-            }
-        })
-    };
-    _openPinHandler = ({ marker, ...event }) => {
-        this.setState({ isOpen: !this.state.isOpen, activePinData: marker })
-    };
-    onMarkerClusterClick = (markerCluster) => {
-        const clickedMarkers = markerCluster.getMarkers();
-        console.log(`Current clicked markers length: ${clickedMarkers.length}`);
-        console.log(clickedMarkers)
-    };
+    onDataChangeHandler = (size) => this.props.actionMapFilterBySize(size);
 
-    getBikepoints = () => {
-        const { actionMapDataSource } = this.props;
-        this.setState({
-            dataSource: {
-                isFetching: false,
-                items: []
-            }
-        });
-        fetch("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint")
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    dataSource: {
-                        isFetching: false,
-                        items: response,
-                        commonName: null
-                    }
-                });
-                actionMapDataSource(response);
-            })
-            .catch(error => {
-                this.setState({
-                    dataSource: {
-                        isFetching: false,
-                        items: []
-                    }
-                });
-                if(error.message) alert(error.message);
-            });
-    };
+    _openPinHandler = ({ marker, ...event }) =>
+        this.setState({ isOpen: !this.state.isOpen, activePinData: marker });
+
+    onMarkerClusterClick = (markerCluster) => markerCluster.getMarkers();
 
     render() {
-        const { area, openFilter, isOpen, activePinData, dataSource } = this.state;
+        const { area, openFilter, isOpen, activePinData } = this.state;
+        const { dataSource } = this.props;
 
         return (
             <div className="dashboard-container">
@@ -143,7 +106,8 @@ class DashboardContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce))
+    actionSetMapDataSource: ()=> actionSetMapDataSource(dispatch),
+    actionMapFilterBySize: size => actionMapFilterBySize(size)
 });
 
 const mapStateToProps = state => ({
