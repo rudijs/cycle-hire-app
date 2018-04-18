@@ -51,8 +51,7 @@ class DashboardContainer extends Component {
     };
 
     getBikepoints = () => {
-        const { actionMapisFetching, actionMapDataSource } = this.props;
-        actionMapisFetching(true);
+        const { actionMapDataSource } = this.props;
         this.setState({
             dataSource: {
                 isFetching: false,
@@ -70,10 +69,8 @@ class DashboardContainer extends Component {
                     }
                 });
                 actionMapDataSource(response);
-                actionMapisFetching(false);
             })
             .catch(error => {
-                actionMapisFetching(false);
                 this.setState({
                     dataSource: {
                         isFetching: false,

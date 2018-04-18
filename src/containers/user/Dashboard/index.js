@@ -3,7 +3,7 @@ import './styles.css';
 import GoogleMapHandler from "../../../components/stateful/GoogleMapHandler";
 import DashboardListContainer from "./components/stateless/DashboardList/index";
 import { connect } from "react-redux";
-import { actionMapDataSource, actionMapisFetching } from "../../../actions/action-map";
+import { actionMapDataSource } from "../../../actions/action-map";
 import axios from "axios/index";
 import ConfirmDialog from "./components/stateless/ConfirmDialog";
 
