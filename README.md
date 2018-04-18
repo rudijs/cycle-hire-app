@@ -89,12 +89,11 @@ Commits on the `develop` branch to github.com/viseo-asia/cycle-hire-app are auto
 
 - [happy-shannon-f6a154.netlify.com](https://happy-shannon-f6a154.netlify.com)
 
-## Production deploy to Netlify
+## PRODUCTION Deployment
 
-- TODO (will be similar to DEV/UAT but with a custom domain name)
+Commits on the `master` branch to github.com/viseo-asia/cycle-hire-app are auto built and deployed to:
 
-<!-- - `AUTH0_URL=https://happy-shannon-f6a154.netlify.com yarn build` -->
-<!-- - Sign into Viseo Netlify account, drag and drop deploy -->
+- [clpcycles.com](https://clpcycles.com)
 
 ## Web Application Architecture
 
