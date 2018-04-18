@@ -14,8 +14,8 @@ class LoginContainer extends Component {
     constructor() {
         super();
         this.state = {
-            emailField: "clp-admin@viseo.com",
-            passwordField: "clpADMIN123",
+            emailField: null,
+            passwordField: null,
             isAuthenticated: null
         }
     }
@@ -32,7 +32,7 @@ class LoginContainer extends Component {
             .then(jsonResponse => {
                 if (jsonResponse.statusCode && jsonResponse.statusCode !== 200) throw jsonResponse;
                 this.auth.setCustomSession({ profile: jsonResponse, lock: true })
-                    .then(() => this.props.history.push("/dashboard"));
+                    .then(() => window.location.reload());
             })
             .catch(error => {
                 if(error.message) alert(error.message);
