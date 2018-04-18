@@ -87,7 +87,7 @@ Dashboard
 
 Commits on the `develop` branch to github.com/viseo-asia/cycle-hire-app are auto built and deployed to:
 
-- [happy-shannon-f6a154.netlify.com](https://happy-shannon-f6a154.netlify.com)
+- [dev.clpcycles.com](https://dev.clpcycles.com)
 
 ## PRODUCTION Deployment
 
