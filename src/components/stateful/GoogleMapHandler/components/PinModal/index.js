@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {CircularProgress, Dialog} from "material-ui";
 import PropTypes from 'prop-types';
 import DockingGraph from "../DockingGraph";
+import _ from "lodash";
+
 
 class PinModal extends Component {
 
@@ -17,7 +19,7 @@ class PinModal extends Component {
 
     render() {
         const {isOpen, toggleHandler, data} = this.props;
-
+        const usage = _.head(data.usage);
         return (
             <Dialog
                 modal={false}
@@ -28,7 +30,7 @@ class PinModal extends Component {
                     <div className="row">
                         <div className="col-10">
                             <h1 style={{ color: "#13378f", fontSize: 18 }}>{ data ? data.commonName : "No Title" }</h1>
-                            <span style={{ color: "#48b5de", fontSize: 14 }}>{ data ? data.bikes : 0 } bikes * { data ? data.spaces : 20 } spaces</span>
+                            <span style={{ color: "#48b5de", fontSize: 14 }}>{ usage ? usage.bikes : 0 } bikes * { usage ? usage.spaces : 20 } spaces</span>
                         </div>
                         <div className="col-2">
                             <CircularProgress
