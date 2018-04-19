@@ -14,7 +14,9 @@ class FilterForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedStation: null
+            selectedStation: null,
+            dateFrom: new Date(),
+            dateTo: new Date()
         }
     }
 
