@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
-import {Area, Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, XAxis, YAxis} from "recharts";
+import {
+    Area,
+    Bar,
+    CartesianGrid,
+    ComposedChart,
+    Legend,
+    Line,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis,
+    YAxis
+} from "recharts";
 import {Paper} from "material-ui";
 import PropTypes from 'prop-types';
 import theme from "./theme";
@@ -18,6 +29,7 @@ class DockingGraph extends Component {
                             <ComposedChart data={data}>
                                 <XAxis hide={true} />
                                 <YAxis hide={true} />
+                                <Tooltip />
                                 <Legend verticalAlign="top" height={36}/>
                                 <CartesianGrid stroke="#f5f5f5" />
                                 <Area type="monotone" dataKey="temperature" fill="#ffba00" stroke="#FFC142" />
