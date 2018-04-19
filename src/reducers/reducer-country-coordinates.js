@@ -3,11 +3,13 @@ import _ from "lodash";
 const initialState = {
     items: [
         {
+            id: "UK",
             name: "London",
             lat: 51.508530,
             lon: -0.076132
         },
         {
+            id: "HK",
             name: "Hong Kong",
             lat: 22.396428,
             lon: 114.109497

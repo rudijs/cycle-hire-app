@@ -27,9 +27,19 @@ class FilterForm extends Component {
         this.props.actionChangeSelectedCoordinate({ name, lat, lon });
     };
 
+    onChangeFromHandler = (event, date) => {
+        const datum = new Date(date);
+        console.log(datum.getTime())
+    };
+
+    onChangeToHandler = (event, date) => {
+        const datum = new Date(date);
+        console.log(datum.getTime())
+    };
+
     render() {
         const { dataSource: { items }, countryCoordinates } = this.props;
-        const stations = items.map(item => ({ name: item.commonName, lat: item.lat, lon: item.lon }));
+        const stations = items.map(item => ({ id: item.id, name: item.commonName, lat: item.lat, lon: item.lon }));
 
         return (
             <div className="filter-form-container container-fluid clearfix">
@@ -46,6 +56,7 @@ class FilterForm extends Component {
                                         hintText="DD/MM/YYYY"
                                         mode="portrait"
                                         maxDate={new Date()}
+                                        onChange={this.onChangeFromHandler}
                                     />
                                 </div>
                                 <div className="col-3">
@@ -71,6 +82,7 @@ class FilterForm extends Component {
                                         hintText="DD/MM/YYYY"
                                         mode="portrait"
                                         maxDate={new Date()}
+                                        onChange={this.onChangeToHandler}
                                     />
                                 </div>
                                 <div className="col-3">
@@ -138,12 +150,16 @@ class FilterForm extends Component {
                                 stations.length ?
                                     stations.map(
                                         (item, index) =>
-                                            <MenuItem
-                                                key={index}
-                                                value={item}
-                                                label={item.name}
-                                                primaryText={item.name}
-                                            />
+                                        {
+                                            if(countryCoordinates.selected.id === item.id) {
+                                                return <MenuItem
+                                                    key={index}
+                                                    value={item}
+                                                    label={item.name}
+                                                    primaryText={item.name}
+                                                />
+                                            }
+                                        }
                                     )
                                     :
                                     null

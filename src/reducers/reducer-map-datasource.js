@@ -54,9 +54,10 @@ const reducerMapDatasource = (state = initialstate, action) => {
                     }
                     const bikepointDate = currentDate.setMonth(currentDate.getMonth() - dateToDeduct);
                     dateToDeduct++;
-                    return Object.assign({}, item, {date: bikepointDate}, {usage: usage}, {totalJourney: totalJourney});
+                    return Object.assign({}, item, {id: "UK"}, {date: bikepointDate}, {usage: usage}, {totalJourney: totalJourney});
                 })
             });
+
             return state;
         case "SET_MAP_FILTER_BY_SIZE":
             state = Object.assign({}, state, {filteredStations: _.cloneDeep(state.items).slice(0, action.size)});
