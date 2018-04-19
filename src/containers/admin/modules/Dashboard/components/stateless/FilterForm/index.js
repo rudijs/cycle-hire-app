@@ -12,10 +12,11 @@ import {actionChangeSelectedCoordinate} from "../../../../../../../actions/actio
 class FilterForm extends Component {
 
     onChangeAreaHandler = (event, index, value) => this.props.actionChangeSelectedCoordinate(value);
+    onChangeStationHandler = (event, index, value) => this.props.actionChangeSelectedCoordinate(value);
 
     render() {
-        const { onChangeHandler, dataSource: { items }, countryCoordinates } = this.props;
-        const stations = items.map(item => ({ name: item.commonName }));
+        const { dataSource: { items }, countryCoordinates } = this.props;
+        const stations = items.map(item => ({ name: item.commonName, lat: item.lat, lon: item.lon }));
 
         return (
             <div className="filter-form-container container-fluid clearfix">
@@ -109,7 +110,7 @@ class FilterForm extends Component {
                         <span className="clearfix">Docking station</span>
                         <SelectField
                             labelStyle={theme.formInput}
-                            onChange={onChangeHandler}
+                            onChange={this.onChangeStationHandler}
                             fullWidth={true}
                             value={null}
                         >
@@ -125,7 +126,7 @@ class FilterForm extends Component {
                                         (item, index) =>
                                             <MenuItem
                                                 key={index}
-                                                value={index}
+                                                value={item}
                                                 label={item.name}
                                                 primaryText={item.name}
                                             />
