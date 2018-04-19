@@ -41,7 +41,11 @@ class PinModal extends Component {
                         </div>
                     </div>
                     <div style={{ marginTop: 20 }}>
-                        <DockingGraph chartHeight={(this.state.window.height / 2) - 100} paperStyle={{ height: this.state.window.height / 2}} />
+                        <DockingGraph
+                            chartHeight={(this.state.window.height / 2) - 100}
+                            paperStyle={{ height: this.state.window.height / 2}}
+                            data={data ? data.usage: []}
+                        />
                     </div>
                 </div>
                 {/*<div style={{ marginTop: 10 }}>*/}
@@ -50,24 +54,11 @@ class PinModal extends Component {
             </Dialog>
         )
     }
-};
+}
 
 PinModal.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     toggleHandler: PropTypes.func.isRequired,
-    data: PropTypes.shape({
-        commonName: PropTypes.string,
-        bikes: PropTypes.number,
-        spaces: PropTypes.number
-    })
-};
-
-PinModal.defaultProps = {
-    data: {
-        commonName: "No Title",
-        bikes: 0,
-        spaces: 15
-    }
 };
 
 export default PinModal;

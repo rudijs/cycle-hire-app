@@ -3,9 +3,10 @@ import {Bar, BarChart, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis} fr
 import theme from "./theme";
 import "./style.css";
 import {Paper, RaisedButton} from "material-ui";
-import StationsIconMenu from "./components/StationsIconMenu";
 import PropTypes from "prop-types";
-import _ from "lodash";
+import {connect} from "react-redux";
+import {actionMapFilterBySize} from "../../../../../../../actions/action-map";
+import StationsIconMenu from "./components/StationsIconMenu";
 
 
 class StationChart extends Component {
@@ -14,26 +15,27 @@ class StationChart extends Component {
         super(props);
         this.state = {
             size: 5,
-            stations: []
+            stations: [],
+            initializedFilter: false
         }
     }
 
-    _handleTopChartChange = (value) => {
-        this.setState({ size: value });
-        this.props.onSizeChange(value);
-    };
-
-    setTopDataSource = (items, size) => {
-        if(items.length) {
-            const stations = _.orderBy(items, "journeys", ['desc']).slice(0, size);
-            return <LoadStations stations={stations}/>;
+    componentWillReceiveProps() {
+        if(this.props.dataSource.items.length !== 0 && !this.state.initializedFilter) {
+            this.setState({ initializedFilter: true });
+            this.props.actionMapFilterBySize(this.state.size);
         }
+    }
+
+    _handleTopChartChange = (size) => {
+        this.setState({ size: size });
+        if(this.props.onSizeChange) this.props.onSizeChange(size);
+        this.props.actionMapFilterBySize(size)
     };
 
     render() {
-        const { containerStyle, paperStyle, dataSource: { isFetching, items } } = this.props;
-
-        if(isFetching && !items.length) {
+        const { dataSource: { isFetching, items, filteredStations } } = this.props;
+        if(isFetching && !items.length && !filteredStations.length ) {
             return (
                 <div style={{
                     alignSelf: 'center',
@@ -46,9 +48,10 @@ class StationChart extends Component {
                 </div>
             )
         } else {
+            const containerStyle = {height: filteredStations.length * ( filteredStations.length > 5 ? 80 : 90)};
             return (
                 <div className="station-chart-container container clearfix" style={containerStyle}>
-                    <Paper zDepth={1} style={Object.assign({}, theme.paper, paperStyle)}>
+                    <Paper zDepth={1} style={Object.assign({}, theme.paper, containerStyle)}>
                         <div className="row">
                             <div className="title col-10">
                                 Most used stations
@@ -56,8 +59,37 @@ class StationChart extends Component {
                             <div className="col-2">
                                 <StationsIconMenu onValueChange={this._handleTopChartChange.bind(this)}/>
                             </div>
+                            <div className="col-2">
+                                <div className="bar-chart-container">
+                                    <ResponsiveContainer width={window.innerWidth / 2} height={filteredStations.length * 70}>
+                                        <BarChart
+                                            data={filteredStations}
+                                            layout="vertical"
+                                            barSize={20}
+                                            barCategoryGap={5}
+                                            margin={{ top: 5, right: 5, bottom: 5, left: 90 }}
+                                        >
+                                            <XAxis hide={true}/>
+                                            <YAxis
+                                                type="category"
+                                                dataKey="commonName"
+                                                orientation="left"
+                                                allowDataOverflow={true}
+                                                allowDuplicatedCategory={true}
+                                                axisLine={true}
+                                            />
+                                            <Tooltip />
+                                            <Bar dataKey="totalJourney" fill="#48b5de">
+                                                <LabelList
+                                                    dataKey="totalJourney"
+                                                    style={{ fontSize: 12 }}
+                                                />
+                                            </Bar>
+                                        </BarChart>
+                                    </ResponsiveContainer>
+                                </div>
+                            </div>
                         </div>
-                        { this.setTopDataSource(items, this.state.size) }
                         <div className="map-button-container clearfix">
                             <RaisedButton
                                 label="Map"
@@ -74,51 +106,15 @@ class StationChart extends Component {
 }
 
 StationChart.propTypes = {
-    onSizeChange: PropTypes.func,
-    containerStyle: PropTypes.object,
-    paperStyle: PropTypes.object,
-    dataSource: PropTypes.shape({
-        isFetching: PropTypes.bool.isRequired,
-        items: PropTypes.array.isRequired
-    })
+    onSizeChange: PropTypes.func
 };
 
-export default StationChart;
+const mapDispatchToProps = dispatch => ({
+    actionMapFilterBySize: size => dispatch(actionMapFilterBySize(size))
+});
 
-const LoadStations = ({ stations }) => {
-    return (
-        <div className="bar-chart-container">
-            <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                    data={stations.length ? stations : []}
-                    layout="vertical"
-                    barSize={20}
-                    barCategoryGap={5}
-                    margin={{ top: 5, right: 5, bottom: 5, left: 90 }}
-                >
-                    <XAxis hide={true}/>
-                    <YAxis
-                        type="category"
-                        dataKey="commonName"
-                        orientation="left"
-                        allowDataOverflow={true}
-                        allowDuplicatedCategory={true}
-                        axisLine={true}
-                    />
-                    <Tooltip />
-                    <Bar dataKey="journeys" fill="#48b5de">
-                        <LabelList
-                            dataKey="journeys"
-                            style={{ fontSize: 12 }}
-                        />
-                    </Bar>
-                </BarChart>
-            </ResponsiveContainer>
-        </div>
-    );
-};
+const mapStateToProps = state => ({
+    dataSource: state.reducerMapDatasource
+});
 
-
-LoadStations.propTypes = {
-    stations: PropTypes.array.isRequired
-};
+export default connect(mapStateToProps, mapDispatchToProps)(StationChart);

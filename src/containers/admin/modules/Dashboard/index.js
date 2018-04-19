@@ -6,7 +6,7 @@ import WeatherBicycleUsage from "./components/stateless/WeatherBicycleUsage";
 import {FlatButton} from "material-ui";
 import GoogleMapHandler from "../../../../components/stateful/GoogleMapHandler";
 import PinModal from "../../../../components/stateful/GoogleMapHandler/components/PinModal";
-import {actionMapFilterBySize, actionSetMapDataSource} from "../../../../actions/action-map";
+import {actionMapSetSelected, actionSetMapDataSource} from "../../../../actions/action-map";
 import {connect} from "react-redux";
 
 class DashboardContainer extends Component {
@@ -25,7 +25,7 @@ class DashboardContainer extends Component {
     }
 
     componentWillMount() {
-        this.getBikepoints()
+        this.getBikepoints();
     }
 
     getBikepoints = () => {
@@ -36,10 +36,11 @@ class DashboardContainer extends Component {
     _handleAreaChange = (event, index, area) => this.setState({ area });
     _handleStationChange = (event, index, station) => this.setState({ station });
     _openFilterHandler = (openFilter) => this.setState({ openFilter: !openFilter });
-    onDataChangeHandler = (size) => this.props.actionMapFilterBySize(size);
 
-    _openPinHandler = ({ marker, ...event }) =>
+    _openPinHandler = ({ marker, ...event }) => {
+        this.props.actionMapSetSelected(marker);
         this.setState({ isOpen: !this.state.isOpen, activePinData: marker });
+    };
 
     onMarkerClusterClick = (markerCluster) => markerCluster.getMarkers();
 
@@ -75,13 +76,8 @@ class DashboardContainer extends Component {
                 </div>
                 <div className="row" style={{ margin: 0 }}>
                     <div className="col-sm-12 col-md-12 col-lg-6 chart-container">
-                        <StationChart
-                            dataSource={dataSource}
-                            onSizeChange={this.onDataChangeHandler.bind(this)}
-                            paperStyle={{ height: window.innerHeight / 2 }}
-                        />
+                        <StationChart />
                         <WeatherBicycleUsage
-                            data={dataSource.items}
                             paperStyle={{ height: window.innerHeight / 2}}
                         />
                     </div>
@@ -107,7 +103,7 @@ class DashboardContainer extends Component {
 
 const mapDispatchToProps = dispatch => ({
     actionSetMapDataSource: ()=> actionSetMapDataSource(dispatch),
-    actionMapFilterBySize: size => actionMapFilterBySize(size)
+    actionMapSetSelected: selected=> dispatch(actionMapSetSelected(selected))
 });
 
 const mapStateToProps = state => ({
