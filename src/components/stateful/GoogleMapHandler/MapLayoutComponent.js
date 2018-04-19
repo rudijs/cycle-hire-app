@@ -8,12 +8,22 @@ import { Snackbar } from "material-ui";
 import {connect} from "react-redux";
 
 class MapLayout extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            zoom: 15
+        }
+    }
+
+
     _handleEventClick = (fn, event) => fn ? fn(event) : null;
     render() {
         const {
             onMarkerClusterClick, onMarkerClick, showBicyclelayer,
-            dataSource: { items, isFetching }
+            dataSource: { items, isFetching },
+            countryCoordinates: { selected: { lat, lon } }
         } = this.props;
+
         return (
             <div>
                 <Snackbar
@@ -23,8 +33,8 @@ class MapLayout extends Component {
                     bodyStyle={{ backgroundColor: "#48b5de" }}
                 />
                 <GoogleMap
-                    defaultZoom={15}
-                    defaultCenter={{ lat: 51.529163, lng: -0.10997 }}
+                    defaultZoom={this.state.zoom}
+                    center={{ lat, lng: lon }}
                 >
                     {
                         items && items.length ?
@@ -65,7 +75,8 @@ MapLayout.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    dataSource: state.reducerMapDatasource
+    dataSource: state.reducerMapDatasource,
+    countryCoordinates: state.reducerCountryCoordinates
 });
 
 export default connect(mapStateToProps)(withScriptjs(withGoogleMap(MapLayout)));
