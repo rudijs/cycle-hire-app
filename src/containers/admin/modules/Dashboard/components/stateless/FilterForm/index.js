@@ -23,6 +23,7 @@ const FilterForm = ({ area, onChangeHandler, dataSource: { items } }) => {
                                     hintStyle={theme.formInput}
                                     hintText="DD/MM/YYYY"
                                     mode="portrait"
+                                    maxDate={new Date()}
                                 />
                             </div>
                             <div className="col-3">
@@ -47,6 +48,7 @@ const FilterForm = ({ area, onChangeHandler, dataSource: { items } }) => {
                                     hintStyle={theme.formInput}
                                     hintText="DD/MM/YYYY"
                                     mode="portrait"
+                                    maxDate={new Date()}
                                 />
                             </div>
                             <div className="col-3">
