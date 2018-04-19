@@ -24,12 +24,6 @@
     margin-top: 10px;
 }
 
-.station-chart-container .bar-chart-container {
-    width: 90%;
-    margin: auto;
-    height: 90%;
-}
-
 .station-chart-container .recharts-wrapper {
     font-size: 16px;
 }

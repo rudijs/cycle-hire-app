@@ -3,7 +3,7 @@ import NearbyComponent from "../Nearby/index";
 import './style.css';
 import {CircularProgress} from "material-ui";
 
-const DashboardListContainer = ({ type, dataSource: { items } }) => {
+const DashboardListContainer = ({ type, dataSource: { items }, onClick }) => {
     return (
         <div className="dashboard-list-container container">
             <h4 className="title">Where shall we { type === "DOCK" ? "dock" : "begin"} ?</h4>
@@ -12,7 +12,7 @@ const DashboardListContainer = ({ type, dataSource: { items } }) => {
                 <div className="nearby-container">
                     {
                         items.length ?
-                            items.map((data, index) => <NearbyComponent dataSource={data} key={index}/>)
+                            items.map((data, index) => <NearbyComponent dataSource={data} key={index} onClick={onClick} />)
                             :
                             <div style={style.loaderWrapper}>
                                 <CircularProgress

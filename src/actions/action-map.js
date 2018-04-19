@@ -17,6 +17,11 @@ export const actionMapFilterBySize = size => ({
     size
 });
 
+export const actionMapSetSelected = payload => ({
+    type: "SELECT_MAP_DATASOURCE",
+    payload
+});
+
 export const actionMapisFetching = isTrue => ({
     type: "IS_FETCHING_DATASOURCE",
     isTrue: isTrue
