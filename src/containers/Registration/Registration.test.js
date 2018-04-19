@@ -7,7 +7,7 @@ configure({ adapter: new Adapter() });
 
 import RegistrationContainer from "./";
 
-describe("<RegistrationContainer />", () => {
+describe.skip("<RegistrationContainer />", () => {
     it("should render a profile page", () => {
         const wrapper = shallow(<RegistrationContainer />);
     });

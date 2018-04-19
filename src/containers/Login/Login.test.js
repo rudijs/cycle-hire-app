@@ -7,7 +7,7 @@ configure({ adapter: new Adapter() });
 
 import LoginContainer from "./";
 
-describe("<LoginContainer />", () => {
+describe.skip("<LoginContainer />", () => {
     it("should render a profile page", () => {
         const wrapper = shallow(<LoginContainer />);
     });
