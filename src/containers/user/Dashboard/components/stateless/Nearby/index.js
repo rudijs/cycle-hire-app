@@ -7,7 +7,7 @@ import './style.css';
 class NearbyComponent extends Component {
     render() {
 
-        const { dataSource: { commonName }, onClick } = this.props;
+        const { dataSource, onClick } = this.props;
 
         return (
             <div className="nearby-component-container container clearfix">
@@ -23,7 +23,7 @@ class NearbyComponent extends Component {
                         <div className="row">
                             <div className="col-8">
                                 <h4 style={{ fontSize: 16, color: "#000", margin: 0 }}>
-                                    { commonName }
+                                    { dataSource.commonName }
                                 </h4>
                                 <h6 style={{ fontSize: 14, color: "rgb(72, 181, 222)" }}>
                                     2 bikes * 24 spaces
@@ -34,7 +34,7 @@ class NearbyComponent extends Component {
                                     label="Here"
                                     labelColor={white}
                                     buttonStyle={{ backgroundColor: "#13378f"}}
-                                    onClick={(dataSource) => onClick ? onClick(dataSource) : null }
+                                    onClick={() => onClick(dataSource)}
                                 />
                             </div>
                         </div>

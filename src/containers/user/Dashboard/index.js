@@ -33,6 +33,7 @@ class UserDashboardContainer extends Component {
         <DashboardListContainer
           type={this.state.beginningStation ? "DOCK" : "BEGIN"}
           dataSource={dataSource}
+          onClick={this._onListItemClick}
         />
       );
     } else {
@@ -45,6 +46,10 @@ class UserDashboardContainer extends Component {
         />
       );
     }
+  };
+
+  _onListItemClick = marker => {
+    this.setState({ markerToSelect: marker });
   };
 
   _onMarkerClick = event => {
@@ -63,9 +68,11 @@ class UserDashboardContainer extends Component {
       this.state.beginningStation == null
         ? { beginningStation: this.state.markerToSelect }
         : { dockingStation: this.state.markerToSelect };
-    this.setState({ ...updatedStation, markerToSelect: null }, () => {
-      console.log(this.state);
-    });
+    this.setState({ ...updatedStation, markerToSelect: null });
+  };
+
+  _clearStation = station => {
+    this.setState({ [station]: null });
   };
 
   render() {
@@ -75,16 +82,32 @@ class UserDashboardContainer extends Component {
       <div className="dashboard-container">
         {this.state.beginningStation ? (
           <p style={{ paddingLeft: 20 }}>
-            <img src={bikeIcon} alt="Bike Icon" />
+            <img src={bikeIcon} alt="Bike Icon" /><i>From:</i>
             {this.state.beginningStation.commonName}
+            <span
+              className="clear-station"
+              onClick={() => {
+                this._clearStation("beginningStation");
+              }}
+            >
+              X
+            </span>
           </p>
         ) : (
           ""
         )}
         {this.state.dockingStation ? (
           <p style={{ paddingLeft: 20 }}>
-            <img src={bikeIcon} alt="Bike Icon" />
+            <img src={bikeIcon} alt="Bike Icon" /><i>To:</i>
             {this.state.dockingStation.commonName}
+            <span
+              className="clear-station"
+              onClick={() => {
+                this._clearStation("dockingStation");
+              }}
+            >
+              X
+            </span>
           </p>
         ) : (
           ""
