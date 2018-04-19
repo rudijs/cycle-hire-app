@@ -10,8 +10,6 @@ import _ from "lodash";
 
 class StationChart extends Component {
 
-    app_id = "aabecbde2fc66eba7b65d4c434fb5ca8";
-
     constructor(props) {
         super(props);
         this.state = {
@@ -20,11 +18,6 @@ class StationChart extends Component {
         }
     }
 
-    getWeatherByLocation = ({ lat, lon }) => {
-        return fetch("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "appid=" + this.app_id)
-            .then(response => response.json())
-    };
-
     _handleTopChartChange = (value) => {
         this.setState({ size: value });
         this.props.onSizeChange(value);
@@ -32,7 +25,8 @@ class StationChart extends Component {
 
     setTopDataSource = (items, size) => {
         if(items.length) {
-            return <LoadStations stations={_.orderBy(items, "journeys", ['desc']).slice(0, size)}/>;
+            const stations = _.orderBy(items, "journeys", ['desc']).slice(0, size);
+            return <LoadStations stations={stations}/>;
         }
     };
 

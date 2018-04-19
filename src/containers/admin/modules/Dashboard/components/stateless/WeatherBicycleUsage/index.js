@@ -16,40 +16,55 @@ import "./style.css";
 import {Paper} from "material-ui";
 import PropTypes from "prop-types";
 
-const WeatherBicycleUsage = ({ containerStyle, paperStyle, data }) => (
-    <div className="station-chart-container container clearfix" style={containerStyle}>
-        <Paper zDepth={1} style={Object.assign({}, theme.paper, paperStyle)}>
-            <div className="row">
-                <div className="title col-10">
-                    Weather VS Bicycle usage
+const WeatherBicycleUsage = ({ containerStyle, paperStyle, data }) => {
+    const filtered = data.filter(_ => {
+        // Time of day 24 hour
+        const time = 12;
+        // Base temperature for the day
+        const tempBase = 10;
+        // Fluctuations, multiplied with base temperature, indices correspond to hour of the day
+        const fluc = [0, 1, 1, 2, 1, 1, 2.5, 3.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+        // Work out the temperature of the given day for the given hour 24 format
+        const temp = tempBase * fluc[time];
+        return {
+            commonName: _.commonName,
+            bikes: _.bikes,
+            temperature: temp
+        }
+    });
+
+    return (
+        <div className="station-chart-container container clearfix" style={containerStyle}>
+            <Paper zDepth={1} style={Object.assign({}, theme.paper, paperStyle)}>
+                <div className="row">
+                    <div className="title col-10">
+                        Weather VS Bicycle usage
+                    </div>
                 </div>
-            </div>
-            <div className="compose-chart-container">
-                <ResponsiveContainer width="100%" height="100%">
-                    <ComposedChart
-                        data={data}
-                    >
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend verticalAlign="bottom" height={36}/>
-                        <CartesianGrid stroke="#f5f5f5" />
-                        <Area type="monotone" dataKey="temperature" fill="#ffba00" stroke="#FFC142" />
-                        <Bar dataKey="rainfall" barSize={20} fill="#48b5de" />
-                        <Line type="monotone" dataKey="bike_usage" fill="#fffff" stroke="#283f89" />
-                    </ComposedChart>
-                </ResponsiveContainer>
-            </div>
-        </Paper>
-    </div>
-);
+                <div className="compose-chart-container">
+                    <ResponsiveContainer width="100%" height="100%">
+                        <ComposedChart
+                            data={filtered}
+                        >
+                            <XAxis dataKey="commonName" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend verticalAlign="bottom" height={36}/>
+                            <CartesianGrid stroke="#f5f5f5" />
+                            <Area type="monotone" dataKey="temperature" fill="#ffba00" stroke="#FFC142" />
+                            <Bar dataKey="rainfall" barSize={20} fill="#48b5de" />
+                            <Line type="monotone" dataKey="bikes" fill="#fffff" stroke="#283f89" />
+                        </ComposedChart>
+                    </ResponsiveContainer>
+                </div>
+            </Paper>
+        </div>
+    );
+};
 
 WeatherBicycleUsage.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        rainfall: PropTypes.number.isRequired,
-        temperature: PropTypes.number.isRequired
-    })),
+    data: PropTypes.array.isRequired,
     containerStyle: PropTypes.object,
     paperStyle: PropTypes.object,
 };

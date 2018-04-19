@@ -3,8 +3,7 @@ import './styles.css';
 import GoogleMapHandler from "../../../components/stateful/GoogleMapHandler";
 import DashboardListContainer from "./components/stateless/DashboardList/index";
 import { connect } from "react-redux";
-import { actionMapDataSource } from "../../../actions/action-map";
-import axios from "axios/index";
+import { actionSetMapDataSource } from "../../../actions/action-map";
 import ConfirmDialog from "./components/stateless/ConfirmDialog";
 
 class UserDashboardContainer extends Component {
@@ -23,15 +22,8 @@ class UserDashboardContainer extends Component {
     }
 
     getBikepoints = () => {
-        const { actionMapDataSource } = this.props;
-        axios.get("https://tajz77isu1.execute-api.us-east-1.amazonaws.com/dev/bikepoint", {
-            responseType: 'json'
-        })
-        .then(response => {
-            actionMapDataSource(response.data);
-            this.setState({ commonName: null });
-        })
-        .catch(error =>  alert(error) );
+        const { dataSource, actionSetMapDataSource } = this.props;
+        if(!dataSource.items.length) actionSetMapDataSource();
     };
 
     footer = (dataSource) => {
@@ -86,7 +78,7 @@ class UserDashboardContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    actionMapDataSource: (dataSrouce) => dispatch(actionMapDataSource(dataSrouce))
+    actionSetMapDataSource: ()=> actionSetMapDataSource(dispatch)
 });
 
 const mapStateToProps = state => ({
