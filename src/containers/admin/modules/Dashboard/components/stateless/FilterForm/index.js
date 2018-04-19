@@ -11,10 +11,19 @@ import {actionChangeSelectedCoordinate} from "../../../../../../../actions/actio
 
 class FilterForm extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedStation: null
+        }
+    }
+
+
     onChangeAreaHandler = (event, index, value) => this.props.actionChangeSelectedCoordinate(value);
     onChangeStationHandler = (event, index, value) => {
         const { name } = this.props.countryCoordinates.selected;
         const { lat, lon } = value;
+        this.setState({ selectedStation: value });
         this.props.actionChangeSelectedCoordinate({ name, lat, lon });
     };
 
@@ -83,12 +92,13 @@ class FilterForm extends Component {
                             labelStyle={theme.formInput}
                             onChange={this.onChangeAreaHandler}
                             fullWidth={true}
-                            value={countryCoordinates.items.length ? countryCoordinates.selected: null}
+                            value={items.length && countryCoordinates.items.length ? countryCoordinates.selected: null}
+                            disabled={!(items.length && countryCoordinates.items.length)}
                         >
                             <MenuItem
-                                value={countryCoordinates.items.length ? countryCoordinates.selected: null}
-                                label={countryCoordinates.items.length ? countryCoordinates.selected.name : "Loading Stations..."}
-                                primaryText={countryCoordinates.items.length ? countryCoordinates.selected.name : "Loading Stations..."}
+                                value={items.length && countryCoordinates.items.length ? countryCoordinates.selected: null}
+                                label={items.length && countryCoordinates.items.length ? countryCoordinates.selected.name : "Loading Area..."}
+                                primaryText={items.length && countryCoordinates.items.length ? countryCoordinates.selected.name : "Loading Area..."}
                             />
 
                             {
@@ -116,12 +126,12 @@ class FilterForm extends Component {
                             labelStyle={theme.formInput}
                             onChange={this.onChangeStationHandler}
                             fullWidth={true}
-                            value={null}
+                            value={this.state.selectedStation}
                         >
                             <MenuItem
-                                value={null}
-                                label={stations.length ? "Select Station" : "Loading Stations..."}
-                                primaryText={stations.length ? "Select Station" : "Loading Stations..."}
+                                value={this.state.selectedStation}
+                                label={stations.length ? this.state.selectedStation ? this.state.selectedStation.name : "Select Station" : "Loading Stations..."}
+                                primaryText={stations.length ? this.state.selectedStation ? this.state.selectedStation.name : "Select Station" : "Loading Stations..."}
                             />
 
                             {
