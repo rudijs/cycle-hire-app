@@ -1,0 +1,13 @@
+.dashboard-container .title {
+    padding-top: 10px;
+    margin-bottom: 0;
+}
+
+.dashboard-container .stations-nearby .title {
+    padding-top: 0;
+    color: #000;
+}
+
+.dashboard-container .nearby-container {
+    margin-top: 30px;
+}

@@ -1,0 +1,48 @@
+/*
+    Extra small devices (portrait phones, less than 576px)
+    No media query since this is the default in Bootstrap
+*/
+.station-chart-container {
+    margin-top: 30px;
+}
+
+.station-chart-container .title {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #283f89;
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+
+.station-chart-container .map-button-container {
+    margin-top: 10px;
+}
+
+.station-chart-container .bar-chart-container {
+    width: 90%;
+    margin: auto;
+    height: 90%;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .station-chart-container {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}

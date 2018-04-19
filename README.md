@@ -87,14 +87,13 @@ Dashboard
 
 Commits on the `develop` branch to github.com/viseo-asia/cycle-hire-app are auto built and deployed to:
 
-- [happy-shannon-f6a154.netlify.com](https://happy-shannon-f6a154.netlify.com)
+- [dev.clpcycles.com](https://dev.clpcycles.com)
 
-## Production deploy to Netlify
+## PRODUCTION Deployment
 
-- TODO (will be similar to DEV/UAT but with a custom domain name)
+Commits on the `master` branch to github.com/viseo-asia/cycle-hire-app are auto built and deployed to:
 
-<!-- - `AUTH0_URL=https://happy-shannon-f6a154.netlify.com yarn build` -->
-<!-- - Sign into Viseo Netlify account, drag and drop deploy -->
+- [clpcycles.com](https://clpcycles.com)
 
 ## Web Application Architecture
 
@@ -106,6 +105,9 @@ And that people use the software systems that we build.
 
 ## System Context
 ![System Context](docs/cycle-hire-system-context.png)
+
+## Front End Components
+![Front End Components](docs/front-end-components.png)
 
 ## Authorization
 ![Auth0 Service](https://cdn2.auth0.com/docs/media/articles/api-auth/implicit-grant.png)

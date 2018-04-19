@@ -1,26 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
+import Auth from "../Auth";
+import "./theme/style.css";
 
-import loading from "../../assets/images/loading.svg";
+class CallbackContainer extends Component {
 
-const callback = () => {
-  const style = {
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    height: "100vh",
-    width: "100vw",
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: "white"
-  };
+    auth = new Auth();
 
-  return (
-    <div style={style}>
-      <img src={loading} alt="loading" />
-    </div>
-  );
-};
+    componentDidMount() {
+        const { location, history } = this.props;
+        this._handleAuthentication({ location, history });
+    }
 
-export default callback;
+    _handleAuthentication = ({ location, history })=> {
+        if(this.auth.isAuthenticated()) {
+            history.push('/dashboard')
+        } else {
+            this.auth.checkPermission({ location })
+                .then(() => window.location.reload())
+                .catch(() => history.push('/'))
+        }
+    };
+
+    render() {
+        return <div className="auth-callback-container">Authenticating</div>
+    }
+}
+
+export default CallbackContainer;
