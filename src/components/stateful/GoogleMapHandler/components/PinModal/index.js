@@ -19,7 +19,8 @@ class PinModal extends Component {
 
     render() {
         const {isOpen, toggleHandler, data} = this.props;
-        const usage = _.head(data.usage);
+        const usage = data ? _.head(data.usage) : null;
+
         return (
             <Dialog
                 modal={false}
