@@ -8,7 +8,7 @@ const initialstate = {
     selected: {}
 };
 
-const dates = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+const currentDate = new Date();
 
 const randomTemperature = ()=> {
     // Time of day 24 hour
@@ -31,25 +31,33 @@ const reducerMapDatasource = (state = initialstate, action) => {
             state = Object.assign({}, state, { isFetching: action.isTrue });
             return state;
         case "SET_MAP_DATASOURCE":
+            let monthToDeduct = 0;
             state = Object.assign({}, state, { items: action.payload.map(item => {
                     let totalJourney = 0;
-                    const usage = dates.map(date => {
+                    let usage = [];
+                    for(let i=1; i <= 7; i++) {
                         let bikeSpaces = 20;
                         const bikes = Math.floor(Math.random() * 15) + 1;
                         const randomJourney = Math.floor(Math.random() * 200);
                         totalJourney += randomJourney;
 
-                        return {
-                            date,
-                            spaces: bikeSpaces,
-                            bikes,
-                            journeys: randomJourney,
-                            temperature: randomTemperature()
-                        }
-                    });
-                    return Object.assign({}, item, {usage}, {totalJourney: totalJourney});
+                        usage = [
+                                ...usage,
+                                {
+                                    date: currentDate.setDate(currentDate.getDay() - i),
+                                    spaces: bikeSpaces,
+                                    bikes,
+                                    journeys: randomJourney,
+                                    temperature: randomTemperature()
+                                }
+                            ]
+                    }
+                    const bikepointDate = currentDate.setMonth(currentDate.getMonth() - monthToDeduct);
+                    monthToDeduct++;
+                    return Object.assign({}, item, {date: bikepointDate}, {usage: usage}, {totalJourney: totalJourney});
                 })
             });
+            
             return state;
         case "SET_MAP_FILTER_BY_SIZE":
             state = Object.assign({}, state, {filteredStations: _.cloneDeep(state.items).slice(0, action.size)});

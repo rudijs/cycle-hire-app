@@ -70,6 +70,7 @@ class UserDashboardContainer extends Component {
                     onMarkerClick={this._onMarkerClick}
                     onMarkerClusterClick={this._onMarkerClusterClick}
                     dataSource={dataSource}
+                    containerStyle={{ height: "400px" }}
                 />
                 {this.footer(dataSource)}
             </div>

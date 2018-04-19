@@ -87,6 +87,7 @@ class DashboardContainer extends Component {
                             onMarkerClusterClick={this.onMarkerClusterClick.bind(this)}
                             showBicyclelayer={false}
                             dataSource={dataSource}
+                            containerStyle={{ height: "100%", minHeight: "600px" }}
                         />
                     </div>
                 </div>

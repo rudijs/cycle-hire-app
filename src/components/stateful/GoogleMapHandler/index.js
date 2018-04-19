@@ -24,28 +24,40 @@ const markerItems = [
 
 class GoogleMapHandler extends Component {
     render() {
-        const { onMarkerClick, onMarkerClusterClick, showBicyclelayer  } = this.props;
+        const { onMarkerClick, onMarkerClusterClick, showBicyclelayer, dataSource, containerStyle  } = this.props;
 
         return (
             <MapLayout
                 googleMapURL={mapUrl}
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: !!this.props.containerHeight ? this.props.containerHeight : "100%", minHeight: "600px" }} />}
+                containerElement={<div style={containerStyle} />}
                 mapElement={<div style={{ height: `100%` }} />}
                 onMarkerClick={onMarkerClick}
                 onMarkerClusterClick={onMarkerClusterClick}
                 markers={markerItems}
                 showBicyclelayer={showBicyclelayer}
+                dataSource={dataSource}
             />
         )
     }
 }
 
 GoogleMapHandler.propTypes = {
-    containerHeight: PropTypes.number,
     onMarkerClick: PropTypes.func,
     onMarkerClusterClick: PropTypes.func,
-    showBicyclelayer: PropTypes.bool
+    showBicyclelayer: PropTypes.bool,
+    containerStyle: PropTypes.object,
+    dataSource: PropTypes.shape({
+        item: PropTypes.array,
+        isFetching: PropTypes.bool
+    })
+};
+
+GoogleMapHandler.defaultTypes = {
+    dataSource: {
+        items: [],
+        isFetching: null
+    }
 };
 
 export default GoogleMapHandler;
