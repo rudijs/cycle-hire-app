@@ -179,15 +179,9 @@ class MapPage extends Component {
                 // slightly randomize the lat/lng coordindates each click
                 const randomLat = Math.floor(Math.random() * 8) + 1;
                 const randomLng = Math.floor(Math.random() * 8) + 1;
-<<<<<<< HEAD:src/containers/Map/Map.js
                 history.push(
                   `/map/51.51996${randomLat}/-0.14798${randomLng}/16`
                 );
-=======
-                // history.push(
-                //   `/map/51.51916${randomLat}/-0.14798${randomLng}/15`
-                // );
->>>>>>> develop-merge:src/containers/user-to-merge-folder/containers/Map/Map.js
               }}
             />
           </BottomNavigation>

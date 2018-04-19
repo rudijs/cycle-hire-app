@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
   "short_name": "CLP Cycles",
   "name": "CLP Cycles",
-=======
-  "short_name": "React App",
-  "name": "Create React App Sample",
->>>>>>> develop-merge
   "icons": [
     {
       "src": "favicon.ico",
