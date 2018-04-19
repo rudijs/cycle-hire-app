@@ -30,7 +30,7 @@ class GoogleMapHandler extends Component {
             <MapLayout
                 googleMapURL={mapUrl}
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: !!this.props.containerHeight ? this.props.containerHeight : `400px` }} />}
+                containerElement={<div style={{ height: !!this.props.containerHeight ? this.props.containerHeight : "100%", minHeight: "600px" }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                 onMarkerClick={onMarkerClick}
                 onMarkerClusterClick={onMarkerClusterClick}

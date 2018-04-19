@@ -78,12 +78,11 @@ class DashboardContainer extends Component {
                     <div className="col-sm-12 col-md-12 col-lg-6 chart-container">
                         <StationChart />
                         <WeatherBicycleUsage
-                            paperStyle={{ height: window.innerHeight / 2}}
+                            paperStyle={{ height: ( window.innerHeight / 2 ) + 100 }}
                         />
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-6 dashboard-map-container">
                         <GoogleMapHandler
-                            containerHeight={window.innerHeight}
                             onMarkerClick={this._openPinHandler.bind(this)}
                             onMarkerClusterClick={this.onMarkerClusterClick.bind(this)}
                             showBicyclelayer={false}
