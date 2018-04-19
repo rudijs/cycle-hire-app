@@ -12,7 +12,11 @@ import {actionChangeSelectedCoordinate} from "../../../../../../../actions/actio
 class FilterForm extends Component {
 
     onChangeAreaHandler = (event, index, value) => this.props.actionChangeSelectedCoordinate(value);
-    onChangeStationHandler = (event, index, value) => this.props.actionChangeSelectedCoordinate(value);
+    onChangeStationHandler = (event, index, value) => {
+        const { name } = this.props.countryCoordinates.selected;
+        const { lat, lon } = value;
+        this.props.actionChangeSelectedCoordinate({ name, lat, lon });
+    };
 
     render() {
         const { dataSource: { items }, countryCoordinates } = this.props;
