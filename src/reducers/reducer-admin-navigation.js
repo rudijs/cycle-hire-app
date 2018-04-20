@@ -6,7 +6,7 @@ const profile = JSON.parse(localStorage.getItem('profile'));
 const navigation = () => {
     const items = [
         {
-            name: "Dashboard",
+            name: ( !!profile && !!profile.user_metadata && profile.user_metadata.permission === "administrator" ? "Dashboard" : "Journey Planner"),
             url: "/dashboard",
             container: ( !!profile && !!profile.user_metadata && profile.user_metadata.permission === "administrator" ? DashboardContainer : UserDashboardContainer),
             permission: !!profile && !!profile.user_metadata ? profile.user_metadata.permission : null
