@@ -7,6 +7,7 @@ import "./style.css";
 import Ionicon from "react-ionicons";
 import {connect} from "react-redux";
 import {actionChangeSelectedCoordinate} from "../../../../../../../actions/action-country-coordinates";
+import {actionMapFilterByDate} from "../../../../../../../actions/action-map";
 
 
 class FilterForm extends Component {
@@ -15,8 +16,8 @@ class FilterForm extends Component {
         super(props);
         this.state = {
             selectedStation: null,
-            dateFrom: new Date(),
-            dateTo: new Date()
+            dateFrom: null,
+            dateTo: null
         }
     }
 
@@ -30,14 +31,33 @@ class FilterForm extends Component {
     };
 
     onChangeFromHandler = (event, date) => {
-        const datum = new Date(date);
-        console.log(datum.getTime())
+        this.setState({ dateFrom: this.toTimestamp(date) }, _ => {
+            const { dateFrom, dateTo } = this.state;
+            if(!!dateFrom && !!dateTo) {
+                if (dateFrom < dateTo ) {
+                    this.props.actionMapFilterByDate({from: dateFrom, to: dateTo});
+                } else {
+                    alert("Filter: Date From should be lesser than Date To")
+                }
+            }
+        });
+
     };
 
     onChangeToHandler = (event, date) => {
-        const datum = new Date(date);
-        console.log(datum.getTime())
+        this.setState({ dateTo: this.toTimestamp(date) }, _ => {
+            const { dateFrom, dateTo } = this.state;
+            if(!!dateFrom && !!dateTo) {
+                if (dateFrom < dateTo ) {
+                    this.props.actionMapFilterByDate({from: dateFrom, to: dateTo});
+                } else {
+                    alert("Filter: Date From should be lesser than Date To");
+                }
+            }
+        });
     };
+
+    toTimestamp = (strDate) => Math.round(new Date(strDate).getTime()/1000);
 
     render() {
         const { dataSource: { items }, countryCoordinates } = this.props;
@@ -106,13 +126,13 @@ class FilterForm extends Component {
                             labelStyle={theme.formInput}
                             onChange={this.onChangeAreaHandler}
                             fullWidth={true}
-                            value={items.length && countryCoordinates.items.length ? countryCoordinates.selected: null}
-                            disabled={!(items.length && countryCoordinates.items.length)}
+                            value={countryCoordinates.items.length ? countryCoordinates.selected: null}
+                            disabled={!(countryCoordinates.items.length)}
                         >
                             <MenuItem
-                                value={items.length && countryCoordinates.items.length ? countryCoordinates.selected: null}
-                                label={items.length && countryCoordinates.items.length ? countryCoordinates.selected.name : "Loading Area..."}
-                                primaryText={items.length && countryCoordinates.items.length ? countryCoordinates.selected.name : "Loading Area..."}
+                                value={countryCoordinates.items.length ? countryCoordinates.selected: null}
+                                label={countryCoordinates.items.length ? countryCoordinates.selected.name : "Loading Area..."}
+                                primaryText={countryCoordinates.items.length ? countryCoordinates.selected.name : "Loading Area..."}
                             />
 
                             {
@@ -192,7 +212,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    actionChangeSelectedCoordinate: payload => dispatch(actionChangeSelectedCoordinate(payload))
+    actionChangeSelectedCoordinate: payload => dispatch(actionChangeSelectedCoordinate(payload)),
+    actionMapFilterByDate: ({from, to}) => dispatch(actionMapFilterByDate({from, to}))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterForm);

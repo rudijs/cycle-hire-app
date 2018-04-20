@@ -10,6 +10,13 @@ const initialstate = {
 
 const currentDate = new Date();
 
+const getYesterdaysDate = (date) => {
+    let d = new Date();
+    return d.setDate(new Date(date).getDate() - 1);
+};
+
+const toTimestamp = (strDate) => Math.round(new Date(strDate).getTime()/1000);
+
 const randomTemperature = ()=> {
     // Time of day 24 hour
     const time = 12;
@@ -44,7 +51,7 @@ const reducerMapDatasource = (state = initialstate, action) => {
                         usage = [
                                 ...usage,
                                 {
-                                    date: currentDate.setDate(currentDate.getDay() - i),
+                                    date: toTimestamp(getYesterdaysDate(currentDate.getDay() - i)),
                                     spaces: bikeSpaces,
                                     bikes,
                                     journeys: randomJourney,
@@ -52,15 +59,23 @@ const reducerMapDatasource = (state = initialstate, action) => {
                                 }
                             ]
                     }
-                    const bikepointDate = currentDate.setMonth(currentDate.getMonth() - dateToDeduct);
+                    const bikepointDate = toTimestamp(getYesterdaysDate(currentDate.getDate() - dateToDeduct));
                     dateToDeduct++;
                     return Object.assign({}, item, {id: "UK"}, {date: bikepointDate}, {usage: usage}, {totalJourney: totalJourney});
                 })
             });
-
             return state;
         case "SET_MAP_FILTER_BY_SIZE":
             state = Object.assign({}, state, {filteredStations: _.cloneDeep(state.items).slice(0, action.size)});
+            return state;
+        case "SET_MAP_FILTER_BY_DATE":
+            const { from, to } = action.payload;
+            const newItem = _.cloneDeep(state.items).filter(item => {
+               if(from >= item.date && item.date <= to) {
+                   return item;
+               }
+            });
+            state = Object.assign({}, state, { items: newItem });
             return state;
         case "SELECT_MAP_DATASOURCE":
             state = Object.assign({}, state, { selected: action.payload });
