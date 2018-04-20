@@ -36,7 +36,7 @@ class PinModal extends Component {
                         <div className="col-2">
                             <CircularProgress
                                 mode="determinate"
-                                value={80}
+                                value={usage ? Math.floor((usage.bikes / usage.spaces) * 100) : 80 }
                                 size={55}
                                 thickness={5}
                                 style={{ marginRight: 10 }}
