@@ -24,10 +24,10 @@ class FilterForm extends Component {
 
     onChangeAreaHandler = (event, index, value) => this.props.actionChangeSelectedCoordinate(value);
     onChangeStationHandler = (event, index, value) => {
-        const { name } = this.props.countryCoordinates.selected;
+        const { id, name } = this.props.countryCoordinates.selected;
         const { lat, lon } = value;
         this.setState({ selectedStation: value });
-        this.props.actionChangeSelectedCoordinate({ name, lat, lon });
+        this.props.actionChangeSelectedCoordinate({ id, name, lat, lon });
     };
 
     onChangeFromHandler = (event, date) => {
