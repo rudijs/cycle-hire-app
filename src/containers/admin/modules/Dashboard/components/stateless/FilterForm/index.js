@@ -22,7 +22,11 @@ class FilterForm extends Component {
     }
 
 
-    onChangeAreaHandler = (event, index, value) => this.props.actionChangeSelectedCoordinate(value);
+    onChangeAreaHandler = (event, index, value) => {
+        this.props.actionChangeSelectedCoordinate(value);
+        this.setState({ selectedStation: null });
+    };
+
     onChangeStationHandler = (event, index, value) => {
         const { id, name } = this.props.countryCoordinates.selected;
         const { lat, lon } = value;
