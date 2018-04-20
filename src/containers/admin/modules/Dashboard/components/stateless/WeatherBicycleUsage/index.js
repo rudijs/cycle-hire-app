@@ -53,7 +53,7 @@ class WeatherBicycleUsage extends Component {
                                     <Legend verticalAlign="bottom" height={36}/>
                                     <CartesianGrid stroke="#f5f5f5" />
                                     <Area type="monotone" dataKey="temperature" fill="#ffba00" stroke="#FFC142" />
-                                    <Bar dataKey="journeys" barSize={20} fill="#48b5de" />
+                                    {/*<Bar dataKey="journeys" barSize={20} fill="#48b5de" />*/}
                                     <Line type="monotone" dataKey="bikes" fill="#fffff" stroke="#283f89" />
                                 </ComposedChart>
                             </ResponsiveContainer>
