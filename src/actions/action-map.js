@@ -17,6 +17,11 @@ export const actionMapFilterBySize = size => ({
     size
 });
 
+export const actionMapFilterByDate = ({ from, to }) => ({
+    type: "SET_MAP_FILTER_BY_DATE",
+    payload: { from, to }
+});
+
 export const actionMapSetSelected = payload => ({
     type: "SELECT_MAP_DATASOURCE",
     payload

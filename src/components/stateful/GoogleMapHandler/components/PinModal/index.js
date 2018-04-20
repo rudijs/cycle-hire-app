@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {CircularProgress, Dialog} from "material-ui";
 import PropTypes from 'prop-types';
 import DockingGraph from "../DockingGraph";
+import BikeImage from "../../../../../assets/bicycle.png";
 import _ from "lodash";
 
 
@@ -36,10 +37,10 @@ class PinModal extends Component {
                         <div className="col-2">
                             <CircularProgress
                                 mode="determinate"
-                                value={80}
-                                size={55}
+                                value={usage ? Math.floor((usage.bikes / usage.spaces) * 100) : 80 }
+                                size={65}
                                 thickness={5}
-                                style={{ marginRight: 10 }}
+                                style={{ marginRight: 10, backgroundImage: `url(${BikeImage})`, backgroundPosition: "center", backgroundSize: "42px 39px", backgroundRepeat: "no-repeat" }}
                             />
                         </div>
                     </div>
