@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import theme from "./theme";
 import "./style.css";
-import {Paper} from "material-ui";
+import {CircularProgress, Paper} from "material-ui";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import _ from "lodash";
@@ -28,11 +28,11 @@ class WeatherBicycleUsage extends Component {
                 <div style={{
                     alignSelf: 'center',
                     width: "100%",
-                    height: 50,
+                    height: 300,
                     textAlign: 'center',
                     padding: 20
                 }}>
-                    Loading Graph Usage...
+                    <CircularProgress /> Loading Graph Usage...
                 </div>
             );
         } else {

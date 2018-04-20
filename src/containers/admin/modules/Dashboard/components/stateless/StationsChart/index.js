@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Bar, BarChart, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import theme from "./theme";
 import "./style.css";
-import {Paper, RaisedButton} from "material-ui";
+import {CircularProgress, Paper, RaisedButton} from "material-ui";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {actionMapFilterBySize} from "../../../../../../../actions/action-map";
@@ -40,11 +40,13 @@ class StationChart extends Component {
                 <div style={{
                     alignSelf: 'center',
                     width: "100%",
-                    height: 50,
+                    height: 300,
                     textAlign: 'center',
-                    padding: 20
+                    padding: 20,
                 }}>
-                    Loading Stations...
+                    <div style={{ marginTop: 40 }}>
+                        <CircularProgress /> Loading Stations...
+                    </div>
                 </div>
             )
         } else {
