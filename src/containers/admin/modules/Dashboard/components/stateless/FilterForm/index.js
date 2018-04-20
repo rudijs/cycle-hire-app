@@ -180,6 +180,8 @@ class FilterForm extends Component {
                                                     label={item.name}
                                                     primaryText={item.name}
                                                 />
+                                            } else {
+                                                return null;
                                             }
                                         }
                                     )

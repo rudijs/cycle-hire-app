@@ -73,6 +73,8 @@ const reducerMapDatasource = (state = initialstate, action) => {
             const newItem = _.cloneDeep(state.items).filter(item => {
                if(from >= item.date && item.date <= to) {
                    return item;
+               } else {
+                   return null;
                }
             });
             state = Object.assign({}, state, { items: newItem });
